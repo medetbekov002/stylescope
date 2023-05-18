@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="158dp"
+    android:orientation="vertical"
+    android:layout_height="200dp"
+    android:layout_margin="8dp"
+    android:padding="@dimen/padding_page">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_v_iv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="4dp"
+        android:layout_gravity="top|center"
+        app:cardCornerRadius="@dimen/corner">
+
+        <ImageView
+            android:id="@+id/designer_iv"
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+
+    </androidx.cardview.widget.CardView>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:id="@+id/fio_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Macsim Dvijniakov" />
+
+
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/ratingBar"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:mrbNumStars="5"
+        app:mrbRating="1.5"
+        app:mrbFilledDrawable="@drawable/star_filled"
+        app:mrbEmptyDrawable="@drawable/star_empty"
+        app:mrbStarPadding="8dp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</LinearLayout>
