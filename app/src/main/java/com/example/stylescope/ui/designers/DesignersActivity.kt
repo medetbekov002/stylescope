@@ -1,7 +1,8 @@
-package com.example.stylescope
+package com.example.stylescope.ui.designers
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.stylescope.R
 
 class DesignersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

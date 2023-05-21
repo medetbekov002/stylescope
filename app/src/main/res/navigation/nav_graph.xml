@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/selectDesignersFragment"
-        android:name="com.example.stylescope.SelectDesignersFragment"
+        android:name="com.example.stylescope.ui.designers.SelectDesignersFragment"
         android:label="fragment_select_designers"
         tools:layout="@layout/fragment_select_designers"/>
     <fragment
         android:id="@+id/selectedDesignersFragment"
-        android:name="com.example.stylescope.SelectedDesignersFragment"
+        android:name="com.example.stylescope.ui.designers.SelectedDesignersFragment"
         android:label="fragment_selected_designers"
         tools:layout="@layout/fragment_selected_designers"/>
 </navigation>
