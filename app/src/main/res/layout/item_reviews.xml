@@ -1,90 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
     android:layout_height="250dp"
-    android:layout_margin="8dp"
-    android:orientation="vertical"
-    android:padding="@dimen/padding_page">
+    android:layout_marginTop="14dp"
+    android:layout_marginStart="14dp"
+    android:background="@drawable/bg_reviews"
+    android:padding="14dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_img_reviews"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/item_tv_reviews_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/item_img_reviews"
+        app:layout_constraintStart_toEndOf="@id/item_img_reviews"
+        app:layout_constraintTop_toTopOf="@id/item_img_reviews"
+        tools:text="Ирина Ким" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_v_iv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="top|left"
-            android:layout_marginBottom="4dp"
-            android:background="@color/dark_gray"
-            app:cardCornerRadius="@dimen/corner">
-            <ImageView
-                android:id="@+id/designer_iv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/dark_gray"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_1"
-                tools:ignore="ContentDescription" />
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/fio_reviews_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto"
-            android:text="Ирина Ким"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="252dp"
-        android:layout_height="102dp"
-        android:orientation="vertical">
-
-        <TextView
-
-            android:id="@+id/fio_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="здесь будут отзывы"
-            android:fontFamily="@font/roboto"
-            android:textSize="14sp" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/item_btn_burger_menu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+        android:src="@drawable/ic_burger_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_img_reviews" />
 
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="63dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/item_img_reviews"
+        tools:text="Я очень довольна дизайном этой компании, все сделано качественно.
+Хочу отметить про скорость работы, она на высшем уровне.
+Желаю успехов этой компании"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/item_rating_reviews"/>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="18часов назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        android:id="@+id/item_tv_reviews_hours_ago"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="15 часов назад "
-            android:textSize="12sp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

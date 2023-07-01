@@ -2,17 +2,93 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/selectDesignersFragment">
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/registerFragment">
 
     <fragment
-        android:id="@+id/selectDesignersFragment"
-        android:name="com.example.stylescope.ui.designers.SelectDesignersFragment"
-        android:label="fragment_select_designers"
-        tools:layout="@layout/fragment_select_designers"/>
+        android:id="@+id/pagerFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.PagerFragment"
+        android:label="fragment_pager"
+        tools:layout="@layout/fragment_pager" >
+
+        <action
+            android:id="@+id/action_companiesFragment_to_detailCompanyFragment"
+            app:destination="@id/detailCompanyFragment" >
+
+            <argument
+                android:name="companyID"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_pagerFragment_to_detailDesignerFragment"
+            app:destination="@id/detailDesignerFragment">
+
+            <argument
+                android:name="designerID"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
     <fragment
-        android:id="@+id/selectedDesignersFragment"
-        android:name="com.example.stylescope.ui.designers.SelectedDesignersFragment"
-        android:label="fragment_selected_designers"
-        tools:layout="@layout/fragment_selected_designers"/>
+        android:id="@+id/detailCompanyFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyFragment"
+        android:label="fragment_detail_company"
+        tools:layout="@layout/fragment_detail_company">
+        <argument
+            android:name="companyID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDesignerFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerFragment"
+        android:label="fragment_detail_designer"
+        tools:layout="@layout/fragment_detail_designer">
+
+        <argument
+            android:name="designerID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/companiesFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesFragment"
+        android:label="fragment_companies"
+        tools:layout="@layout/fragment_companies" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/confirmCodeFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeFragment"
+        android:label="fragment_confirm_code"
+        tools:layout="@layout/fragment_confirm_code" />
+    <fragment
+        android:id="@+id/interFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.inter.InterFragment"
+        android:label="fragment_inter"
+        tools:layout="@layout/fragment_inter" />
+    <fragment
+        android:id="@+id/recoveryFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.recovery.RecoveryFragment"
+        android:label="fragment_recovery"
+        tools:layout="@layout/fragment_recovery" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.success.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" />
+    <fragment
+        android:id="@+id/designerFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerFragment"
+        android:label="fragment_designer"
+        tools:layout="@layout/fragment_designer" />
 </navigation>

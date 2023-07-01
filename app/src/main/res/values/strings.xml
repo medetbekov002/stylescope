@@ -1,7 +1,19 @@
 <resources>
-
+    <string name="app_name">StyleScopeProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="selected">Selected photos</string>
+    <string name="splash_title">Ваш проводник в мир дизайна</string>
+    <string name="sorry_bad_request">Извините, нам не удалось ничего найти по запросу</string>
+    <string name="try_to_search_another">Попробуйте поискать другое</string>
+    <string name="price_desc">Консультация дизайнера Замеры объекта Техническое задание План расстановки мебели План демонтажа/монтажа стен Фото реалистичная 3D визуализация План электрических розеток План осветительных приборов План потолков Развертка потолков Подбор мебели и материалов Рабочий проект Авторский надзор (2 выезда)</string>
+    <string name="designer_profile">Профиль</string>
+    <string name="nameandsername">Имя и Фамилия</string>
+    <string name="job">Профессия</string>
+    <string name="experience">Компания</string>
+    <string name="work_exp">Опыт работы</string>
+    <string name="urmat_tv_register">Регистрация</string>
+    <string name="urmat_tv_have_acc">Есть аккаунт?</string>
+    <string name="urmat_tv_inter">Войти</string>
+    <string name="urmat_tv_name_person">Имя пользователя</string>
 
 </resources>

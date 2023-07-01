@@ -1,7 +1,10 @@
 package com.example.stylescope
 
 import android.app.Application
-import com.example.stylescope.di.koinModules
+import com.example.stylescope.data.remote.module.repoModule
+import com.example.stylescope.data.remote.module.retrofitModule
+import com.example.stylescope.domain.module.useCasesModule
+import com.example.stylescope.presentation.module.uiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -11,7 +14,7 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(koinModules)
+            modules(retrofitModule, repoModule, useCasesModule, uiModule)
         }
     }
 }
