@@ -10,13 +10,13 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("companies")
+    @GET("companies/")
     suspend fun getCompanies(): BaseMainResponse<CompanyDto>
 
     @GET("companies/{id}")
     suspend fun getDetailCompany(@Path("id")id: Int): CompanyDetailDto
 
-    @GET("designers")
+    @GET("designers/")
     suspend fun getDesigners(): BaseMainResponse<DesignerDto>
 
     @GET("designers/{id}")

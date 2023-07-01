@@ -3,30 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/registerFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.PagerFragment"
         android:label="fragment_pager"
-        tools:layout="@layout/fragment_pager" >
+        tools:layout="@layout/fragment_pager">
 
         <action
-            android:id="@+id/action_companiesFragment_to_detailCompanyFragment"
-            app:destination="@id/detailCompanyFragment" >
-
-            <argument
-                android:name="companyID"
-                app:argType="integer" />
-        </action>
+            android:id="@+id/action_pagerFragment_self"
+            app:destination="@id/pagerFragment" />
         <action
-            android:id="@+id/action_pagerFragment_to_detailDesignerFragment"
-            app:destination="@id/detailDesignerFragment">
-
-            <argument
-                android:name="designerID"
-                app:argType="integer" />
-        </action>
+            android:id="@+id/action_pagerFragment_to_companiesFragment"
+            app:destination="@id/companiesFragment" />
+        <action
+            android:id="@+id/action_pagerFragment_to_designerFragment"
+            app:destination="@id/designerFragment" />
     </fragment>
 
     <fragment
@@ -55,12 +48,24 @@
         android:id="@+id/companiesFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesFragment"
         android:label="fragment_companies"
-        tools:layout="@layout/fragment_companies" />
+        tools:layout="@layout/fragment_companies">
+        <action
+            android:id="@+id/action_companiesFragment_to_detailCompanyFragment2"
+            app:destination="@id/detailCompanyFragment">
+            <argument
+                android:name="companyID"
+                app:argType="integer" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_pagerFragment2"
+            app:destination="@id/pagerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/confirmCodeFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeFragment"

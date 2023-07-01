@@ -9,7 +9,6 @@ import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentCompaniesBinding
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
-import com.example.stylescope.presentation.ui.fragments.pager.PagerFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CompaniesFragment :
@@ -69,10 +68,6 @@ class CompaniesFragment :
     }
 
     private fun click(id: Int) {
-        findNavController().navigate(
-            PagerFragmentDirections.actionCompaniesFragmentToDetailCompanyFragment(
-                id
-            )
-        )
+        findNavController().navigate(CompaniesFragmentDirections.actionCompaniesFragmentToDetailCompanyFragment2(id))
     }
 }

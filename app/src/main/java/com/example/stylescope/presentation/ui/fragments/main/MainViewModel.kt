@@ -23,6 +23,9 @@ class MainViewModel(
     init {
         getCompanies()
     }
+    init {
+        getDesigners()
+    }
 
     private fun getCompanies() {
         getCompanyUseCase().gatherRequest(_companyState) { companies -> companies.map { it.toUI() }}

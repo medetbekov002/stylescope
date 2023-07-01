@@ -9,10 +9,11 @@ import com.example.stylescope.databinding.ItemDesignersBinding
 import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.utils.loadImage
 
-class DesignerAdapter(private val click: (id: Int) -> Unit) : ListAdapter<DesignerUI, DesignerAdapter.DesignerViewHolder>(
-    DesignerDiffCallback()
-) {
-    class DesignerDiffCallback : DiffUtil.ItemCallback<DesignerUI>(){
+class DesignerAdapter(private val click: (id: Int) -> Unit) :
+    ListAdapter<DesignerUI, DesignerAdapter.DesignerViewHolder>(
+        DesignerDiffCallback()
+    ) {
+    class DesignerDiffCallback : DiffUtil.ItemCallback<DesignerUI>() {
         override fun areItemsTheSame(oldItem: DesignerUI, newItem: DesignerUI): Boolean =
             oldItem == newItem
 
@@ -21,19 +22,23 @@ class DesignerAdapter(private val click: (id: Int) -> Unit) : ListAdapter<Design
 
     }
 
-    inner class DesignerViewHolder(private val binding: ItemDesignersBinding) : ViewHolder(binding.root){
+    inner class DesignerViewHolder(private val binding: ItemDesignersBinding) :
+        ViewHolder(binding.root) {
         fun onBind(model: DesignerUI?) {
-            model?.photo?.let { binding.itemImgEmployee.loadImage(it) }
-            binding.itemDesignTitle.text = model?.companyTitle?.get(0)
-            binding.itemDesignTitle.text = model?.companyTitle?.get(0)
-            binding.itemTvEmployeeName.text = model?.name
-            binding.itemTvEmployeeProfession.text = model?.occupation
-            binding.itemTvRating.text = model?.rating
-            val rating = model?.rating?.toFloat()
-            binding.itemRatingBar.rating = rating!!
+            if (model != null) {
+                model.photo.let { binding.itemImgEmployee.loadImage(it) }
+                if (model.companyTitle.isNotEmpty()) {
+                    binding.itemDesignTitle.text = model.companyTitle[0]
+                }
+                binding.itemTvEmployeeName.text = model.name
+                binding.itemTvEmployeeProfession.text = model.occupation
+                binding.itemTvRating.text = model.rating
+                val rating = model.rating.toFloat()
+                binding.itemRatingBar.rating = rating
 
-            itemView.setOnClickListener {
-                click(model.id)
+                itemView.setOnClickListener {
+                    click(model.id)
+                }
             }
         }
     }

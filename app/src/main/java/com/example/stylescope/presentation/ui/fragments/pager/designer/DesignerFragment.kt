@@ -59,6 +59,6 @@ class DesignerFragment :
     }
 
     private fun click(id: Int) {
-        findNavController().navigate(PagerFragmentDirections.actionPagerFragmentToDetailDesignerFragment(id))
+//        findNavController().navigate(PagerFragmentDirections.actionPagerFragmentToDetailDesignerFragment(id))
     }
 }
