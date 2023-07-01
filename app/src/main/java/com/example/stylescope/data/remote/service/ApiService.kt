@@ -5,7 +5,11 @@ import com.example.stylescope.data.remote.dtos.company.CompanyDetailDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDetailDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDto
+import com.example.stylescope.data.remote.dtos.login.LoginAnswerDto
+import com.example.stylescope.data.remote.dtos.login.LoginDto
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ApiService {
@@ -21,4 +25,9 @@ interface ApiService {
 
     @GET("designers/{id}")
     suspend fun getDetailDesigner(@Path("id") id: Int) : DesignerDetailDto
+
+    @POST("users/login/")
+    suspend fun logIn(
+        @Body body:LoginDto
+    ):LoginAnswerDto
 }

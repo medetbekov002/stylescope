@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.module
 
+import com.example.stylescope.presentation.ui.fragments.inter.InterViewModel
 import com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesViewModel
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyVIewModel
 import com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerViewModel
@@ -12,4 +13,5 @@ val uiModule = module {
     viewModel { DetailCompanyVIewModel(get()) }
     viewModel { DesignerViewModel(get()) }
     viewModel { MainViewModel(get(), get()) }
+    viewModel { InterViewModel(get()) }
 }

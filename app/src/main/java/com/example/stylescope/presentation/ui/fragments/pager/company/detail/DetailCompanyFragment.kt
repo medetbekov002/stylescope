@@ -24,28 +24,30 @@ class DetailCompanyFragment :
 
 
     override fun launchObservers() {
-        viewModel.getDetailCompanies(args.companyID)
+        with(binding) {
+            viewModel.getDetailCompanies(args.companyID)
 
-        binding.rvPrices.adapter = packageAdapter
-        binding.rvTeam.adapter = teamAdapter
-        binding.companyWorksPager.adapter = companyWorksAdapter
+            rvPrices.adapter = packageAdapter
+            rvTeam.adapter = teamAdapter
+            companyWorksPager.adapter = companyWorksAdapter
 
-        viewModel.state.spectateUiState(success = { company ->
-            binding.imgDetailCompany.loadImage(company.image)
-            binding.tvDetailCompanyDes.text = company.about
-            binding.tvWhatsappContact.text = company.phoneNumber1
-            val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
-            val insta = instagram.replace("/", "")
-            binding.tvInstagramContact.text = insta
-            binding.tvGmailContact.text = company.email1
-            binding.tvCompanyAddress.text = company.address
-            packageAdapter.submitList(company.services)
-            teamAdapter.submitList(company.designers)
-            companyWorksAdapter.submitList(company.gallery)
-        }, error = { errorMsg ->
-            Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
-            binding.tvDetailCompanyDes.text = errorMsg
-            Log.e("ololo", errorMsg)
-        })
+            viewModel.state.spectateUiState(success = { company ->
+                imgDetailCompany.loadImage(company.image)
+                tvDetailCompanyDes.text = company.about
+                tvWhatsappContact.text = company.phoneNumber1
+                val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
+                val insta = instagram.replace("/", "")
+                tvInstagramContact.text = insta
+                tvGmailContact.text = company.email1
+                tvCompanyAddress.text = company.address
+                packageAdapter.submitList(company.services)
+                teamAdapter.submitList(company.designers)
+                companyWorksAdapter.submitList(company.gallery)
+            }, error = { errorMsg ->
+                Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
+                tvDetailCompanyDes.text = errorMsg
+                Log.e("ololo", errorMsg)
+            })
+        }
     }
 }

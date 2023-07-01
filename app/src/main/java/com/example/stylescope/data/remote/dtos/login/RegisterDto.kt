@@ -8,6 +8,8 @@ data class RegisterDto(
     val password2: String
 )
 
+
+
 data class ResendConfirmCodeDto(
     val username: String
 )

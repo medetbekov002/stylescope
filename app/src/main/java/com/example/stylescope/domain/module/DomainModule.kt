@@ -5,6 +5,7 @@ import com.example.stylescope.domain.use_cases.company.GetCompanyUseCase
 import com.example.stylescope.domain.use_cases.company.GetDetailCompanyUseCase
 import com.example.stylescope.domain.use_cases.designer.GetDesignerUseCase
 import com.example.stylescope.domain.use_cases.designer.GetDetailDesignerUseCase
+import com.example.stylescope.domain.use_cases.login.LogInUseCase
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -13,4 +14,5 @@ val useCasesModule = module {
     factory { GetDesignerUseCase(get()) }
     factory { GetDetailDesignerUseCase(get()) }
     factory { GetAboutUsUseCase(get()) }
+    factory { LogInUseCase(get()) }
 }
