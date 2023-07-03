@@ -120,7 +120,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
-            android:layout_marginTop="@dimen/_12dp">
+            android:layout_marginTop="@dimen/_12dp"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/beka_red">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -141,17 +144,21 @@
             android:textSize="@dimen/_16sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordContainer"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
             android:layout_marginTop="@dimen/_12dp"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/beka_red"
             app:passwordToggleEnabled="true">
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
                 android:id="@+id/etPassword"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/urmat_bg_edit"
                 android:drawableEnd="@drawable/eye_line"
@@ -159,5 +166,20 @@
                 android:paddingVertical="8dp"
                 android:paddingEnd="@dimen/_12dp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvForgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginEnd="15dp"
+            android:text="Забыл пароль"
+            android:textColor="@color/urmat_blue"
+            android:textSize="16sp" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/item_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

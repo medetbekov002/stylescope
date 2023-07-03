@@ -1,7 +1,6 @@
 package com.example.stylescope.data.remote.dtos.login
 
 import com.example.stylescope.data.mapper.DataMapper
-import com.example.stylescope.domain.model.login.LogInAnswerModel
 import com.example.stylescope.domain.model.login.LoginModel
 
 data class LoginDto(
@@ -11,8 +10,9 @@ data class LoginDto(
     override fun toDomain()=LoginModel(username,password)
 }
 
-data class LoginAnswerDto(
-    val data:String
-):DataMapper<LogInAnswerModel>{
-    override fun toDomain()=LogInAnswerModel(data)
-}
+fun LoginModel.toLoginDto()= LoginDto(username,password)
+
+
+
+
+

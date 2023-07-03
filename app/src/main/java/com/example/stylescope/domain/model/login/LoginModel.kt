@@ -5,6 +5,4 @@ data class LoginModel(
     val password: String
 )
 
-data class LogInAnswerModel(
-    val data:String
-)
+
