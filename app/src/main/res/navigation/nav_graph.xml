@@ -56,6 +56,9 @@
                 android:name="companyID"
                 app:argType="integer" />
         </action>
+        <argument
+            android:name="companyID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

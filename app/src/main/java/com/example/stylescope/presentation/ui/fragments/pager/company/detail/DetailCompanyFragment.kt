@@ -7,6 +7,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
+import com.example.stylescope.presentation.model.company.CompanyDetailUI
+import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
@@ -17,13 +19,13 @@ class DetailCompanyFragment :
     BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
     override val binding: FragmentDetailCompanyBinding by viewBinding(FragmentDetailCompanyBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
-    private val args by navArgs<DetailCompanyFragmentArgs>()
     private val packageAdapter by lazy { CompanyPackageAdapter() }
     private val teamAdapter by lazy { CompanyTeamAdapter() }
     private val companyWorksAdapter by lazy { CompanyWorksAdapter() }
 
 
     override fun launchObservers() {
+        val args by navArgs<DetailCompanyFragmentArgs>()
         viewModel.getDetailCompanies(args.companyID)
 
         binding.rvPrices.adapter = packageAdapter
@@ -33,6 +35,7 @@ class DetailCompanyFragment :
         viewModel.state.spectateUiState(success = { company ->
             binding.imgDetailCompany.loadImage(company.image)
             binding.tvDetailCompanyDes.text = company.about
+            Log.w("ololo", "launchObservers: ${company.about}", )
             binding.tvWhatsappContact.text = company.phoneNumber1
             val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
             val insta = instagram.replace("/", "")
