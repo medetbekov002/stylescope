@@ -7,9 +7,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
-import com.example.stylescope.presentation.model.company.CompanyDetailUI
-import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
+import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
 import com.example.stylescope.presentation.utils.loadImage
@@ -22,6 +21,7 @@ class DetailCompanyFragment :
     private val packageAdapter by lazy { CompanyPackageAdapter() }
     private val teamAdapter by lazy { CompanyTeamAdapter() }
     private val companyWorksAdapter by lazy { CompanyWorksAdapter() }
+    private val companyReviewsAdapter by lazy { CompanyReviewsAdapter() }
 
 
     override fun launchObservers() {
@@ -31,6 +31,7 @@ class DetailCompanyFragment :
         binding.rvPrices.adapter = packageAdapter
         binding.rvTeam.adapter = teamAdapter
         binding.companyWorksPager.adapter = companyWorksAdapter
+        binding.rvReviews.adapter = companyReviewsAdapter
 
         viewModel.state.spectateUiState(success = { company ->
             binding.imgDetailCompany.loadImage(company.image)
@@ -45,6 +46,7 @@ class DetailCompanyFragment :
             packageAdapter.submitList(company.services)
             teamAdapter.submitList(company.designers)
             companyWorksAdapter.submitList(company.gallery)
+            companyReviewsAdapter.submitList(company.reviews)
         }, error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
             binding.tvDetailCompanyDes.text = errorMsg

@@ -1,11 +1,6 @@
 package com.example.stylescope.presentation.model.company
 
-import com.example.stylescope.domain.model.company.CompanyDesignerModel
-import com.example.stylescope.domain.model.company.CompanyDetailModel
-import com.example.stylescope.domain.model.company.CompanyModel
-import com.example.stylescope.domain.model.company.CompanyPackageModel
-import com.example.stylescope.domain.model.company.GalleryModel
-import com.example.stylescope.domain.model.company.ServicesModel
+import com.example.stylescope.domain.model.company.*
 
 data class CompanyUI(
     val id: Int,
@@ -38,7 +33,7 @@ data class CompanyDetailUI(
     val packages: List<CompanyPackageUI>,
     val designers: List<CompanyDesignerUI>,
     val countReviews: String,
-    val reviews: List<Int>,
+    val reviews: List<CompanyReviewUI>,
     val phoneNumber1: String,
     val email1: String,
     val socialMedia1: String,
@@ -55,13 +50,45 @@ fun CompanyDetailModel.toUI() = CompanyDetailUI(
     gallery = gallery.map { it.toUI() },
     packages = packages.map { it.toUI() },
     designers = designers.map { it.toUI() },
-    countReviews,
-    reviews,
-    phoneNumber1,
-    email1,
-    socialMedia1,
-    address
+    countReviews = countReviews,
+    reviews = reviews.map { it.toUI() },
+    phoneNumber1 = phoneNumber1,
+    email1 = email1,
+    socialMedia1 = socialMedia1,
+    address = address
 )
+
+data class CompanyReviewUI(
+    val id: Int,
+    val rank: Int,
+    val company: CompanyReviewTitleUI,
+    val text: String,
+    val user_photo: String,
+    val username: String,
+    val time_since_published: String
+)
+
+fun CompanyReviewModel.toUI() = CompanyReviewUI(
+    id = id,
+    rank = rank,
+    company = company.toUI(),
+    text = text,
+    user_photo = user_photo,
+    username = username,
+    time_since_published = time_since_published
+)
+
+
+data class CompanyReviewTitleUI(
+    val title: String,
+    val image_url: String
+)
+
+fun CompanyReviewTitleModel.toUI() = CompanyReviewTitleUI(
+    title = title,
+    image_url = image_url
+)
+
 
 data class ServicesUI(
     val id: Int,
@@ -97,6 +124,7 @@ fun CompanyPackageModel.toUI() = CompanyPackageUI(
     description = description,
     price = price
 )
+
 data class CompanyDesignerUI(
     val photo: String,
     val name: String,

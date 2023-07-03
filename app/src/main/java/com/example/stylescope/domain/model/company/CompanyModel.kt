@@ -1,5 +1,6 @@
 package com.example.stylescope.domain.model.company
 
+
 data class CompanyModel(
     val id: Int,
     val image: String,
@@ -21,7 +22,7 @@ data class CompanyDetailModel(
     val packages: List<CompanyPackageModel>,
     val designers: List<CompanyDesignerModel>,
     val countReviews: String,
-    val reviews: List<Int>,
+    val reviews: List<CompanyReviewModel>,
     val phoneNumber1: String,
     val email1: String,
     val socialMedia1: String,
@@ -56,3 +57,18 @@ data class CompanyDesignerModel(
     val rating: String,
     val countReviews: String
 )
+data class CompanyReviewModel(
+    val id: Int,
+    val rank: Int,
+    val company: CompanyReviewTitleModel,
+    val text: String,
+    val user_photo: String,
+    val username: String,
+    val time_since_published: String
+)
+data class CompanyReviewTitleModel(
+    val title: String,
+    val image_url: String
+)
+
+
