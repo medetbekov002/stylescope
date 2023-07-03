@@ -31,6 +31,14 @@
             android:name="companyID"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailCompanyFragment_to_worksFragment"
+            app:destination="@id/worksFragment" >
+            <argument
+                android:name="companyID"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/detailDesignerFragment"
@@ -99,4 +107,14 @@
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerFragment"
         android:label="fragment_designer"
         tools:layout="@layout/fragment_designer" />
+    <fragment
+        android:id="@+id/worksFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.WorksFragment"
+        android:label="fragment_works"
+        tools:layout="@layout/fragment_works" >
+        <argument
+            android:name="companyID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

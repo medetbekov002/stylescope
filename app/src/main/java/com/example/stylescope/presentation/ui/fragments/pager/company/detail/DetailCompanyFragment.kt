@@ -1,13 +1,15 @@
 package com.example.stylescope.presentation.ui.fragments.pager.company.detail
 
+import CompanyPackageAdapter
 import android.util.Log
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
-import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
+import com.example.stylescope.presentation.model.company.ServicesUI
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
@@ -18,7 +20,11 @@ class DetailCompanyFragment :
     BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
     override val binding: FragmentDetailCompanyBinding by viewBinding(FragmentDetailCompanyBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
-    private val packageAdapter by lazy { CompanyPackageAdapter() }
+    private val packageAdapter by lazy {
+        CompanyPackageAdapter { selectedPackage ->
+            displayPackageDetails(selectedPackage)
+        }
+    }
     private val teamAdapter by lazy { CompanyTeamAdapter() }
     private val companyWorksAdapter by lazy { CompanyWorksAdapter() }
     private val companyReviewsAdapter by lazy { CompanyReviewsAdapter() }
@@ -47,10 +53,17 @@ class DetailCompanyFragment :
             teamAdapter.submitList(company.designers)
             companyWorksAdapter.submitList(company.gallery)
             companyReviewsAdapter.submitList(company.reviews)
+            binding.tvSeeAllWorks.setOnClickListener {
+                findNavController().navigate(DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(args.companyID))
+            }
         }, error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
             binding.tvDetailCompanyDes.text = errorMsg
             Log.e("ololo", errorMsg)
         })
+    }
+    private fun displayPackageDetails(packages: ServicesUI) {
+        // Реализуйте логику отображения информации о выбранном пакете
+        // Например, обновите соответствующие текстовые поля или изображения
     }
 }
