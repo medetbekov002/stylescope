@@ -1,4 +1,4 @@
-package com.example.stylescopeproject.presentation
+package com.example.stylescope.presentation
 
 import android.app.Application
 import com.example.stylescope.data.remote.module.repoModule

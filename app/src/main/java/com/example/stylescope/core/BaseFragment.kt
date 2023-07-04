@@ -1,6 +1,7 @@
 package com.example.stylescope.core
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
@@ -19,7 +20,6 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
 
     protected abstract val binding: Binding
     protected abstract val viewModel: ViewModel
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,6 +49,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
                     is UIState.Idle -> idle?.invoke(it)
                     is UIState.Loading -> loading?.invoke(it)
                     is UIState.Error -> error?.invoke(it.error)
+
                     is UIState.Success -> success?.invoke(it.data)
                 }
             }

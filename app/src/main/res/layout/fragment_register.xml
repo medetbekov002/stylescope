@@ -6,6 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.register.RegisterFragment">
 
+    <include
+        android:id="@+id/loading"
+        layout="@layout/item_loading" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:elevation="8dp"
@@ -85,17 +89,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="10dp"
-                    app:boxCornerRadiusBottomEnd="5dp"
-                    app:boxCornerRadiusBottomStart="5dp"
-                    app:boxCornerRadiusTopEnd="5dp"
-                    app:boxCornerRadiusTopStart="5dp">
+                    android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
+                        android:background="@drawable/urmat_bg_edit"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailSubject"
                         android:maxLines="1" />
@@ -117,10 +118,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="10dp"
-                    app:boxCornerRadiusBottomEnd="5dp"
-                    app:boxCornerRadiusBottomStart="5dp"
-                    app:boxCornerRadiusTopEnd="5dp"
-                    app:boxCornerRadiusTopStart="5dp">
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/beka_red">
 
                     <TextView
                         android:id="@+id/tv_error"
@@ -133,11 +133,12 @@
                         android:textSize="16sp"
                         android:visibility="gone" />
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
+                        android:background="@drawable/urmat_bg_edit"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailSubject"
                         android:maxLines="1"
@@ -160,11 +161,7 @@
                     android:layout_height="wrap_content"
                     app:passwordToggleEnabled="true"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="10dp"
-                    app:boxCornerRadiusBottomEnd="5dp"
-                    app:boxCornerRadiusBottomStart="5dp"
-                    app:boxCornerRadiusTopEnd="5dp"
-                    app:boxCornerRadiusTopStart="5dp">
+                    android:layout_marginTop="10dp">
 
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -172,6 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
+                        android:background="@drawable/urmat_bg_edit"
                         android:drawableEnd="@drawable/eye_line"
                         android:imeOptions="actionNext"
                         android:inputType="textPassword"
@@ -194,18 +192,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     app:passwordToggleEnabled="true"
-                    android:layout_marginTop="10dp"
-                    app:boxCornerRadiusBottomEnd="5dp"
-                    app:boxCornerRadiusBottomStart="5dp"
-                    app:boxCornerRadiusTopEnd="5dp"
-                    app:boxCornerRadiusTopStart="5dp">
-
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/beka_red"
+                    android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_conifrm_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
+                        android:background="@drawable/urmat_bg_edit"
                         android:drawableEnd="@drawable/eye_line"
                         android:imeOptions="actionNext"
                         android:inputType="textPassword"

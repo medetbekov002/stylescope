@@ -1,10 +1,15 @@
 package com.example.stylescope.domain.module
 
 import com.example.stylescope.domain.use_cases.about_us.GetAboutUsUseCase
+import com.example.stylescope.domain.use_cases.changepassword.ChangePasswordUseCase
 import com.example.stylescope.domain.use_cases.company.GetCompanyUseCase
 import com.example.stylescope.domain.use_cases.company.GetDetailCompanyUseCase
+import com.example.stylescope.domain.use_cases.confirm.ConfirmUseCase
 import com.example.stylescope.domain.use_cases.designer.GetDesignerUseCase
 import com.example.stylescope.domain.use_cases.designer.GetDetailDesignerUseCase
+import com.example.stylescope.domain.use_cases.login.LogInUseCase
+import com.example.stylescope.domain.use_cases.recover.RecoverUseCase
+import com.example.stylescope.domain.use_cases.register.RegisterUseCase
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -13,4 +18,9 @@ val useCasesModule = module {
     factory { GetDesignerUseCase(get()) }
     factory { GetDetailDesignerUseCase(get()) }
     factory { GetAboutUsUseCase(get()) }
+    factory { LogInUseCase(get()) }
+    factory { RecoverUseCase(get()) }
+    factory { RegisterUseCase(get()) }
+    factory { ConfirmUseCase(get()) }
+    factory { ChangePasswordUseCase(get()) }
 }

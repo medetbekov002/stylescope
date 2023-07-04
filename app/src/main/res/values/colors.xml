@@ -8,5 +8,8 @@
     <color name="urmat_light_blue">#0078FF</color>
     <color name="urmat_gray">#5A5A5A</color>
     <color name="urmat_light_gray">#AFAFAF</color>
+    <color name="beka_red">#F70606</color>
     <color name="yellow">#FFC107</color>
+    <color name="dark_loading">#66000000</color>
+
 </resources>
