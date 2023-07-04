@@ -1,4 +1,4 @@
-package com.example.stylescope.presentation.ui.adapters.company.company_reviews
+package com.example.stylescope.presentation.ui.adapters.designer.design_reviews
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,27 +6,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stylescope.databinding.ItemReviewsBinding
 import com.example.stylescope.presentation.model.company.CompanyReviewUI
+import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.utils.loadImage
 
-
-class CompanyReviewsAdapter :
-        androidx.recyclerview.widget.ListAdapter<CompanyReviewUI, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
-                CompanyReviewDiffCallback()
-        ) {
+class DesignReviewsAdapter :
+    androidx.recyclerview.widget.ListAdapter<DesignerUI, DesignReviewsAdapter.DesignReviewsViewHolder>(
+        CompanyReviewDiffCallback()
+    ) {
     class CompanyReviewDiffCallback : DiffUtil.ItemCallback<CompanyReviewUI>() {
         override fun areItemsTheSame(oldItem: CompanyReviewUI, newItem: CompanyReviewUI): Boolean =
-                oldItem == newItem
+            oldItem == newItem
 
         override fun areContentsTheSame(
-                oldItem: CompanyReviewUI,
-                newItem: CompanyReviewUI
+            oldItem: CompanyReviewUI,
+            newItem: CompanyReviewUI
         ): Boolean =
-                oldItem == newItem
+            oldItem == newItem
 
     }
 
-    class CompanyReviewsViewHolder(private val binding: ItemReviewsBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+    class DesignReviewsViewHolder(private val binding: ItemReviewsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: CompanyReviewUI) {
             binding.itemImgReviews.loadImage(model.user_photo)
             val rating = model.rank
@@ -37,12 +37,12 @@ class CompanyReviewsAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyReviewsViewHolder(
-            ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DesignReviewsViewHolder(
+        ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: CompanyReviewsViewHolder, position: Int) {
-        val model = getItem(position)
+    override fun onBindViewHolder(holder: DesignReviewsViewHolder, position: Int) {
+       val model = getItem(position)
         holder.onBind(model)
     }
 }

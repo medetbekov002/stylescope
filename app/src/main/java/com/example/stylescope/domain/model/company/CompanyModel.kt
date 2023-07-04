@@ -39,7 +39,6 @@ data class GalleryModel(
     val id: Int,
     val company: Int,
     val image: String,
-    val about: String
 )
 
 data class CompanyPackageModel(

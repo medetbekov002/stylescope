@@ -8,128 +8,392 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/design_profile_lt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/urmat_blue"
-            android:padding="20dp"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/il_btn_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_favorite_design"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/il_profile_design"
-                android:layout_width="400dp"
-                android:layout_height="200dp"
-                android:src="@drawable/example"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/about_us_lt"
-                android:layout_width="300dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/design_profile_lt"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:background="@color/urmat_light_gray"
-                android:orientation="vertical"
-                android:padding="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/design_profile_lt">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/designer_profile"
-                    android:textSize="24sp" />
+                android:background="@color/urmat_blue"
+                android:padding="20dp"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/il_btn_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorite_design"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/il_profile_design"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/example"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ScrollView
+                android:id="@+id/scroll_aboutus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/design_profile_lt">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/about_us_lt"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@color/urmat_light_gray"
+                        android:orientation="vertical"
+                        android:padding="30dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/designer_profile"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/il_line_design" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Имя и Фамилия"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Максим Движняков"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Профессия"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/profesion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Дизайнер"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/company"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Компания"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Design Plus"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Опыт работы"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/experinse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2 года"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/about_us_lt2"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@color/urmat_light_gray"
+                        android:orientation="vertical"
+                        android:padding="30dp">
+
+                        <TextView
+                            android:id="@+id/about_me"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Обо мне"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/il_line_design" />
+
+                        <TextView
+                            android:id="@+id/about_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="fsdfdsfdsfdsfdsfsdfsdа"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <View
+                android:id="@+id/view_works"
+                android:layout_width="2dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="@id/scroll_aboutus"
+                app:layout_constraintTop_toBottomOf="@id/scroll_aboutus" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Работы"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_works"
+                app:layout_constraintStart_toEndOf="@id/view_works"
+                app:layout_constraintTop_toTopOf="@id/view_works" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/company_works_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/view_works"
+                tools:listitem="@layout/item_company_works" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tv_see_all_works"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_see_all_works"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:text="Смотреть все"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/company_works_pager"
+                app:strokeColor="#4945FF"
+                app:strokeWidth="1dp" />
+
+            <View
+                android:id="@+id/view_see_all_works"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#4945FF"
+                app:layout_constraintEnd_toEndOf="@id/tv_see_all_works"
+                app:layout_constraintStart_toStartOf="@id/tv_see_all_works"
+                app:layout_constraintTop_toBottomOf="@id/tv_see_all_works" />
+
+            <View
+                android:id="@+id/view_reviews"
+                android:layout_width="2dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="34dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="@id/view_works"
+                app:layout_constraintTop_toBottomOf="@id/view_see_all_works" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Отзывы пользователей"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_count_reviews"
+                app:layout_constraintStart_toEndOf="@id/view_reviews"
+                app:layout_constraintTop_toTopOf="@id/view_reviews" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_count_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 отзыва"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/view_reviews"
+                app:layout_constraintStart_toEndOf="@id/view_reviews"
+                app:layout_constraintStart_toStartOf="@id/tv_reviews"
+                app:layout_constraintTop_toBottomOf="@id/tv_reviews" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tv_count_reviews"
+                tools:listitem="@layout/item_reviews" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/reviews_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_reviews">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_user_reviews"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Алма Бекова"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/img_user_reviews"
+                    app:layout_constraintTop_toTopOf="@id/img_user_reviews" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/img_user_reviews_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name_reviews"
+                    app:layout_constraintBottom_toBottomOf="@id/img_user_reviews"
+                    app:layout_constraintStart_toStartOf="@id/tv_name_reviews" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btn_burger_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_burger_menu"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_name_reviews" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_user_reviews"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="18dp"
+                    tools:text="Я очень довольна дизайном этой компании, все сделано качественно.
+Хочу отметить про скорость работы, она на высшем уровне.
+Желаю успехов этой компании"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@id/btn_burger_menu"
+                    app:layout_constraintStart_toStartOf="@id/tv_name_reviews"
+                    app:layout_constraintTop_toBottomOf="@id/img_user_reviews_rating" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_reviews_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/il_line_design" />
+                    android:layout_marginBottom="14dp"
+                    android:text="опубликовано 18часов назад"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_burger_menu"
+                    app:layout_constraintTop_toBottomOf="@id/tv_user_reviews" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Имя и Фамилия"
-                    android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Максим Движняков"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/reviews_container" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Профессия"
-                    android:textSize="16sp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reviews_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="14dp"
+                android:hint="Спасибо вам большое"
+                android:textColorHint="@color/black"
+                app:endIconDrawable="@drawable/ic_big_close"
+                app:endIconMode="custom"
+                app:layout_constraintBottom_toBottomOf="@id/img_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_user"
+                app:layout_constraintTop_toTopOf="@id/img_user">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Дизайнер"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_user_reviews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Компания"
-                    android:textSize="16sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_leave_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="16dp"
+                android:backgroundTint="#072755"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                android:text="Оставить отзыв"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:cornerRadius="4dp"
+                app:layout_constraintEnd_toEndOf="@id/reviews_layout"
+                app:layout_constraintTop_toBottomOf="@id/reviews_layout" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Design Plus"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/reviews_container"
+                app:layout_constraintStart_toStartOf="@id/reviews_container"
+                app:layout_constraintTop_toBottomOf="@id/btn_leave_feedback" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Опыт работы"
-                    android:textSize="16sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2 года"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
-
-    </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

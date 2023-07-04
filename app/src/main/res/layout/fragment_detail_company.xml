@@ -96,7 +96,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Смотреть все работы"
+        android:text="Смотреть все"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/img_detail_save"
         android:id="@+id/tv_see_all_works"

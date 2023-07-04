@@ -104,11 +104,10 @@ data class GalleryUI(
     val id: Int,
     val company: Int,
     val image: String,
-    val about: String
 )
 
 fun GalleryModel.toUI() = GalleryUI(
-    id, company, image, about
+    id, company, image
 )
 
 data class CompanyPackageUI(

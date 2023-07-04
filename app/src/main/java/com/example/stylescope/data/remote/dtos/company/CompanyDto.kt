@@ -113,13 +113,11 @@ data class GalleryDto(
     val id: Int,
     val company: Int,
     val image: String,
-    val about: String
 ) : DataMapper<GalleryModel> {
     override fun toDomain() = GalleryModel(
         id = id,
         company = company,
         image = image,
-        about = about
     )
 }
 
