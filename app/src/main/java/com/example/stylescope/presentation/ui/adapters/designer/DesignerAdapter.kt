@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.adapters.designer
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -38,6 +39,7 @@ class DesignerAdapter(private val click: (id: Int) -> Unit) :
 
                 itemView.setOnClickListener {
                     click(model.id)
+                    Log.w("ololo", "click: $model.id", )
                 }
             }
         }

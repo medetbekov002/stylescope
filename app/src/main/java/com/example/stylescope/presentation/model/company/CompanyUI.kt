@@ -111,14 +111,12 @@ fun GalleryModel.toUI() = GalleryUI(
 )
 
 data class CompanyPackageUI(
-    val image: String,
     val title: String,
     val description: String,
     val price: Int
 )
 
 fun CompanyPackageModel.toUI() = CompanyPackageUI(
-    image = image,
     title = title,
     description = description,
     price = price

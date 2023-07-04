@@ -128,7 +128,6 @@ data class CompanyPackageDto(
     val price: Int
 ) : DataMapper<CompanyPackageModel> {
     override fun toDomain() = CompanyPackageModel(
-        image = image,
         title = title,
         description = description,
         price = price
