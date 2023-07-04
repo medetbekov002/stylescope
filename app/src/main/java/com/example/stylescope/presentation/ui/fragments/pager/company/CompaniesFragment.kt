@@ -1,5 +1,7 @@
 package com.example.stylescope.presentation.ui.fragments.pager.company
 
+import android.os.Bundle
+import android.util.Log
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -68,6 +70,9 @@ class CompaniesFragment :
     }
 
     private fun click(id: Int) {
-        findNavController().navigate(CompaniesFragmentDirections.actionCompaniesFragmentToDetailCompanyFragment2(id))
+        val bundle = Bundle()
+        bundle.putInt("companyID", id)
+        findNavController().navigate(R.id.detailCompanyFragment,bundle)
+        Log.w("ololo", "click: $id", )
     }
 }

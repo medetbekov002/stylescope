@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.adapters.company
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -34,6 +35,7 @@ class CompanyAdapter(private val click: (id: Int) -> Unit) : ListAdapter<Company
 
             itemView.setOnClickListener {
                 click(model.id)
+                Log.e("ololo", "onBind: ${model.id}", )
             }
         }
     }

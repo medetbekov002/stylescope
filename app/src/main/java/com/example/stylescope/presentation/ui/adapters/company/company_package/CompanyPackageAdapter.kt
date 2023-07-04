@@ -7,22 +7,23 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stylescope.databinding.ItemPackageBinding
+import com.example.stylescope.presentation.model.company.CompanyPackageUI
 import com.example.stylescope.presentation.model.company.ServicesUI
 
-class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<ServicesUI, CompanyPackageAdapter.CompanyPackageViewHolder>(
-    CompanyPackageDiffCallback()
+class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<CompanyPackageUI, CompanyPackageAdapter.CompanyPackageViewHolder>(
+        CompanyPackageDiffCallback()
 ) {
-    class CompanyPackageDiffCallback : DiffUtil.ItemCallback<ServicesUI>(){
-        override fun areItemsTheSame(oldItem: ServicesUI, newItem: ServicesUI): Boolean =
-            oldItem == newItem
+    class CompanyPackageDiffCallback : DiffUtil.ItemCallback<CompanyPackageUI>(){
+        override fun areItemsTheSame(oldItem: CompanyPackageUI, newItem: CompanyPackageUI): Boolean =
+                oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: ServicesUI, newItem: ServicesUI): Boolean =
-            oldItem == newItem
+        override fun areContentsTheSame(oldItem: CompanyPackageUI, newItem: CompanyPackageUI): Boolean =
+                oldItem == newItem
 
     }
 
     class CompanyPackageViewHolder(private val binding: ItemPackageBinding) : ViewHolder(binding.root) {
-        fun onBind(model: ServicesUI) {
+        fun onBind(model: CompanyPackageUI) {
             binding.itemTvPackageTitle.text = model.title
             binding.itemTvPackageDesc.text = model.description
 
@@ -42,7 +43,7 @@ class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<ServicesU
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyPackageViewHolder(
-        ItemPackageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemPackageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
     override fun onBindViewHolder(holder: CompanyPackageViewHolder, position: Int) {
         val model = getItem(position)

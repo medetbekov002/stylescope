@@ -1,12 +1,7 @@
 package com.example.stylescope.data.remote.dtos.company
 
 import com.example.stylescope.data.mapper.DataMapper
-import com.example.stylescope.domain.model.company.CompanyDesignerModel
-import com.example.stylescope.domain.model.company.CompanyDetailModel
-import com.example.stylescope.domain.model.company.CompanyModel
-import com.example.stylescope.domain.model.company.CompanyPackageModel
-import com.example.stylescope.domain.model.company.GalleryModel
-import com.example.stylescope.domain.model.company.ServicesModel
+import com.example.stylescope.domain.model.company.*
 import com.google.gson.annotations.SerializedName
 
 data class CompanyDto(
@@ -27,7 +22,7 @@ data class CompanyDto(
         views = views,
         rating = rating,
         countReviews = countReviews
-        )
+    )
 }
 
 data class CompanyDetailDto(
@@ -43,7 +38,7 @@ data class CompanyDetailDto(
     val designers: List<CompanyDesignerDto>,
     @SerializedName("count_reviews")
     val countReviews: String,
-    val reviews: List<Int>,
+    val reviews: List<CompanyReviewDto>,
     @SerializedName("phone_number_1")
     val phoneNumber1: String,
     @SerializedName("email_1")
@@ -63,7 +58,7 @@ data class CompanyDetailDto(
         packages = packages.map { it.toDomain() },
         designers = designers.map { it.toDomain() },
         countReviews = countReviews,
-        reviews = reviews,
+        reviews = reviews.map { it.toDomain() },
         phoneNumber1 = phoneNumber1,
         email1 = email1,
         socialMedia1 = socialMedia1,
@@ -81,6 +76,36 @@ data class ServicesDto(
         id = id,
         title = title,
         description = description
+    )
+}
+
+data class CompanyReviewDto(
+    val id: Int,
+    val rank: Int,
+    val company: CompanyReviewTitleDto,
+    val text: String,
+    val user_photo: String,
+    val username: String,
+    val time_since_published: String
+) : DataMapper<CompanyReviewModel> {
+    override fun toDomain() = CompanyReviewModel(
+        id = id,
+        rank = rank,
+        company = company.toDomain(),
+        text = text,
+        user_photo = user_photo,
+        username = username,
+        time_since_published = time_since_published
+    )
+}
+
+data class CompanyReviewTitleDto(
+    val title: String,
+    val image_url: String
+) : DataMapper<CompanyReviewTitleModel> {
+    override fun toDomain() = CompanyReviewTitleModel(
+        title = title,
+        image_url = image_url
     )
 }
 
@@ -131,3 +156,4 @@ data class CompanyDesignerDto(
         countReviews = countReviews
     )
 }
+
