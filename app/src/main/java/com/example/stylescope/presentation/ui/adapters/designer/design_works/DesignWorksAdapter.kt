@@ -10,7 +10,7 @@ import com.example.stylescope.presentation.model.designer.DesignerGalleryUI
 import com.example.stylescope.presentation.utils.loadImage
 
 class DesignWorksAdapter :
-    ListAdapter<DesignerGalleryUI, DesignWorksAdapter.CompanyWorksViewHolder>(WorksDiffCallback()) {
+    ListAdapter<DesignerGalleryUI, DesignWorksAdapter.DesignWorksViewHolder>(WorksDiffCallback()) {
 
     class WorksDiffCallback : DiffUtil.ItemCallback<DesignerGalleryUI>() {
         override fun areItemsTheSame(
@@ -27,18 +27,18 @@ class DesignWorksAdapter :
 
     }
 
-    class CompanyWorksViewHolder(private val binding: ItemCompanyWorksBinding) :
+    class DesignWorksViewHolder(private val binding: ItemCompanyWorksBinding) :
         ViewHolder(binding.root) {
         fun onBind(model: DesignerGalleryUI?) {
             model?.image?.let { binding.itemImgCompanyWorks.loadImage(it) }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyWorksViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DesignWorksViewHolder(
         ItemCompanyWorksBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: CompanyWorksViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DesignWorksViewHolder, position: Int) {
         val model = getItem(position)
         holder.onBind(model)
     }

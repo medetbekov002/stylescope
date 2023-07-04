@@ -7,11 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stylescope.databinding.ItemCompanyWorksBinding
 import com.example.stylescope.presentation.model.company.GalleryUI
-import com.example.stylescope.presentation.ui.adapters.designer.design_works.DesignWorksAdapter
 import com.example.stylescope.presentation.utils.loadImage
 
 class CompanyWorksAdapter :
-    ListAdapter<GalleryUI, DesignWorksAdapter.CompanyWorksViewHolder>(WorksDiffCallback()) {
+    ListAdapter<GalleryUI, CompanyWorksAdapter.CompanyWorksViewHolder>(WorksDiffCallback()) {
 
     class WorksDiffCallback : DiffUtil.ItemCallback<GalleryUI>() {
         override fun areItemsTheSame(

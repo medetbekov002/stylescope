@@ -9,13 +9,14 @@ import com.example.stylescope.databinding.FragmentWorksBinding
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyVIewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.design_works.DesignWorksAdapter
 
 
 class WorksFragment : BaseFragment<FragmentWorksBinding,DetailCompanyVIewModel>(R.layout.fragment_works) {
     override val binding: FragmentWorksBinding by viewBinding(FragmentWorksBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
-    private val companyWorksAdapter by lazy { DesignWorksAdapter() }
+    private val companyWorksAdapter by lazy { CompanyWorksAdapter() }
 
     override fun launchObservers() {
         val args by navArgs<WorksFragmentArgs>()
