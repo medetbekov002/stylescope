@@ -7,6 +7,6 @@
     <color name="urmat_blue">#0E53B4</color>
     <color name="urmat_light_blue">#0078FF</color>
     <color name="urmat_gray">#5A5A5A</color>
-    <color name="urmat_light_gray">#5A5A5A</color>
+    <color name="urmat_light_gray">#AFAFAF</color>
     <color name="yellow">#FFC107</color>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.stylescope.presentation.ui.fragments.pager.company.detail
 
-import CompanyPackageAdapter
 import android.util.Log
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -9,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
-import com.example.stylescope.presentation.model.company.ServicesUI
+import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
@@ -17,13 +16,11 @@ import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailCompanyFragment :
-    BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
+        BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
     override val binding: FragmentDetailCompanyBinding by viewBinding(FragmentDetailCompanyBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
     private val packageAdapter by lazy {
-        CompanyPackageAdapter { selectedPackage ->
-            displayPackageDetails(selectedPackage)
-        }
+        CompanyPackageAdapter()
     }
     private val teamAdapter by lazy { CompanyTeamAdapter() }
     private val companyWorksAdapter by lazy { CompanyWorksAdapter() }
@@ -42,14 +39,14 @@ class DetailCompanyFragment :
         viewModel.state.spectateUiState(success = { company ->
             binding.imgDetailCompany.loadImage(company.image)
             binding.tvDetailCompanyDes.text = company.about
-            Log.w("ololo", "launchObservers: ${company.about}", )
+            Log.w("ololo", "launchObservers: ${company.about}")
             binding.tvWhatsappContact.text = company.phoneNumber1
             val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
             val insta = instagram.replace("/", "")
             binding.tvInstagramContact.text = insta
             binding.tvGmailContact.text = company.email1
             binding.tvCompanyAddress.text = company.address
-            packageAdapter.submitList(company.services)
+            packageAdapter.submitList(company.packages)
             teamAdapter.submitList(company.designers)
             companyWorksAdapter.submitList(company.gallery)
             companyReviewsAdapter.submitList(company.reviews)
@@ -61,9 +58,5 @@ class DetailCompanyFragment :
             binding.tvDetailCompanyDes.text = errorMsg
             Log.e("ololo", errorMsg)
         })
-    }
-    private fun displayPackageDetails(packages: ServicesUI) {
-        // Реализуйте логику отображения информации о выбранном пакете
-        // Например, обновите соответствующие текстовые поля или изображения
     }
 }
