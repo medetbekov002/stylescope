@@ -1,6 +1,7 @@
 package com.example.stylescope.data.remote.module
 
 import com.example.stylescope.BuildConfig.BASE_URL
+import com.example.stylescope.data.local.Pref
 import com.example.stylescope.data.remote.service.ApiService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -11,11 +12,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val retrofitModule = module {
-    factory { provideOkHttpClient() }
+    factory { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
 }
 
-fun provideOkHttpClient(): OkHttpClient {
+fun provideOkHttpClient(pref: Pref): OkHttpClient {
+    val token = pref.showToken()
     val interceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -24,6 +26,12 @@ fun provideOkHttpClient(): OkHttpClient {
         .readTimeout(20, TimeUnit.SECONDS)
         .connectTimeout(20, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer $token")
+                .build()
+            chain.proceed(request)
+        }
         .build()
 }
 

@@ -6,11 +6,13 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val pref:Pref by lazy { Pref(applicationContext) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -18,9 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
-
+        if (pref.showToken()==null){
+            navController.navigate(R.id.interFragment)
+        }
         initNavController()
-
     }
 
     private fun initNavController() {
@@ -40,4 +43,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }
