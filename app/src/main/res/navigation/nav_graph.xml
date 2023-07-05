@@ -75,7 +75,11 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_pagerFragment2"
-            app:destination="@id/pagerFragment" />
+            app:destination="@id/pagerFragment">
+            <argument
+                android:name="pageIndex"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/confirmCodeFragment"

@@ -12,7 +12,7 @@ class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         return when (position) {
             0 -> CompaniesFragment()
             1 -> DesignerFragment()
-            else -> CompaniesFragment()
+            else -> throw IllegalArgumentException("Invalid position: $position")
         }
     }
 }

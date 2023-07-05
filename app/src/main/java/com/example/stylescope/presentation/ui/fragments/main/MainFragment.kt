@@ -42,11 +42,13 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     override fun constructListeners() {
         binding.tvWatchAllCompanies.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPagerFragment2())
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(0)
+            findNavController().navigate(action)
         }
 
         binding.tvWatchAllDesigners.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPagerFragment2())
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(1)
+            findNavController().navigate(action)
         }
 
         binding.imgLogo.setOnClickListener {

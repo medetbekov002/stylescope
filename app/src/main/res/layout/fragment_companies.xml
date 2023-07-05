@@ -107,43 +107,6 @@
                             android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tv_functions"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Функции"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        android:background="@drawable/bg_edit_txt">
-
-                        <TextView
-                            android:id="@+id/tv_key"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
-                            android:text="Под ключ"
-                            android:textSize="18sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/btn_switch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:thumb="@drawable/thumb_selector"
-                            app:layout_constraintBottom_toBottomOf="@id/tv_key"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/tv_key"
-                            app:track="@drawable/track_selector" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_class_filter"
                         android:layout_width="match_parent"

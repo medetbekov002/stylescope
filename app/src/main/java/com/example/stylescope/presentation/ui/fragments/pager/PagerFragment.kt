@@ -10,12 +10,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 class PagerFragment : BaseFragmentWithoutViewModel<FragmentPagerBinding>(R.layout.fragment_pager) {
     override val binding: FragmentPagerBinding by viewBinding(FragmentPagerBinding::bind)
 
-        override fun initialize() {
+    override fun initialize() {
         initPagerTabs()
     }
 
     private fun initPagerTabs() {
+        val pageIndex = arguments?.getInt("pageIndex", 0) ?: 0
         binding.pager.adapter = PagerAdapter(this)
+        binding.pager.currentItem = pageIndex
+
         val fragmentsTabs = listOf(
             "Компании",
             "Дизайнеры"
@@ -25,5 +28,4 @@ class PagerFragment : BaseFragmentWithoutViewModel<FragmentPagerBinding>(R.layou
             tab.text = fragmentsTabs[position]
         }.attach()
     }
-
 }
