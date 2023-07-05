@@ -106,7 +106,20 @@
         android:id="@+id/designerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerFragment"
         android:label="fragment_designer"
-        tools:layout="@layout/fragment_designer" />
+        tools:layout="@layout/fragment_designer" >
+        <action
+            android:id="@+id/action_designerFragment_to_detailDesignerFragment2"
+            app:destination="@id/detailDesignerFragment" >
+            <argument
+                android:name="designerID"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+        <argument
+            android:name="designerID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/worksFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.WorksFragment"

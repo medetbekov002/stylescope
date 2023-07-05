@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stylescope.databinding.ItemPackageBinding
 import com.example.stylescope.presentation.model.company.CompanyPackageUI
-import com.example.stylescope.presentation.model.company.ServicesUI
 
 class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<CompanyPackageUI, CompanyPackageAdapter.CompanyPackageViewHolder>(
         CompanyPackageDiffCallback()

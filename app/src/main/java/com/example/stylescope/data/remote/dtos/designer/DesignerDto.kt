@@ -1,6 +1,7 @@
 package com.example.stylescope.data.remote.dtos.designer
 
 import com.example.stylescope.data.mapper.DataMapper
+import com.example.stylescope.domain.model.designer.DesignReviewModel
 import com.example.stylescope.domain.model.designer.DesignerDetailModel
 import com.example.stylescope.domain.model.designer.DesignerGalleryModel
 import com.example.stylescope.domain.model.designer.DesignerModel
@@ -16,7 +17,7 @@ data class DesignerDto(
     val rating: String,
     @SerializedName("count_reviews")
     val countReviews: String
-): DataMapper<DesignerModel> {
+) : DataMapper<DesignerModel> {
     override fun toDomain() = DesignerModel(
         id = id,
         name = name,
@@ -43,8 +44,9 @@ data class DesignerDetailDto(
     val gallery: List<DesignerGalleryDto>,
     val rating: String,
     @SerializedName("count_reviews")
-    val countReviews: String
-): DataMapper<DesignerDetailModel> {
+    val countReviews: String,
+    val reviews: List<DesignReviewDtp>
+) : DataMapper<DesignerDetailModel> {
     override fun toDomain() = DesignerDetailModel(
         name = name,
         surname = surname,
@@ -57,16 +59,47 @@ data class DesignerDetailDto(
         instagram = instagram,
         gallery = gallery.map { it.toDomain() },
         rating = rating,
-        countReviews = countReviews
+        countReviews = countReviews,
+        reviews = reviews.map { it.toDomain() }
     )
 }
 
 data class DesignerGalleryDto(
     val about: String,
     val image: String
-): DataMapper<DesignerGalleryModel> {
+) : DataMapper<DesignerGalleryModel> {
     override fun toDomain() = DesignerGalleryModel(
         about = about,
         image = image
+    )
+}
+
+data class DesignReviewDtp(
+    val id: Int,
+    val rank: Int,
+    val text: String,
+    val user_photo: String,
+    val designer: RVDesignerDto,
+    val username: String,
+    val time_since_published: String
+) : DataMapper<DesignReviewModel> {
+    override fun toDomain() = DesignReviewModel(
+        id = id,
+        rank = rank,
+        text = text,
+        user_photo = user_photo,
+        designer = designer.toDomain(),
+        username = username,
+        time_since_published = time_since_published
+    )
+}
+
+data class RVDesignerDto(
+    val name: String,
+    val photo_url: String
+) : DataMapper<DesignReviewModel.RVDesignerModel> {
+    override fun toDomain() = DesignReviewModel.RVDesignerModel (
+        name = name,
+        photo_url = photo_url
     )
 }

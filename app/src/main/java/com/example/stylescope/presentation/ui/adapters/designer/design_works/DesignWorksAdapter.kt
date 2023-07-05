@@ -1,4 +1,4 @@
-package com.example.stylescope.presentation.ui.adapters.company.company_works
+package com.example.stylescope.presentation.ui.adapters.designer.design_works
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,39 +6,39 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stylescope.databinding.ItemCompanyWorksBinding
-import com.example.stylescope.presentation.model.company.GalleryUI
+import com.example.stylescope.presentation.model.designer.DesignerGalleryUI
 import com.example.stylescope.presentation.utils.loadImage
 
-class CompanyWorksAdapter :
-    ListAdapter<GalleryUI, CompanyWorksAdapter.CompanyWorksViewHolder>(WorksDiffCallback()) {
+class DesignWorksAdapter :
+    ListAdapter<DesignerGalleryUI, DesignWorksAdapter.DesignWorksViewHolder>(WorksDiffCallback()) {
 
-    class WorksDiffCallback : DiffUtil.ItemCallback<GalleryUI>() {
+    class WorksDiffCallback : DiffUtil.ItemCallback<DesignerGalleryUI>() {
         override fun areItemsTheSame(
-            oldItem: GalleryUI,
-            newItem: GalleryUI
+            oldItem: DesignerGalleryUI,
+            newItem: DesignerGalleryUI
         ): Boolean =
             oldItem == newItem
 
         override fun areContentsTheSame(
-            oldItem: GalleryUI,
-            newItem: GalleryUI
+            oldItem: DesignerGalleryUI,
+            newItem: DesignerGalleryUI
         ): Boolean =
             oldItem == newItem
 
     }
 
-    class CompanyWorksViewHolder(private val binding: ItemCompanyWorksBinding) :
+    class DesignWorksViewHolder(private val binding: ItemCompanyWorksBinding) :
         ViewHolder(binding.root) {
-        fun onBind(model: GalleryUI?) {
+        fun onBind(model: DesignerGalleryUI?) {
             model?.image?.let { binding.itemImgCompanyWorks.loadImage(it) }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyWorksViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DesignWorksViewHolder(
         ItemCompanyWorksBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: CompanyWorksViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DesignWorksViewHolder, position: Int) {
         val model = getItem(position)
         holder.onBind(model)
     }

@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.pager.designer
 
+import android.os.Bundle
 import android.util.Log
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -59,6 +60,9 @@ class DesignerFragment :
     }
 
     private fun click(id: Int) {
-//        findNavController().navigate(PagerFragmentDirections.actionPagerFragmentToDetailDesignerFragment(id))
+        val bundle = Bundle()
+        bundle.putInt("designerID", id)
+        findNavController().navigate(R.id.detailDesignerFragment,bundle)
+        Log.w("ololo", "click: $id", )
     }
 }

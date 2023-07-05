@@ -8,24 +8,25 @@ import com.example.stylescope.databinding.ItemReviewsBinding
 import com.example.stylescope.presentation.model.company.CompanyReviewUI
 import com.example.stylescope.presentation.utils.loadImage
 
+
 class CompanyReviewsAdapter :
-    androidx.recyclerview.widget.ListAdapter<CompanyReviewUI, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
-        CompanyReviewDiffCallback()
-    ) {
+        androidx.recyclerview.widget.ListAdapter<CompanyReviewUI, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
+                CompanyReviewDiffCallback()
+        ) {
     class CompanyReviewDiffCallback : DiffUtil.ItemCallback<CompanyReviewUI>() {
         override fun areItemsTheSame(oldItem: CompanyReviewUI, newItem: CompanyReviewUI): Boolean =
-            oldItem == newItem
+                oldItem == newItem
 
         override fun areContentsTheSame(
-            oldItem: CompanyReviewUI,
-            newItem: CompanyReviewUI
+                oldItem: CompanyReviewUI,
+                newItem: CompanyReviewUI
         ): Boolean =
-            oldItem == newItem
+                oldItem == newItem
 
     }
 
     class CompanyReviewsViewHolder(private val binding: ItemReviewsBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: CompanyReviewUI) {
             binding.itemImgReviews.loadImage(model.user_photo)
             val rating = model.rank
@@ -37,11 +38,11 @@ class CompanyReviewsAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyReviewsViewHolder(
-        ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: CompanyReviewsViewHolder, position: Int) {
-       val model = getItem(position)
+        val model = getItem(position)
         holder.onBind(model)
     }
 }
