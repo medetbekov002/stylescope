@@ -1,9 +1,7 @@
 package com.example.stylescope.data.remote.service
 
-import com.example.stylescope.common.Either
 import com.example.stylescope.data.base.BaseMainResponse
 import com.example.stylescope.data.remote.dtos.answers.AnswerDto
-import com.example.stylescope.data.remote.dtos.answers.ListAnswerDto
 import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordAnswerDto
 import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDetailDto
@@ -12,19 +10,33 @@ import com.example.stylescope.data.remote.dtos.confirm.ConfirmDto
 import com.example.stylescope.data.remote.dtos.confirm.ResendConfirmDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDetailDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDto
+import com.example.stylescope.data.remote.dtos.favorite.FavoriteItemDto
 import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
-import com.example.stylescope.domain.model.answers.AnswerModel
-import com.example.stylescope.domain.model.confirm.ResendConfirmModel
-import com.example.stylescope.domain.model.recover.RecoverModel
-import kotlinx.coroutines.flow.Flow
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import com.example.stylescope.data.remote.dtos.token.*
+import retrofit2.http.*
 
 interface ApiService {
+
+    @GET("users/favorite/")
+    suspend fun getFavorite():FavoriteItemDto
+
+    @POST("token/")
+    suspend fun getToken(
+        @Body body:GetTokenDto
+    ):GetTokenAnswerDto
+
+    @POST("token/refresh/")
+    suspend fun refreshToken(
+        @Body body:RefreshTokenDto
+    ):RefreshTokenAnswerDto
+
+    @POST("token/verify/")
+    suspend fun verifyToken(
+        @Body body: VerifyTokenDto
+    ):VerifyTokenAnswerDto
+
 
     @GET("companies/")
     suspend fun getCompanies(): BaseMainResponse<CompanyDto>

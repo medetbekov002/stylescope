@@ -70,7 +70,7 @@ class ConfirmCodeFragment :
             tvEmail.text = pref.showEmail()
             viewModel.stateConfirm.spectateUiState(
                 success = {
-                    findNavController().navigate(R.id.successFragment)
+                    findNavController().navigate(R.id.interFragment)
                 },
                 error = {
                     tvError.text = "Не верный код"
@@ -89,12 +89,8 @@ class ConfirmCodeFragment :
                 }
             )
             viewModel.stateResendRecover.spectateUiState(
-                success = {
-                    Log.e("ololo", "CCF.lO.sRR.success:$it")
-                },
                 error = {
                     tvError.text = it
-                    Log.e("ololo", "CCF.lO.sRR.error:$it")
                 },
                 gatherIfSucceed = {
                     loading.progressBar.isVisible = it is UIState.Loading

@@ -39,10 +39,36 @@ class Pref(private val context: Context) {
         pref.edit().putString(CONFIRM_CODE,code).apply()
     }
 
+    fun saveToken(token:String?){
+        pref.edit().putString(TOKEN,token).apply()
+    }
+    fun showToken():String?{
+        return pref.getString(TOKEN,null)
+    }
+
+    fun savePassword(password:String){
+        pref.edit().putString(USER_PASSWORD,password).apply()
+    }
+
+    fun showPassword():String?{
+        return pref.getString(USER_PASSWORD,"")
+    }
+
+    fun saveRefreshToken(token:String){
+        pref.edit().putString(REFRESH_TOKEN,token).apply()
+    }
+
+    fun showRefreshToken():String?{
+        return pref.getString(REFRESH_TOKEN,"")
+    }
+
     companion object {
         private const val IS_RECOVER = "is_recover"
         private const val USERNAME = "username"
         private const val EMAIL = "email"
         private const val CONFIRM_CODE = "confirm_code"
+        private const val TOKEN = "token"
+        private const val USER_PASSWORD = "user_password"
+        private const val REFRESH_TOKEN = "refresh_token"
     }
 }

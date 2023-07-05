@@ -6,7 +6,7 @@ import com.example.stylescope.domain.model.answers.ListAnswerModel
 
 
 data class AnswerDto(
-    val data:String
+    val data:String?=null
 ): DataMapper<AnswerModel> {
     override fun toDomain()= AnswerModel(data)
 }

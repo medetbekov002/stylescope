@@ -4,7 +4,7 @@ import com.example.stylescope.domain.model.answers.AnswerModel
 import com.example.stylescope.domain.model.answers.ListAnswerModel
 
 data class AnswerUI(
-    val data:String
+    val data:String?=null
 )
 
 data class ListAnswerUI(

@@ -1,7 +1,7 @@
 package com.example.stylescope.domain.model.answers
 
 data class AnswerModel(
-    val data:String
+    val data:String?=null
 )
 
 data class ListAnswerModel(
