@@ -27,10 +27,16 @@ fun provideOkHttpClient(pref: Pref): OkHttpClient {
         .connectTimeout(20, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
         .addInterceptor { chain ->
-            val request = chain.request().newBuilder()
-                .addHeader("Authorization", "Bearer $token")
-                .build()
-            chain.proceed(request)
+            val request = chain.request()
+            val modifiedRequest = if (token != null) {
+                request.newBuilder()
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+            } else {
+                request
+            }
+
+            chain.proceed(modifiedRequest)
         }
         .build()
 }
