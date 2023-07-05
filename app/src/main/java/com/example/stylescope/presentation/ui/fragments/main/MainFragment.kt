@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.main
 
+import android.util.Log
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
@@ -9,7 +10,6 @@ import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.DesignerAdapter
-import com.example.stylescope.presentation.ui.fragments.pager.PagerFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
@@ -47,6 +47,11 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
         binding.tvWatchAllDesigners.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToPagerFragment2())
+        }
+
+        binding.imgLogo.setOnClickListener {
+            Log.e("ololo", "constructListeners: ", )
+            findNavController().navigate(R.id.aboutUsFragment)
         }
     }
 

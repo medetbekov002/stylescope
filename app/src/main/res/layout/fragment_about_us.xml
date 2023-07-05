@@ -22,12 +22,12 @@
             <ImageView
                 android:id="@+id/img_description"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="236dp"
                 android:alpha="0.8"
                 android:contentDescription="content"
                 android:foreground="@color/black"
                 android:scaleType="centerCrop"
-                android:src="@drawable/urmat_open_image"
+                android:src="@drawable/about_us_main"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
@@ -47,23 +47,18 @@
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:importantForAccessibility="no"
-                        android:src="@drawable/urmat_toolbar_logo" />
+                        android:src="@drawable/about_us_title" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Дизайн"
+                        android:layout_marginTop="20dp"
+                        android:text="Ваш проводник в мир дизайна"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_16sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="103"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_16sp" />
+                        android:maxLines="1"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -80,7 +75,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="nelf"
+                android:text="Краткое описание агрегатора"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -89,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="ahahaha"
+                android:text="Агрегатор дизайнерских услуг, предоставляющий широкий выбор профессиональных услуг дизайна интерьера и экстерьера от лучших компаний и дизайнеров."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
@@ -99,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40dp"
-                android:text="dsq"
+                android:text="Наши миссия и цели"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -108,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="mission"
+                android:text="Наша миссия - помочь клиентам найти профессиональные дизайнерские услуги, которые помогут им создать идеальное пространство, отражающее их индивидуальный стиль и потребности"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
@@ -118,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40dp"
-                android:text="what_services"
+                android:text="Какие услуги мы предоставляем"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -128,8 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="roboto_light"
-                android:text="services"
+                android:text="Мы предоставляем широкий спектр услуг дизайна интерьера и экстерьера компаний, включая проектирование, меблировку, подбор материалов, декорирование, ремонт, обучение."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
@@ -139,7 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40dp"
-                android:text="garant"
+                android:text="Гарантия качества услуг"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -148,8 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="light"
-                android:text="guarantee"
+                android:text="Мы тщательно отбираем компании и дизайнеров, чтобы предоставлять только высококачественные услуги, гарантируя тем самым, что наши клиенты получат лучшее в своей отрасли"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
@@ -158,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40dp"
-                android:text="contact"
+                android:text="Как связаться с нами и какие преимущества получают наши клиенты"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -167,8 +160,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="roboto_light"
-                android:text="contacts"
+                android:text="Связаться с нами можно через наш сайт, телефон или электронную почту.
+
+Мы предоставляем удобный и быстрый способ найти лучшие дизайнерские услуги в Кыргызстане и получить профессиональную помощь в создании уникального пространства."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold" />
@@ -187,7 +181,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="our_contacts"
+            android:text="Наши контакты"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -200,11 +194,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@drawable/ic_splash_screen_logo"
-            android:drawableStart="@drawable/ic_splash_screen_logo"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_whatsapp"
             android:drawablePadding="@dimen/_12dp"
             android:paddingHorizontal="@dimen/_40dp"
-            android:text="9999222"
+            android:text="+996 596 666 567"
             android:textColor="@color/urmat_blue"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -217,11 +211,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_24dp"
-            android:background="@drawable/urmat_bg_app_bar"
-            android:drawableStart="@drawable/urmat_bg_app_bar"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_insta"
             android:drawablePadding="@dimen/_12dp"
             android:paddingHorizontal="@dimen/_40dp"
-            android:text="stylescope_inst_com"
+            android:text="stylescope@inst.com"
             android:textAllCaps="false"
             android:textColor="@color/urmat_blue"
             android:textSize="14sp"
@@ -236,11 +230,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_24dp"
-            android:background="@drawable/ic_burger_menu"
-            android:drawableStart="@drawable/ic_burger_menu"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_email"
             android:drawablePadding="@dimen/_12dp"
             android:paddingHorizontal="@dimen/_40dp"
-            android:text="stylescope_gmail_com"
+            android:text="stylescope@gmail.com"
             android:textAllCaps="false"
             android:textColor="@color/urmat_blue"
             app:layout_constraintEnd_toEndOf="@id/btn_instagram"
@@ -252,7 +246,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_24dp"
-            android:text="address"
+            android:text="Адрес:"
             android:textColor="@color/black"
             android:textSize="@dimen/_16sp"
             android:textStyle="bold"
@@ -275,7 +269,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8dp"
-            android:text="103_victory"
+            android:text="Ибрагимова 103,БЦ Victory"
             android:textColor="@color/black"
             android:textSize="@dimen/_16sp"
             app:layout_constraintBottom_toBottomOf="@id/img_location"
@@ -283,17 +277,17 @@
             app:layout_constraintTop_toTopOf="@id/img_location" />
 
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/img_map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginHorizontal="14dp"
-            android:layout_marginTop="20dp"
-            android:foreground="bg_image"
-            android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@id/img_location"
-            tools:ignore="ContentDescription" />
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/img_map"-->
+<!--            android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp"-->
+<!--            android:layout_marginHorizontal="14dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:foreground="@drawable/about_map"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/img_location"-->
+<!--            tools:ignore="ContentDescription" />-->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="wrap_content"
@@ -301,10 +295,11 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:importantForAccessibility="no"
-            android:src="@drawable/ic_burger_menu"
+            android:src="@drawable/location"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/img_map"
-            app:layout_constraintStart_toStartOf="@id/img_map"
-            app:layout_constraintTop_toBottomOf="@id/img_map" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_location" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
