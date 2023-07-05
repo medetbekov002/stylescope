@@ -4,12 +4,12 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
+import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentMainBinding
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.DesignerAdapter
-import com.example.stylescope.presentation.ui.fragments.pager.PagerFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
@@ -19,7 +19,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
     private val comList = mutableListOf<CompanyUI>()
     private val desList = mutableListOf<DesignerUI>()
     private val desAdapter : DesignerAdapter by lazy { DesignerAdapter(this::clicks) }
-
     private fun clicks(id: Int) {
 
     }

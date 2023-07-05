@@ -39,14 +39,12 @@ class RegisterFragment :
 
             viewModel.state.spectateUiState(
                 success = {
-                    Log.e("ololo","RF.lO.success:$it")
                     pref.saveUsername(etName.text.toString())
                     pref.saveIsRecover(false)
                     pref.saveEmail(etEmail.text.toString())
                     findNavController().navigate(R.id.confirmCodeFragment)
                 },
                 error = {
-                    Log.e("ololo","RF.lO.error:$it")
                     etConifrmPassword.setEditTextBackground(R.drawable.bg_error_et)
                     etPassword.setEditTextBackground(R.drawable.bg_error_et)
                     etEmail.setEditTextBackground(R.drawable.bg_error_et)

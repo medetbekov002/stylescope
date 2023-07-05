@@ -4,17 +4,14 @@ import com.example.stylescope.core.BaseViewModel
 import com.example.stylescope.domain.use_cases.confirm.ConfirmUseCase
 import com.example.stylescope.presentation.model.answers.AnswerUI
 import com.example.stylescope.presentation.model.answers.toLogInAnswerUI
-import com.example.stylescope.presentation.model.confirm.ConfirmUI
-import com.example.stylescope.presentation.model.confirm.ResendConfirmUI
-import com.example.stylescope.presentation.model.confirm.toConfirmModel
-import com.example.stylescope.presentation.model.confirm.toResendConfirmModel
+import com.example.stylescope.presentation.model.confirm.*
 import com.example.stylescope.presentation.model.recover.RecoverUI
 import com.example.stylescope.presentation.model.recover.toRecoverModel
 import kotlinx.coroutines.flow.asStateFlow
 
 class ConfirmCodeViewModel(private val confirmUseCase: ConfirmUseCase) : BaseViewModel() {
 
-    private val _stateConfirm = mutableUIStateFlow<AnswerUI>()
+    private val _stateConfirm = mutableUIStateFlow<ConfirmAnswerUI>()
     val stateConfirm = _stateConfirm.asStateFlow()
 
     private val _stateResendConfirm = mutableUIStateFlow<List<String>>()
@@ -24,7 +21,7 @@ class ConfirmCodeViewModel(private val confirmUseCase: ConfirmUseCase) : BaseVie
     val stateResendRecover = _stateResendRecover.asStateFlow()
 
     fun confirm(code: ConfirmUI) {
-        confirmUseCase.confirm(code.toConfirmModel()).gatherRequest(_stateConfirm) { it.toLogInAnswerUI() }
+        confirmUseCase.confirm(code.toConfirmModel()).gatherRequest(_stateConfirm) { it.toConfirmAnswerUI()}
     }
 
     fun resendConfirm(userName: ResendConfirmUI) {

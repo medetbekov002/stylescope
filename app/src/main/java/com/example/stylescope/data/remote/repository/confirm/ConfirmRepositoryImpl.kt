@@ -7,6 +7,7 @@ import com.example.stylescope.data.remote.dtos.confirm.toResendConfirmDto
 import com.example.stylescope.data.remote.dtos.recover.toRecoverDto
 import com.example.stylescope.data.remote.service.ApiService
 import com.example.stylescope.domain.model.answers.AnswerModel
+import com.example.stylescope.domain.model.confirm.ConfirmAnswerModel
 import com.example.stylescope.domain.model.confirm.ConfirmModel
 import com.example.stylescope.domain.model.confirm.ResendConfirmModel
 import com.example.stylescope.domain.model.recover.RecoverModel
@@ -14,7 +15,7 @@ import com.example.stylescope.domain.repository.confirm.ConfirmRepository
 import kotlinx.coroutines.flow.Flow
 
 class ConfirmRepositoryImpl(private val apiService: ApiService):ConfirmRepository {
-    override fun confirm(code: ConfirmModel): Flow<Either<String, AnswerModel>> = makeNetworkRequest {
+    override fun confirm(code: ConfirmModel): Flow<Either<String, ConfirmAnswerModel>> = makeNetworkRequest {
         apiService.confirm(code.toConfirmDto()).toDomain()
     }
 

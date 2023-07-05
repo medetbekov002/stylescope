@@ -6,6 +6,7 @@ import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordAnsw
 import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDetailDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDto
+import com.example.stylescope.data.remote.dtos.confirm.ConfirmAnswerDto
 import com.example.stylescope.data.remote.dtos.confirm.ConfirmDto
 import com.example.stylescope.data.remote.dtos.confirm.ResendConfirmDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDetailDto
@@ -68,7 +69,7 @@ interface ApiService {
     @POST("users/confirm/")
     suspend fun confirm(
         @Body code:ConfirmDto
-    ):AnswerDto
+    ):ConfirmAnswerDto
 
     @POST("users/resend_confirm_code/")
     suspend fun resendConfirm(

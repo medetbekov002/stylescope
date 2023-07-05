@@ -14,3 +14,8 @@ data class RecoverConfirmModel(
     val new_password2: String
 )
 
+data class ConfirmAnswerModel(
+    val refresh_token:String?=null,
+    val access_token:String?=null
+)
+

@@ -24,23 +24,17 @@ class ConfirmCodeFragment :
     override fun constructListeners() {
         with(binding) {
             btnConfirm.setOnClickListener {
-                Log.e("ololo", "CCF.cL.bC:${pref.isRecover()},${pref.showUsername()}")
                 if (pref.isRecover()) {
-                    Log.e("ololo", "CCF.cL.bC.if:${pref.isRecover()},${pref.showUsername()}")
                     pref.saveConfirmCode(edCodeConfirm.enteredCode)
                     doRequest { findNavController().navigate(R.id.changePasswordFragment) }
                 } else {
-                    Log.e("ololo", "CCF.cL.bC.else:${pref.isRecover()},${pref.showUsername()}")
                     doRequest { viewModel.confirm(ConfirmUI(edCodeConfirm.enteredCode.toInt())) }
                 }
             }
             tvRepeatCode.setOnClickListener {
-                Log.e("ololo", "CCF.cL.tRC:${pref.isRecover()},${pref.showUsername()}")
                 if (pref.isRecover()) {
-                    Log.e("ololo", "CCF.cL.tRC.if:${pref.isRecover()},${pref.showEmail()}")
                     viewModel.resendRecover(RecoverUI(pref.showEmail().toString()))
                 } else {
-                    Log.e("ololo", "CCF.cL.tRC.else:${pref.isRecover()},${pref.showUsername()}")
                     viewModel.resendConfirm(
                         (ResendConfirmUI(pref.showUsername().toString()))
                     )
@@ -70,7 +64,9 @@ class ConfirmCodeFragment :
             tvEmail.text = pref.showEmail()
             viewModel.stateConfirm.spectateUiState(
                 success = {
-                    findNavController().navigate(R.id.interFragment)
+                    pref.saveToken(it.access_token)
+                    it.refresh_token?.let { it1 -> pref.saveRefreshToken(it1) }
+                    findNavController().navigate(R.id.mainFragment)
                 },
                 error = {
                     tvError.text = "Не верный код"
