@@ -23,7 +23,6 @@
             android:scaleType="centerInside"
             android:src="@drawable/urmat_toolbar_logo"/>
 
-
         <TextView
             android:textSize="18sp"
             android:layout_marginVertical="10dp"
@@ -34,8 +33,6 @@
             android:layout_height="match_parent"/>
 
     </androidx.appcompat.widget.Toolbar>
-
-
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"

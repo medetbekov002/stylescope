@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.pager
 
+import android.util.Log
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragmentWithoutViewModel
@@ -15,9 +16,9 @@ class PagerFragment : BaseFragmentWithoutViewModel<FragmentPagerBinding>(R.layou
     }
 
     private fun initPagerTabs() {
-        val pageIndex = arguments?.getInt("pageIndex", 0) ?: 0
-        binding.pager.adapter = PagerAdapter(this)
-        binding.pager.currentItem = pageIndex
+        val pageIndex = arguments?.getInt("pageIndex", 0)
+        Log.w("ololo", "initPagerTabs: $pageIndex", )
+        binding.pager.adapter = PagerAdapter(this, pageIndex ?: 0)
 
         val fragmentsTabs = listOf(
             "Компании",

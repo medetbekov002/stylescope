@@ -5,11 +5,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesFragment
 import com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerFragment
 
-class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class PagerAdapter(fragment: Fragment, private val pageIndex: Int) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
+        return when (pageIndex) {
             0 -> CompaniesFragment()
             1 -> DesignerFragment()
             else -> throw IllegalArgumentException("Invalid position: $position")

@@ -24,7 +24,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     }
 
-
     override fun launchObservers() {
         binding.viewPagerCompany.adapter = comAdapter
         binding.viewPagerDesign.adapter = desAdapter
@@ -32,7 +31,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
             comAdapter.submitList(companies)
             comList.addAll(companies)
         })
-
 
         viewModel.designerState.spectateUiState (success = { designers ->
             desAdapter.submitList(designers)
