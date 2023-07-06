@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/mainFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registerFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -40,6 +40,7 @@
                 app:argType="integer" />
         </action>
     </fragment>
+
     <fragment
         android:id="@+id/detailDesignerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerFragment"
@@ -58,7 +59,7 @@
         android:label="fragment_companies"
         tools:layout="@layout/fragment_companies">
         <action
-            android:id="@+id/action_companiesFragment_to_detailCompanyFragment2"
+            android:id="@+id/action_companiesFragment_to_detailCompanyFragment"
             app:destination="@id/detailCompanyFragment">
             <argument
                 android:name="companyID"
@@ -68,15 +69,17 @@
             android:name="companyID"
             app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_pagerFragment2"
+            android:id="@+id/action_mainFragment_to_pagerFragment"
             app:destination="@id/pagerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/confirmCodeFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeFragment"
@@ -117,20 +120,7 @@
         android:name="com.example.stylescope.presentation.ui.fragments.profile.dialog.UpdateUserImageDialogFragment"
         android:label="fragment_update_user_image_dialog"
         tools:layout="@layout/fragment_update_user_image_dialog" />
-        tools:layout="@layout/fragment_designer" >
-        <action
-            android:id="@+id/action_designerFragment_to_detailDesignerFragment2"
-            app:destination="@id/detailDesignerFragment" >
-            <argument
-                android:name="designerID"
-                android:defaultValue="0"
-                app:argType="integer" />
-        </action>
-        <argument
-            android:name="designerID"
-            android:defaultValue="0"
-            app:argType="integer" />
-    </fragment>
+
     <fragment
         android:id="@+id/worksFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.WorksFragment"
@@ -141,19 +131,23 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.changepassword.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+
     <fragment
         android:id="@+id/favoriteDetailFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.detail.FavoriteDetailFragment"
         android:label="fragment_favorite_detail"
         tools:layout="@layout/fragment_favorite_detail" />
+
 </navigation>

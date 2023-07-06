@@ -1,6 +1,5 @@
 package com.example.stylescope.presentation.ui.fragments.register
 
-import android.util.Log
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -45,11 +44,11 @@ class RegisterFragment :
                     findNavController().navigate(R.id.confirmCodeFragment)
                 },
                 error = {
-                    etConifrmPassword.setEditTextBackground(R.drawable.bg_error_et)
+                    etConfirmPassword.setEditTextBackground(R.drawable.bg_error_et)
                     etPassword.setEditTextBackground(R.drawable.bg_error_et)
                     etEmail.setEditTextBackground(R.drawable.bg_error_et)
                     etName.setEditTextBackground(R.drawable.bg_error_et)
-                    tilConifrmPassword.helperText = ""
+                    tilConfirmPassword.helperText = ""
                     tilEmail.helperText = "Имя пользователя занято или почта неверна"
                 },
                 gatherIfSucceed = {
@@ -64,15 +63,15 @@ class RegisterFragment :
             boxStrokeInfo(R.drawable.urmat_bg_edit, "")
             boxStrokePassword(R.drawable.urmat_bg_edit, "")
             if (etName.text.toString().isEmpty() || etPassword.text.toString()
-                    .isEmpty() || etConifrmPassword.text.toString()
+                    .isEmpty() || etConfirmPassword.text.toString()
                     .isEmpty() || etName.text.toString().isEmpty()
             ) {
                 boxStrokeInfo(R.drawable.bg_error_et, "")
                 boxStrokePassword(R.drawable.bg_error_et, "Заполните поля")
-            } else if (etPassword.text.toString() != etConifrmPassword.text.toString()) {
+            } else if (etPassword.text.toString() != etConfirmPassword.text.toString()) {
                 boxStrokePassword(R.drawable.bg_error_et, "Пароль не совпадает")
                 boxStrokeInfo(R.drawable.urmat_bg_edit, "")
-            } else if ((etConifrmPassword.text?.length ?: 0) < 8 || (etPassword.text?.length
+            } else if ((etConfirmPassword.text?.length ?: 0) < 8 || (etPassword.text?.length
                     ?: 0) < 8
             ) {
                 boxStrokeInfo(R.drawable.urmat_bg_edit, "")
@@ -83,7 +82,7 @@ class RegisterFragment :
                         etName.text.toString(),
                         etEmail.text.toString(),
                         etPassword.text.toString(),
-                        etConifrmPassword.text.toString()
+                        etConfirmPassword.text.toString()
                     )
                 )
             }
@@ -102,9 +101,9 @@ class RegisterFragment :
     }
 
     private fun boxStrokePassword(color: Int, helperText: String) {
-        binding.etConifrmPassword.setEditTextBackground(color)
+        binding.etConfirmPassword.setEditTextBackground(color)
         binding.etPassword.setEditTextBackground(color)
-        binding.tilConifrmPassword.helperText = helperText
+        binding.tilConfirmPassword.helperText = helperText
     }
 
 }

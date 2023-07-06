@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.model.login
 
+import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.login.RegisterModel
 
 data class RegisterUI(
@@ -9,7 +10,6 @@ data class RegisterUI(
     val password2: String
 ): DataMapper<RegisterModel> {
     override fun toDomain() = RegisterModel(
-        image = image,
         username = username,
         email = email,
         password = password,
@@ -18,7 +18,6 @@ data class RegisterUI(
 }
 
 fun RegisterModel.toUI() = RegisterUI(
-    image = image,
     username = username,
     email = email,
     password = password,

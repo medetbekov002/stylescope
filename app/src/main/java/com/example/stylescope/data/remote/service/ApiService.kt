@@ -17,16 +17,12 @@ import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
 import com.example.stylescope.data.remote.dtos.token.*
 import retrofit2.http.*
-import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.user.UpdateUserImageDto
 import com.example.stylescope.data.remote.dtos.user.UpdateUserProfileDto
 import com.example.stylescope.data.remote.dtos.user.UserValidateDto
-import com.example.stylescope.domain.model.login.RegisterModel
-import com.google.gson.Gson
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -77,7 +73,7 @@ interface ApiService {
 
     @POST("users/register/")
     suspend fun register(
-        @Body body:RegisterDto
+        @Body body: RegisterDto
     ):List<String>
 
     @POST("users/confirm/")
@@ -99,8 +95,6 @@ interface ApiService {
     suspend fun changePassword(
         @Body body:ChangePasswordDto
     ):ChangePasswordAnswerDto
-
-    suspend fun getDetailDesigner(@Path("id") id: Int): DesignerDetailDto
 
     @GET("users/profile/")
     suspend fun getUserProfile(

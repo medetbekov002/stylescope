@@ -17,7 +17,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="app_name"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.StyleScope"
         tools:targetApi="31">
 

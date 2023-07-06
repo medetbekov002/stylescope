@@ -11,7 +11,6 @@ import com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerV
 import com.example.stylescope.presentation.ui.fragments.main.MainViewModel
 import com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerViewModel
 import com.example.stylescope.presentation.ui.fragments.recovery.RecoveryViewModel
-import com.example.stylescope.presentation.ui.fragments.register.RegisterViewModel
 import com.example.stylescope.presentation.ui.token.TokenViewModel
 import com.example.stylescope.presentation.ui.fragments.profile.ProfileViewModel
 import com.example.stylescope.presentation.ui.fragments.profile.dialog.UpdateUserImageViewModel

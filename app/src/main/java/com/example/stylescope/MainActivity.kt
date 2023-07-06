@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             val list = ArrayList<Int>()
             list.add(R.id.mainFragment)
             list.add(R.id.pagerFragment)
-            list.add(R.id.profileFragment)
+            list.add(R.id.profileFragment2)
 
             if (list.contains(destination.id)) {
                 binding.bottomNavigation.visibility = View.VISIBLE
