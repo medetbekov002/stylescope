@@ -25,10 +25,10 @@ class MainViewModel(
     }
 
     private fun getCompanies() {
-        getCompanyUseCase().gatherRequest(_companyState) { companies -> companies.map { it.toUI() }}
+        getCompanyUseCase().gatherRequest(_companyState) { companyModels -> companyModels.map { it.toUI() } }
     }
 
     private fun getDesigners() {
-        getDesignerUseCase().gatherRequest(_designerState) { designers -> designers.map { it.toUI() }}
+        getDesignerUseCase().gatherRequest(_designerState) { designerModels -> designerModels.map { it.toUI() }}
     }
 }

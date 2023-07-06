@@ -12,6 +12,6 @@ class DetailDesignerViewModel(private val getDetailDesignerUseCase: GetDetailDes
     val state = _state.asStateFlow()
 
     fun getDetailCompanies(id: Int) {
-        getDetailDesignerUseCase(id).gatherRequest(_state){ it.toUI() }
+        getDetailDesignerUseCase(id).gatherRequest(_state) { it.toUI() }
     }
 }

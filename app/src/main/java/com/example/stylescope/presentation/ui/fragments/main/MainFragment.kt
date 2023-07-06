@@ -15,12 +15,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
     override val viewModel: MainViewModel by viewModel()
     private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
     private val list = mutableListOf<CompanyUI>()
-    private val adapterDesigner : DesignerAdapter by lazy { DesignerAdapter(this::clicks) }
-
-    private fun clicks(i: Int) {
-
-    }
-
+    private val adapterDesigner : DesignerAdapter by lazy { DesignerAdapter(this::click) }
 
     override fun launchObservers() {
         binding.viewPagerCompany.adapter = adapter
@@ -45,6 +40,8 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
         }
     }
 
-    private fun click(id: Int) {}
+    private fun click(id: Int) {
+
+    }
 
 }

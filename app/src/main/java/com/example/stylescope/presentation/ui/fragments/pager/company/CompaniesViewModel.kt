@@ -17,6 +17,6 @@ class CompaniesViewModel(
         getCompanies()
     }
     fun getCompanies() {
-        getCompanyUseCase().gatherRequest(_companyState) { companies -> companies.map { it.toUI() } }
+        getCompanyUseCase().gatherRequest(_companyState) { companyModels -> companyModels.map { it.toUI() }}
     }
 }

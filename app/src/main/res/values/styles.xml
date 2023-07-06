@@ -7,4 +7,13 @@
         <item name="android:textSize">16sp</item>
         <item name="queryHint">Поиск компаний / дизайнеров</item>
     </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Цвет обводки -->
+        <item name="boxStrokeColor">@color/text_input_stroke_color</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+    </style>
 </resources>

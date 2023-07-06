@@ -5,6 +5,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentRegisterBinding
+import com.example.stylescope.presentation.model.login.RegisterUI
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment :

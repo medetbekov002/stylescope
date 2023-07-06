@@ -16,7 +16,7 @@ abstract class BaseViewModel : ViewModel() {
     protected fun <T, S> Flow<Either<String, T>>.gatherRequest(
         state: MutableStateFlow<UIState<S>>,
         mappedData: (data: T) -> S,
-    ) {
+        ) {
         viewModelScope.launch(Dispatchers.IO) {
             state.value = UIState.Loading()
             this@gatherRequest.collect {

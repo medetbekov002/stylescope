@@ -13,6 +13,6 @@ class DetailCompanyVIewModel(private val getDetailCompanyUseCase: GetDetailCompa
     val state = _state.asStateFlow()
 
     fun getDetailCompanies(id: Int) {
-        getDetailCompanyUseCase(id).gatherRequest(_state){ it.toUI() }
+        getDetailCompanyUseCase(id).gatherRequest(_state) { it.toUI() }
     }
 }
