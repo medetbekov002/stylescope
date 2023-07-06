@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.register
 
+import android.util.Log
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
