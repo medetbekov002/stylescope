@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.about_us.AboutUsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_description"
+                android:layout_width="match_parent"
+                android:layout_height="236dp"
+                android:alpha="0.8"
+                android:contentDescription="content"
+                android:foreground="@color/black"
+                android:scaleType="centerCrop"
+                android:src="@drawable/about_us_main"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="62dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/about_us_title" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Ваш проводник в мир дизайна"
+                        android:textColor="@color/white"
+                        android:maxLines="1"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/ln_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/card_desc">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Краткое описание агрегатора"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Агрегатор дизайнерских услуг, предоставляющий широкий выбор профессиональных услуг дизайна интерьера и экстерьера от лучших компаний и дизайнеров."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40dp"
+                android:text="Наши миссия и цели"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Наша миссия - помочь клиентам найти профессиональные дизайнерские услуги, которые помогут им создать идеальное пространство, отражающее их индивидуальный стиль и потребности"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40dp"
+                android:text="Какие услуги мы предоставляем"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Мы предоставляем широкий спектр услуг дизайна интерьера и экстерьера компаний, включая проектирование, меблировку, подбор материалов, декорирование, ремонт, обучение."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40dp"
+                android:text="Гарантия качества услуг"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Мы тщательно отбираем компании и дизайнеров, чтобы предоставлять только высококачественные услуги, гарантируя тем самым, что наши клиенты получат лучшее в своей отрасли"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40dp"
+                android:text="Как связаться с нами и какие преимущества получают наши клиенты"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Связаться с нами можно через наш сайт, телефон или электронную почту.
+
+Мы предоставляем удобный и быстрый способ найти лучшие дизайнерские услуги в Кыргызстане и получить профессиональную помощь в создании уникального пространства."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/_40dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/ln_tv" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_our_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Наши контакты"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+        <Button
+            android:id="@+id/btn_whats_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_whatsapp"
+            android:drawablePadding="@dimen/_12dp"
+            android:paddingHorizontal="@dimen/_40dp"
+            android:text="+996 596 666 567"
+            android:textColor="@color/urmat_blue"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_our_contacts"
+            app:layout_constraintStart_toStartOf="@id/tv_our_contacts"
+            app:layout_constraintTop_toBottomOf="@id/tv_our_contacts" />
+
+        <Button
+            android:id="@+id/btn_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24dp"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_insta"
+            android:drawablePadding="@dimen/_12dp"
+            android:paddingHorizontal="@dimen/_40dp"
+            android:text="stylescope@inst.com"
+            android:textAllCaps="false"
+            android:textColor="@color/urmat_blue"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/btn_whats_up"
+            app:layout_constraintStart_toStartOf="@id/btn_whats_up"
+            app:layout_constraintTop_toBottomOf="@id/btn_whats_up" />
+
+
+        <Button
+            android:id="@+id/btn_gmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24dp"
+            android:background="@drawable/contact_bg"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="@dimen/_12dp"
+            android:paddingHorizontal="@dimen/_40dp"
+            android:text="stylescope@gmail.com"
+            android:textAllCaps="false"
+            android:textColor="@color/urmat_blue"
+            app:layout_constraintEnd_toEndOf="@id/btn_instagram"
+            app:layout_constraintStart_toStartOf="@id/btn_instagram"
+            app:layout_constraintTop_toBottomOf="@id/btn_instagram" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_24dp"
+            android:text="Адрес:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_gmail" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/location"
+            app:layout_constraintBottom_toBottomOf="@id/tv_address"
+            app:layout_constraintStart_toEndOf="@id/tv_address"
+            app:layout_constraintTop_toTopOf="@id/tv_address" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:text="Ибрагимова 103,БЦ Victory"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_location"
+            app:layout_constraintStart_toEndOf="@id/img_location"
+            app:layout_constraintTop_toTopOf="@id/img_location" />
+
+
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/img_map"-->
+<!--            android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp"-->
+<!--            android:layout_marginHorizontal="14dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:foreground="@drawable/about_map"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/img_location"-->
+<!--            tools:ignore="ContentDescription" />-->
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

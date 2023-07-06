@@ -77,7 +77,11 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_pagerFragment"
-            app:destination="@id/pagerFragment" />
+            app:destination="@id/pagerFragment">
+            <argument
+                android:name="pageIndex"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
@@ -131,6 +135,11 @@
             android:defaultValue="0"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.about_us.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 
     <fragment
         android:id="@+id/changePasswordFragment"

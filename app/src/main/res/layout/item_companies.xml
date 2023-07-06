@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:src="@drawable/example"
         android:layout_height="110dp"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView

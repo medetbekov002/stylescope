@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.main
 
+import android.util.Log
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
@@ -22,7 +23,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     }
 
-
     override fun launchObservers() {
         binding.viewPagerCompany.adapter = comAdapter
         binding.viewPagerDesign.adapter = desAdapter
@@ -30,7 +30,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
             comAdapter.submitList(companies)
             comList.addAll(companies)
         })
-
 
         viewModel.designerState.spectateUiState (success = { designers ->
             desAdapter.submitList(designers)
@@ -40,11 +39,18 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     override fun constructListeners() {
         binding.tvWatchAllCompanies.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPagerFragment())
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(0)
+            findNavController().navigate(action)
         }
 
         binding.tvWatchAllDesigners.setOnClickListener {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToPagerFragment())
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(1)
+            findNavController().navigate(action)
+        }
+
+        binding.imgLogo.setOnClickListener {
+            Log.e("ololo", "constructListeners: ", )
+            findNavController().navigate(R.id.aboutUsFragment)
         }
     }
 
