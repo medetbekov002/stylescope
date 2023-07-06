@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/refactor_profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_profile_card"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_user_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/profile_image_example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_refactor_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/refactor_profile_img"
+            app:layout_constraintBottom_toBottomOf="@id/img_user_profile"
+            app:layout_constraintEnd_toEndOf="@id/img_user_profile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="28dp"
+            android:text="Имя"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_refactor_profile_image" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_input_layout"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="20dp"
+            android:text="Фамилия"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_input_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surname_input_layout"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_surname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_surname"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:hint="Surname" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="20dp"
+            android:text="Обо мне (до 200 слов)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/surname_input_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/about_me_input_layout"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
+            app:counterTextColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_about_me">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_about_me"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"
+                android:hint="About me" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="20dp"
+            android:text="Почта"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_me_input_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_input_layout"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="20dp"
+            android:text="Пароль"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_input_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/linear_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_password">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_user_refactor_password"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="14dp"
+                android:inputType="textPassword"
+                android:clickable="false"
+                android:letterSpacing="0.2"
+                android:text="Password"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sp"
+                app:layout_constraintEnd_toStartOf="@id/img_refactor_password"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_refactor_password"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_refactor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        android:text="Отмена"
+        android:textColor="#5A5A5A"
+        android:textSize="@dimen/_16sp"
+        app:cornerRadius="@dimen/_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/refactor_profile_container"
+        app:strokeColor="#5A5A5A"
+        app:strokeWidth="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0E53B4"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        android:text="Сохранить"
+        android:textSize="@dimen/_16sp"
+        app:cornerRadius="@dimen/_8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/refactor_profile_container"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,9 @@ import com.example.stylescope.presentation.ui.fragments.pager.designer.detail.De
 import com.example.stylescope.presentation.ui.fragments.recovery.RecoveryViewModel
 import com.example.stylescope.presentation.ui.fragments.register.RegisterViewModel
 import com.example.stylescope.presentation.ui.token.TokenViewModel
+import com.example.stylescope.presentation.ui.fragments.profile.ProfileViewModel
+import com.example.stylescope.presentation.ui.fragments.profile.dialog.UpdateUserImageViewModel
+import com.example.stylescope.presentation.ui.fragments.register.RegisterViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -30,4 +33,6 @@ val uiModule = module {
     viewModel { TokenViewModel(get()) }
     viewModel { FavoriteDetailViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
+    viewModel { ProfileViewModel(get(), get()) }
+    viewModel { UpdateUserImageViewModel(get()) }
 }

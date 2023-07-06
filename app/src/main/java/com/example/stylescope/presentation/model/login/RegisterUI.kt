@@ -7,6 +7,22 @@ data class RegisterUI(
     val email: String,
     val password: String,
     val password2: String
+): DataMapper<RegisterModel> {
+    override fun toDomain() = RegisterModel(
+        image = image,
+        username = username,
+        email = email,
+        password = password,
+        password2 = password2
+    )
+}
+
+fun RegisterModel.toUI() = RegisterUI(
+    image = image,
+    username = username,
+    email = email,
+    password = password,
+    password2 = password2
 )
 
 fun RegisterUI.toRegisterModel()=RegisterModel(

@@ -106,6 +106,17 @@
         android:id="@+id/designerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerFragment"
         android:label="fragment_designer"
+        tools:layout="@layout/fragment_designer" />
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/updateUserImageDialogFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.dialog.UpdateUserImageDialogFragment"
+        android:label="fragment_update_user_image_dialog"
+        tools:layout="@layout/fragment_update_user_image_dialog" />
         tools:layout="@layout/fragment_designer" >
         <action
             android:id="@+id/action_designerFragment_to_detailDesignerFragment2"

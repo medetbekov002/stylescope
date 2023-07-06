@@ -4,7 +4,6 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
-import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentMainBinding
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.model.designer.DesignerUI

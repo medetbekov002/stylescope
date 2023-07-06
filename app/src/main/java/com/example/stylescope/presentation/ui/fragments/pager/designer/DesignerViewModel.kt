@@ -17,6 +17,6 @@ class DesignerViewModel(
         getCompanies()
     }
     fun getCompanies() {
-        getDesignerUseCase().gatherRequest(_designerState) { designers -> designers.map { it.toUI() } }
+        getDesignerUseCase().gatherRequest(_designerState) { designerModels -> designerModels.map { it.toUI() }}
     }
 }

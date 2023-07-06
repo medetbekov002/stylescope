@@ -12,6 +12,9 @@ import com.example.stylescope.domain.use_cases.login.LogInUseCase
 import com.example.stylescope.domain.use_cases.recover.RecoverUseCase
 import com.example.stylescope.domain.use_cases.register.RegisterUseCase
 import com.example.stylescope.domain.use_cases.token.TokenUseCase
+import com.example.stylescope.domain.use_cases.user.profile.GetUserProfileUseCase
+import com.example.stylescope.domain.use_cases.user.profile.UpdateUserImageUseCase
+import com.example.stylescope.domain.use_cases.user.profile.UpdateUserProfileUseCase
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -27,4 +30,7 @@ val useCasesModule = module {
     factory { ChangePasswordUseCase(get()) }
     factory { TokenUseCase(get()) }
     factory { FavoriteUseCase(get()) }
+    factory { GetUserProfileUseCase(get()) }
+    factory { UpdateUserProfileUseCase(get()) }
+    factory { UpdateUserImageUseCase(get()) }
 }
