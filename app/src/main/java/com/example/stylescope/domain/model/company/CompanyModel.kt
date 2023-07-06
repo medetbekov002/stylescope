@@ -8,7 +8,8 @@ data class CompanyModel(
     val summary: String,
     val views: Int,
     val rating: String,
-    val countReviews: String
+    val countReviews: String,
+    val packages: List<CompanyPackageModel>
 )
 
 data class CompanyDetailModel(

@@ -2,6 +2,7 @@ package com.example.stylescope.presentation.ui.fragments.pager.company
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -14,7 +15,7 @@ import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CompaniesFragment :
-    BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
+        BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
     override val binding: FragmentCompaniesBinding by viewBinding(FragmentCompaniesBinding::bind)
     override val viewModel: CompaniesViewModel by viewModel()
     private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
@@ -42,8 +43,7 @@ class CompaniesFragment :
             }
         }
 
-        binding.etSearch.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -54,25 +54,60 @@ class CompaniesFragment :
                 return true
             }
         })
+         val services = listOf("Услуга 1", "Услуга 2", "Услуга 3") // Замените на ваш список услуг
+        val items = list.flatMap { company -> company.packages.map { it.title } }.distinct()
+        setupDropdownMenu(services)
     }
 
 
-    private fun searchInDataList(name: String) {
-        val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
-        if (searchData.isNotEmpty()) {
-            adapter.submitList(searchData)
-            binding.badRequest.root.isGone = true
-            binding.rvCompanies.isVisible = true
+
+        private fun searchInDataList(name: String) {
+            val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
+            if (searchData.isNotEmpty()) {
+                adapter.submitList(searchData)
+                binding.badRequest.root.isGone = true
+                binding.rvCompanies.isVisible = true
+            } else {
+                binding.badRequest.root.isVisible = true
+                binding.rvCompanies.isGone = true
+            }
+        }
+
+
+    private fun filterMaster(filter: CompanyUI) {
+        val filterData: List<CompanyUI> = list.filter { it.packages.any { packageUI -> packageUI.title.contains(filter.title, ignoreCase = true) } }
+        if (filterData.isNotEmpty()) {
+            adapter.submitList(filterData)
         } else {
-            binding.badRequest.root.isVisible = true
-            binding.rvCompanies.isGone = true
+            // Действия, если список отфильтрованных данных пуст
         }
     }
+
+    private fun setupDropdownMenu(items: List<String>) {
+        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_filterservice_item, items)
+        binding.etService.setAdapter(adapter)
+        binding.etService.setOnItemClickListener { _, _, position, _ ->
+            val selectedTitle = items[position]
+            val filter = CompanyUI(
+                    id = 0,
+                    image = "",
+                    title = selectedTitle,
+                    summary = "",
+                    views = 0,
+                    rating = "",
+                    countReviews = "",
+                    packages = emptyList()
+            )
+            filterMaster(filter)
+        }
+    }
+
+
 
     private fun click(id: Int) {
         val bundle = Bundle()
         bundle.putInt("companyID", id)
-        findNavController().navigate(R.id.detailCompanyFragment,bundle)
-        Log.w("ololo", "click: $id", )
+        findNavController().navigate(R.id.detailCompanyFragment, bundle)
+        Log.w("ololo", "click: $id")
     }
 }
