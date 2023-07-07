@@ -18,17 +18,3 @@ fun <T> makeNetworkRequest(
     }.flowOn(Dispatchers.IO).catch { exception ->
         emit(Either.Left(value = exception.localizedMessage ?: "Error Occurred !"))
     }
-
-fun <T> makeNetworkRequestDev(
-    gatherIsSucceed: ((T) -> Unit)? = null,
-    request: suspend() -> T
-) =
-    flow<Either<String, T>> {
-        request().also {
-            gatherIsSucceed?.invoke(it)
-            emit(Either.Right(value = it))
-        }
-    }.flowOn(Dispatchers.Main).catch { exception ->
-        emit(Either.Left(value = exception.localizedMessage ?: "Error Occurred !"))
-    }
-

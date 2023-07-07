@@ -29,16 +29,16 @@ class CompaniesFragment :
             adapter.submitList(companies)
             list.addAll(companies)
 
-            val packages = companies.flatMap { companyUI ->
-                companyUI.packages.mapNotNull { it as? CompanyPackageUI }
-            }
+//            val packages = companies.flatMap { companyUI ->
+//                companyUI.packages.mapNotNull { it as? CompanyPackageUI }
+//            }
+//
+//            val services = companies.flatMap { companyUI ->
+//                companyUI.packages.mapNotNull { it as? ServicesUI }
+//            }
 
-            val services = companies.flatMap { companyUI ->
-                companyUI.packages.mapNotNull { it as? ServicesUI }
-            }
-
-            setupDropdownMenu(packages)
-            setupServiceDropdownMenu(services)
+//            setupDropdownMenu(packages)
+//            setupServiceDropdownMenu(services)
         })
     }
 
@@ -88,61 +88,61 @@ class CompaniesFragment :
         Log.w("ololo", "click: $id")
     }
 
-    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
-        val packageNamesSet = mutableSetOf<String>()
-        packages.forEach { packageUI ->
-            packageNamesSet.add(packageUI.title)
-        }
+//    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
+//        val packageNamesSet = mutableSetOf<String>()
+//        packages.forEach { packageUI ->
+//            packageNamesSet.add(packageUI.title)
+//        }
+//
+//        val packageNames = packageNamesSet.toList()
+//        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
+//        binding.etService.setAdapter(arrayAdapter)
+//
+//        binding.etService.setOnClickListener {
+//            binding.etService.showDropDown()
+//        }
+//
+//        binding.etService.setOnItemClickListener { _, _, position, _ ->
+//            val selectedPackageName = packageNames[position]
+//            filterByPackageTitle(selectedPackageName)
+//        }
+//    }
 
-        val packageNames = packageNamesSet.toList()
-        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
-        binding.etService.setAdapter(arrayAdapter)
+//    private fun setupServiceDropdownMenu(service: List<ServicesUI>) {
+//        val serviceNameSet = mutableSetOf<String>()
+//        service.forEach { serviceUI ->
+//            serviceNameSet.add(serviceUI.title)
+//        }
+//
+//        val serviceName = serviceNameSet.toList()
+//        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_filterservice_item,serviceName)
+//        binding.filledExposed.setAdapter(arrayAdapter)
+//
+//        binding.filledExposed.setOnClickListener {
+//            binding.filledExposed.showDropDown()
+//        }
+//
+//        binding.filledExposed.setOnItemClickListener{_,_,position,_ ->
+//            val selectedServiceName = serviceName[position]
+//            filterByServiceTitle(selectedServiceName)
+//        }
+//    }
 
-        binding.etService.setOnClickListener {
-            binding.etService.showDropDown()
-        }
+//    private fun filterByPackageTitle(title: String) {
+//        val filteredPackages = list.filter { companyUI ->
+//            companyUI.packages.any { packageUI ->
+//                packageUI.title.equals(title, ignoreCase = true)
+//            }
+//        }
+//        adapter.submitList(filteredPackages)
+//    }
 
-        binding.etService.setOnItemClickListener { _, _, position, _ ->
-            val selectedPackageName = packageNames[position]
-            filterByPackageTitle(selectedPackageName)
-        }
-    }
-
-    private fun setupServiceDropdownMenu(service: List<ServicesUI>) {
-        val serviceNameSet = mutableSetOf<String>()
-        service.forEach { serviceUI ->
-            serviceNameSet.add(serviceUI.title)
-        }
-
-        val serviceName = serviceNameSet.toList()
-        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_filterservice_item,serviceName)
-        binding.filledExposed.setAdapter(arrayAdapter)
-
-        binding.filledExposed.setOnClickListener {
-            binding.filledExposed.showDropDown()
-        }
-
-        binding.filledExposed.setOnItemClickListener{_,_,position,_ ->
-            val selectedServiceName = serviceName[position]
-            filterByServiceTitle(selectedServiceName)
-        }
-    }
-
-    private fun filterByPackageTitle(title: String) {
-        val filteredPackages = list.filter { companyUI ->
-            companyUI.packages.any { packageUI ->
-                packageUI.title.equals(title, ignoreCase = true)
-            }
-        }
-        adapter.submitList(filteredPackages)
-    }
-
-    private fun filterByServiceTitle(title:String) {
-        val filterServices = list.filter { serviceUI ->
-            serviceUI.packages.any{ serviceUI ->
-                serviceUI.title.equals(title,true)
-            }
-        }
-        adapter.submitList(filterServices)
-    }
+//    private fun filterByServiceTitle(title:String) {
+//        val filterServices = list.filter { serviceUI ->
+//            serviceUI.packages.any{ serviceUI ->
+//                serviceUI.title.equals(title,true)
+//            }
+//        }
+//        adapter.submitList(filterServices)
+//    }
 }
