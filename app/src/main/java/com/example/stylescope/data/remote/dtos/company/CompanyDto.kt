@@ -13,7 +13,8 @@ data class CompanyDto(
         val rating: String,
         @SerializedName("count_reviews")
         val countReviews: String,
-        val packages: List<CompanyPackageDto>
+        val packages: List<CompanyPackageDto>,
+        val services: List<ServicesDto>
 ) : DataMapper<CompanyModel> {
     override fun toDomain() = CompanyModel(
             id = id,
@@ -23,7 +24,8 @@ data class CompanyDto(
             views = views,
             rating = rating,
             countReviews = countReviews,
-            packages = packages.map { it.toDomain() }
+            packages = packages.map { it.toDomain() },
+            services = services.map { it.toDomain() }
             )
 }
 
@@ -71,13 +73,15 @@ data class CompanyDetailDto(
 
 data class ServicesDto(
         val id: Int,
+        val image: String,
         val title: String,
         val description: String
 ) : DataMapper<ServicesModel> {
     override fun toDomain() = ServicesModel(
             id = id,
             title = title,
-            description = description
+            description = description,
+            image = image
     )
 }
 

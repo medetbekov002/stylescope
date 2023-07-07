@@ -112,6 +112,12 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_edit_txt"
                             android:hint="Выбрать класс"
+                            android:layout_weight="1"
+                            android:completionThreshold="0"
+                            android:dropDownWidth="wrap_content"
+                            android:editable="false"
+                            android:dropDownHeight="wrap_content"
+                            android:dropDownVerticalOffset="0dp"
                             android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>

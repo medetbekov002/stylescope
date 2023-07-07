@@ -94,12 +94,13 @@ fun CompanyReviewTitleModel.toUI() = CompanyReviewTitleUI(
 
 data class ServicesUI(
         val id: Int,
+        val image: String,
         val title: String,
         val description: String
 )
 
 fun ServicesModel.toUI() = ServicesUI(
-        id, title, description
+        id, title, description,image
 )
 
 data class GalleryUI(
