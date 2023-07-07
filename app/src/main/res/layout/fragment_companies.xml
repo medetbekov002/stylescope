@@ -80,7 +80,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bg_edit_txt"
                             android:completionThreshold="0"
-                            android:dropDownWidth="match_parent"
+                            android:dropDownWidth="wrap_content"
                             android:dropDownHeight="wrap_content"
                             android:dropDownVerticalOffset="0dp"
                             android:editable="false"
@@ -114,30 +114,6 @@
                             android:hint="Выбрать класс"
                             android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_class_filter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/item_class_filter" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_apply"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_margin="16dp"
-                        android:backgroundTint="#4945FF"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="8dp"
-                        android:text="Применить"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        app:cornerRadius="8dp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

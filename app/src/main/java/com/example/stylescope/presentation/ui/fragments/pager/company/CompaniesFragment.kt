@@ -27,7 +27,11 @@ class CompaniesFragment :
         viewModel.companyState.spectateUiState(success = { companies ->
             adapter.submitList(companies)
             list.addAll(companies)
-            val packages = companies.flatMap { it.packages }
+
+            val packages = companies.flatMap { companyUI ->
+                companyUI.packages.mapNotNull { it as? CompanyPackageUI }
+            }
+
             setupDropdownMenu(packages)
         })
     }
@@ -59,36 +63,50 @@ class CompaniesFragment :
         })
     }
 
-
-
-        private fun searchInDataList(name: String) {
-            val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
-            if (searchData.isNotEmpty()) {
-                adapter.submitList(searchData)
-                binding.badRequest.root.isGone = true
-                binding.rvCompanies.isVisible = true
-            } else {
-                binding.badRequest.root.isVisible = true
-                binding.rvCompanies.isGone = true
-            }
-        }
-
-    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
-        val packageNames = packages.map { it.title }
-        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
-        binding.etService.setAdapter(arrayAdapter)
-
-        binding.etService.setOnClickListener {
-            binding.etService.showDropDown()
+    private fun searchInDataList(name: String) {
+        val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
+        if (searchData.isNotEmpty()) {
+            adapter.submitList(searchData)
+            binding.badRequest.root.isGone = true
+            binding.rvCompanies.isVisible = true
+        } else {
+            binding.badRequest.root.isVisible = true
+            binding.rvCompanies.isGone = true
         }
     }
-
-
 
     private fun click(id: Int) {
         val bundle = Bundle()
         bundle.putInt("companyID", id)
         findNavController().navigate(R.id.detailCompanyFragment, bundle)
         Log.w("ololo", "click: $id")
+    }
+
+    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
+        val packageNamesSet = mutableSetOf<String>()
+        packages.forEach { packageUI ->
+            packageNamesSet.add(packageUI.title)
+        }
+        val packageNames = packageNamesSet.toList()
+        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
+        binding.etService.setAdapter(arrayAdapter)
+
+        binding.etService.setOnClickListener {
+            binding.etService.showDropDown()
+        }
+
+        binding.etService.setOnItemClickListener { _, _, position, _ ->
+            val selectedPackageName = packageNames[position]
+            filterByPackageTitle(selectedPackageName)
+        }
+    }
+
+    private fun filterByPackageTitle(title: String) {
+        val filteredPackages = list.filter { companyUI ->
+            companyUI.packages.any { packageUI ->
+                packageUI.title.equals(title, ignoreCase = true)
+            }
+        }
+        adapter.submitList(filteredPackages)
     }
 }
