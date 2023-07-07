@@ -2,6 +2,7 @@ package com.example.stylescope.data.remote.repository.designer
 
 import com.example.stylescope.common.Either
 import com.example.stylescope.data.base.makeNetworkRequest
+import com.example.stylescope.data.base.makeNetworkRequestDev
 import com.example.stylescope.data.remote.service.ApiService
 import com.example.stylescope.domain.model.designer.DesignerDetailModel
 import com.example.stylescope.domain.model.designer.DesignerModel
@@ -13,7 +14,7 @@ class DesignerRepositoryImpl(private val apiService: ApiService) : DesignerRepos
         apiService.getDesigners().map { it.toDomain() }
     }
 
-    override fun getDetailDesigner(id: Int): Flow<Either<String, DesignerDetailModel>> = makeNetworkRequest {
+    override fun getDetailDesigner(id: Int): Flow<Either<String, DesignerDetailModel>> = makeNetworkRequestDev {
         apiService.getDetailDesigner(id).toDomain()
     }
 }
