@@ -77,14 +77,15 @@
                             android:id="@+id/et_service"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:background="@drawable/bg_edit_txt"
-                            android:hint="Добавить услугу"
-                            android:inputType="none"
-                            android:dropDownHeight="wrap_content"
-                            android:dropDownWidth="match_parent"
-                            android:dropDownVerticalOffset="0dp"
                             android:completionThreshold="0"
-                            android:editable="false" />
+                            android:dropDownWidth="match_parent"
+                            android:dropDownHeight="wrap_content"
+                            android:dropDownVerticalOffset="0dp"
+                            android:editable="false"
+                            android:hint="Добавить услугу"
+                            android:inputType="none" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

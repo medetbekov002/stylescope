@@ -30,6 +30,7 @@ class CompaniesFragment :
     }
 
     override fun constructListeners() {
+        setupDropdownMenu()
         var filterState = false
         binding.imgFilter.setOnClickListener {
             if (!filterState) {
@@ -56,7 +57,6 @@ class CompaniesFragment :
         })
          val services = listOf("Услуга 1", "Услуга 2", "Услуга 3") // Замените на ваш список услуг
         val items = list.flatMap { company -> company.packages.map { it.title } }.distinct()
-        setupDropdownMenu(services)
     }
 
 
@@ -73,32 +73,15 @@ class CompaniesFragment :
             }
         }
 
+    private fun setupDropdownMenu() {
+        val gender = arrayOf("Женский", "Мужской", "Другое")
+        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, gender)
+        binding.etService.setAdapter(arrayAdapter)
+        Log.w("ololo", "setupDropdownMenu: ", )
 
-    private fun filterMaster(filter: CompanyUI) {
-        val filterData: List<CompanyUI> = list.filter { it.packages.any { packageUI -> packageUI.title.contains(filter.title, ignoreCase = true) } }
-        if (filterData.isNotEmpty()) {
-            adapter.submitList(filterData)
-        } else {
-            // Действия, если список отфильтрованных данных пуст
-        }
-    }
-
-    private fun setupDropdownMenu(items: List<String>) {
-        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_filterservice_item, items)
-        binding.etService.setAdapter(adapter)
-        binding.etService.setOnItemClickListener { _, _, position, _ ->
-            val selectedTitle = items[position]
-            val filter = CompanyUI(
-                    id = 0,
-                    image = "",
-                    title = selectedTitle,
-                    summary = "",
-                    views = 0,
-                    rating = "",
-                    countReviews = "",
-                    packages = emptyList()
-            )
-            filterMaster(filter)
+        // Добавляем обработчик нажатия на AutoCompleteTextView
+        binding.etService.setOnClickListener {
+            binding.etService.showDropDown()
         }
     }
 
