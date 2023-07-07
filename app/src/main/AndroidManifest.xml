@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StyleScope"
         tools:targetApi="31">
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCmeoLjGCM6xnHCFjPR6S0cYJUvHR6g_k8" />
         <activity android:name=".presentation.ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
