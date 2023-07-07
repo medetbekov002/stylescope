@@ -51,7 +51,6 @@ data class CompanyPackageModel(
 data class CompanyDesignerModel(
     val photo: String,
     val name: String,
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     val countReviews: String

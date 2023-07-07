@@ -5,7 +5,6 @@ data class DesignerModel(
     val id: Int,
     val name: String,
     val photo: String,
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     val countReviews: String

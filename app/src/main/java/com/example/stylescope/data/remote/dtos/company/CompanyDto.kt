@@ -140,7 +140,6 @@ data class CompanyDesignerDto(
         val photo: String,
         val name: String,
         @SerializedName("company_title")
-        val companyTitle: List<String>,
         val occupation: String,
         val rating: String,
         @SerializedName("count_reviews")
@@ -149,7 +148,6 @@ data class CompanyDesignerDto(
     override fun toDomain() = CompanyDesignerModel(
             photo = photo,
             name = name,
-            companyTitle = companyTitle,
             occupation = occupation,
             rating = rating,
             countReviews = countReviews

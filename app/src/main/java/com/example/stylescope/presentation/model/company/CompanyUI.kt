@@ -127,7 +127,6 @@ fun CompanyPackageModel.toUI() = CompanyPackageUI(
 data class CompanyDesignerUI(
         val photo: String,
         val name: String,
-        val companyTitle: List<String>,
         val occupation: String,
         val rating: String,
         val countReviews: String
@@ -136,7 +135,6 @@ data class CompanyDesignerUI(
 fun CompanyDesignerModel.toUI() = CompanyDesignerUI(
         photo = photo,
         name = name,
-        companyTitle = companyTitle,
         occupation = occupation,
         rating = rating,
         countReviews = countReviews

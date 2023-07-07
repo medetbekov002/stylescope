@@ -28,9 +28,6 @@ class DesignerAdapter(private val click: (id: Int) -> Unit) :
         fun onBind(model: DesignerUI?) {
             if (model != null) {
                 model.photo.let { binding.itemImgEmployee.loadImage(it) }
-                if (model.companyTitle.isNotEmpty()) {
-                    binding.itemDesignTitle.text = model.companyTitle[0]
-                }
                 binding.itemTvEmployeeName.text = model.name
                 binding.itemTvEmployeeProfession.text = model.occupation
                 binding.itemTvRating.text = model.rating

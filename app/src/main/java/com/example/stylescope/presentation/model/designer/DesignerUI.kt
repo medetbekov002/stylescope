@@ -10,7 +10,6 @@ data class DesignerUI(
     val id: Int,
     val name: String,
     val photo: String,
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     val countReviews: String
@@ -20,7 +19,6 @@ fun DesignerModel.toUI() = DesignerUI(
     id = id,
     name = name,
     photo = photo,
-    companyTitle = companyTitle,
     occupation = occupation,
     rating = rating,
     countReviews = countReviews

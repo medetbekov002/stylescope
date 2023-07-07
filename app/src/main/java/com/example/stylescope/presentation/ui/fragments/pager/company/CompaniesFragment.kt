@@ -10,6 +10,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentCompaniesBinding
+import com.example.stylescope.presentation.model.company.CompanyPackageUI
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,11 +27,12 @@ class CompaniesFragment :
         viewModel.companyState.spectateUiState(success = { companies ->
             adapter.submitList(companies)
             list.addAll(companies)
+            val packages = companies.flatMap { it.packages }
+            setupDropdownMenu(packages)
         })
     }
 
     override fun constructListeners() {
-        setupDropdownMenu()
         var filterState = false
         binding.imgFilter.setOnClickListener {
             if (!filterState) {
@@ -55,8 +57,6 @@ class CompaniesFragment :
                 return true
             }
         })
-         val services = listOf("Услуга 1", "Услуга 2", "Услуга 3") // Замените на ваш список услуг
-        val items = list.flatMap { company -> company.packages.map { it.title } }.distinct()
     }
 
 
@@ -73,13 +73,11 @@ class CompaniesFragment :
             }
         }
 
-    private fun setupDropdownMenu() {
-        val gender = arrayOf("Женский", "Мужской", "Другое")
-        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, gender)
+    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
+        val packageNames = packages.map { it.title }
+        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
         binding.etService.setAdapter(arrayAdapter)
-        Log.w("ololo", "setupDropdownMenu: ", )
 
-        // Добавляем обработчик нажатия на AutoCompleteTextView
         binding.etService.setOnClickListener {
             binding.etService.showDropDown()
         }

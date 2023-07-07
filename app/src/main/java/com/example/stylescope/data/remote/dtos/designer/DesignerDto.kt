@@ -12,7 +12,6 @@ data class DesignerDto(
     val name: String,
     val photo: String,
     @SerializedName("company_title")
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     @SerializedName("count_reviews")
@@ -22,7 +21,6 @@ data class DesignerDto(
         id = id,
         name = name,
         photo = photo,
-        companyTitle = companyTitle,
         occupation = occupation,
         rating = rating,
         countReviews = countReviews
