@@ -39,12 +39,12 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     override fun constructListeners() {
         binding.tvWatchAllCompanies.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(0)
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment(0)
             findNavController().navigate(action)
         }
 
         binding.tvWatchAllDesigners.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToPagerFragment2(1)
+            val action = MainFragmentDirections.actionMainFragmentToPagerFragment(1)
             findNavController().navigate(action)
         }
 
