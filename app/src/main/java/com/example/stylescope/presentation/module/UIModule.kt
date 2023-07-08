@@ -9,6 +9,7 @@ import com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesV
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyVIewModel
 import com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerViewModel
 import com.example.stylescope.presentation.ui.fragments.main.MainViewModel
+import com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingViewModel
 import com.example.stylescope.presentation.ui.fragments.recovery.RecoveryViewModel
 import com.example.stylescope.presentation.ui.fragments.register.RegisterViewModel
 import com.example.stylescope.presentation.ui.token.TokenViewModel
@@ -28,4 +29,5 @@ val uiModule = module {
     viewModel { TokenViewModel(get()) }
     viewModel { FavoriteDetailViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
+    viewModel { OnBoardingViewModel() }
 }

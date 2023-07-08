@@ -62,6 +62,13 @@ class Pref(private val context: Context) {
         return pref.getString(REFRESH_TOKEN,"")
     }
 
+    fun showOnBoardingShow(): Boolean {
+        return pref.getBoolean(BOARDING_SHOW, false)
+    }
+
+    fun saveOnBoarding(isShow: Boolean) {
+        pref.edit().putBoolean(BOARDING_SHOW, isShow).apply()
+    }
     companion object {
         private const val IS_RECOVER = "is_recover"
         private const val USERNAME = "username"
@@ -70,5 +77,6 @@ class Pref(private val context: Context) {
         private const val TOKEN = "token"
         private const val USER_PASSWORD = "user_password"
         private const val REFRESH_TOKEN = "refresh_token"
+        private const val BOARDING_SHOW = "on_boarding_show"
     }
 }
