@@ -22,39 +22,40 @@ class CompaniesFragment :
     override val viewModel: CompaniesViewModel by viewModel()
     private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
     private var list = mutableListOf<CompanyUI>()
-
+    private var selectedPackage: String? = null
+    private var selectedService: String? = null
     override fun launchObservers() {
         binding.rvCompanies.adapter = adapter
         viewModel.companyState.spectateUiState(success = { companies ->
             adapter.submitList(companies)
             list.addAll(companies)
 
-//            val packages = companies.flatMap { companyUI ->
-//                companyUI.packages.mapNotNull { it as? CompanyPackageUI }
-//            }
-//
-//            val services = companies.flatMap { companyUI ->
-//                companyUI.packages.mapNotNull { it as? ServicesUI }
-//            }
+            val packages = companies.flatMap { companyUI ->
+                companyUI.packages!!.mapNotNull { it as? CompanyPackageUI }
+            }
 
-//            setupDropdownMenu(packages)
-//            setupServiceDropdownMenu(services)
+            val services = companies.flatMap { companyUI ->
+                companyUI.services!!.mapNotNull { it as? ServicesUI }
+            }
+
+            setupDropdownMenu(packages)
+            setupServiceDropdownMenu(services)
         })
     }
 
     override fun constructListeners() {
-        var filterState = false
-        binding.imgFilter.setOnClickListener {
-            if (!filterState) {
-                binding.imgFilter.setImageResource(R.drawable.ic_filter_click)
-                binding.layoutContainer.isVisible = true
-                filterState = true
-            } else {
-                binding.imgFilter.setImageResource(R.drawable.ic_filter)
-                binding.layoutContainer.isGone = true
-                filterState = false
+        binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
             }
-        }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { searchInDataList(it) }
+                binding.badRequest.itemTvRequestWord.text = newText
+                applyFilters()
+                return true
+            }
+        })
 
         binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -70,7 +71,7 @@ class CompaniesFragment :
     }
 
     private fun searchInDataList(name: String) {
-        val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
+        val searchData = list.filter { it.title?.contains(name, ignoreCase = true) == true }
         if (searchData.isNotEmpty()) {
             adapter.submitList(searchData)
             binding.badRequest.root.isGone = true
@@ -88,61 +89,84 @@ class CompaniesFragment :
         Log.w("ololo", "click: $id")
     }
 
-//    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
-//        val packageNamesSet = mutableSetOf<String>()
-//        packages.forEach { packageUI ->
-//            packageNamesSet.add(packageUI.title)
-//        }
-//
-//        val packageNames = packageNamesSet.toList()
-//        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
-//        binding.etService.setAdapter(arrayAdapter)
-//
-//        binding.etService.setOnClickListener {
-//            binding.etService.showDropDown()
-//        }
-//
-//        binding.etService.setOnItemClickListener { _, _, position, _ ->
-//            val selectedPackageName = packageNames[position]
-//            filterByPackageTitle(selectedPackageName)
-//        }
-//    }
+    private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
+        val packageNamesSet = mutableSetOf<String>()
+        packages.forEach { packageUI ->
+            packageNamesSet.add(packageUI.title!!)
+        }
 
-//    private fun setupServiceDropdownMenu(service: List<ServicesUI>) {
-//        val serviceNameSet = mutableSetOf<String>()
-//        service.forEach { serviceUI ->
-//            serviceNameSet.add(serviceUI.title)
-//        }
-//
-//        val serviceName = serviceNameSet.toList()
-//        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_filterservice_item,serviceName)
-//        binding.filledExposed.setAdapter(arrayAdapter)
-//
-//        binding.filledExposed.setOnClickListener {
-//            binding.filledExposed.showDropDown()
-//        }
-//
-//        binding.filledExposed.setOnItemClickListener{_,_,position,_ ->
-//            val selectedServiceName = serviceName[position]
-//            filterByServiceTitle(selectedServiceName)
-//        }
-//    }
+        val packageNames = packageNamesSet.toList()
+        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
+        binding.etService.setAdapter(arrayAdapter)
 
-//    private fun filterByPackageTitle(title: String) {
-//        val filteredPackages = list.filter { companyUI ->
-//            companyUI.packages.any { packageUI ->
-//                packageUI.title.equals(title, ignoreCase = true)
-//            }
-//        }
-//        adapter.submitList(filteredPackages)
-//    }
+        binding.etService.setOnClickListener {
+            binding.etService.showDropDown()
+        }
 
-//    private fun filterByServiceTitle(title:String) {
-//        val filterServices = list.filter { serviceUI ->
-//            serviceUI.packages.any{ serviceUI ->
-//                serviceUI.title.equals(title,true)
-//            }
-//        }
-//        adapter.submitList(filterServices)
-//    }
+        binding.etService.setOnItemClickListener { _, _, position, _ ->
+            val selectedPackageName = packageNames[position]
+            filterByPackageTitle(selectedPackageName)
+            selectedPackage = selectedPackageName
+            applyFilters()
+        }
+    }
+
+    private fun setupServiceDropdownMenu(service: List<ServicesUI>) {
+        val serviceNameSet = mutableSetOf<String>()
+        service.forEach { serviceUI ->
+            serviceNameSet.add(serviceUI.title!!)
+        }
+
+        val serviceName = serviceNameSet.toList()
+        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_filterservice_item2,serviceName)
+        binding.filledExposed.setAdapter(arrayAdapter)
+
+        binding.filledExposed.setOnClickListener {
+            binding.filledExposed.showDropDown()
+        }
+
+        binding.filledExposed.setOnItemClickListener { _, _, position, _ ->
+            val selectedServiceName = serviceName[position]
+            filterByServiceTitle(selectedServiceName)
+            selectedService = selectedServiceName
+            applyFilters()
+        }
+    }
+
+    private fun filterByPackageTitle(title: String) {
+        val filteredPackages = list.filter { companyUI ->
+            companyUI.services!!.any { packageUI ->
+                packageUI.title.equals(title, ignoreCase = true)
+            }
+        }
+        adapter.submitList(filteredPackages)
+    }
+
+    private fun filterByServiceTitle(title:String) {
+        val filterServices = list.filter { companyUI ->
+            companyUI.packages!!.any{ serviceUI ->
+                serviceUI.title.equals(title,true)
+            }
+        }
+        adapter.submitList(filterServices)
+    }
+    private fun applyFilters() {
+        val filteredList = list.filter { companyUI ->
+            val packageMatches = selectedPackage?.let { packageName ->
+                companyUI.packages?.any { packageUI ->
+                    packageUI.title.equals(packageName, ignoreCase = true)
+                }
+            } ?: true
+
+            val serviceMatches = selectedService?.let { serviceName ->
+                companyUI.services?.any { serviceUI ->
+                    serviceUI.title.equals(serviceName, ignoreCase = true)
+                }
+            } ?: true
+
+            packageMatches && serviceMatches
+        }
+
+        adapter.submitList(filteredList)
+    }
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
     android:layout_height="250dp"
-    android:layout_marginTop="14dp"
     android:layout_marginStart="14dp"
+    android:layout_marginTop="14dp"
     android:background="@drawable/bg_reviews"
     android:padding="14dp">
 
@@ -39,28 +39,30 @@
         android:id="@+id/item_text_reviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_img_reviews"
         tools:text="Я очень довольна дизайном этой компании, все сделано качественно.
 Хочу отметить про скорость работы, она на высшем уровне.
-Желаю успехов этой компании"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"/>
+Желаю успехов этой компании" />
 
     <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/item_rating_reviews"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:isIndicator="true"
+        app:mrb_progressTint="@color/yellow"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/item_rating_reviews"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/item_tv_reviews_hours_ago"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="18часов назад"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="12sp"
-        android:id="@+id/item_tv_reviews_hours_ago"/>
+        tools:text="18часов назад" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
