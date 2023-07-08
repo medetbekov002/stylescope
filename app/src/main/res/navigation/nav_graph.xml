@@ -40,7 +40,6 @@
                 app:argType="integer" />
         </action>
     </fragment>
-
     <fragment
         android:id="@+id/detailDesignerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerFragment"
@@ -69,7 +68,6 @@
             android:name="companyID"
             app:argType="integer" />
     </fragment>
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.main.MainFragment"
@@ -146,17 +144,19 @@
         android:name="com.example.stylescope.presentation.ui.fragments.changepassword.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
-
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
-
     <fragment
         android:id="@+id/favoriteDetailFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.detail.FavoriteDetailFragment"
         android:label="fragment_favorite_detail"
         tools:layout="@layout/fragment_favorite_detail" />
-
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>
