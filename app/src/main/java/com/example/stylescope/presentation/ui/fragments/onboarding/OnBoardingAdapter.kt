@@ -15,7 +15,7 @@ class OnBoardingAdapter() : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingVie
             isBack = false,
             title = "Удобство",
             desc = "Мы предоставляем удобный и быстрый способ найти лучшие дизайнерские услуги в Кыргызстане и получить профессиональную помощь в создании уникального пространства.",
-            img = R.drawable.on_boarding_img1
+            img = R.drawable.on_boarding_img_1
         ),
         OnBoarding(
             isBack = true,
