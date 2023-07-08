@@ -37,12 +37,12 @@ class DetailCompanyFragment :
         binding.rvReviews.adapter = companyReviewsAdapter
 
         viewModel.state.spectateUiState(success = { company ->
-            binding.imgDetailCompany.loadImage(company.image)
+            company.image?.let { binding.imgDetailCompany.loadImage(it) }
             binding.tvDetailCompanyDes.text = company.about
             Log.w("ololo", "launchObservers: ${company.about}")
             binding.tvWhatsappContact.text = company.phoneNumber1
-            val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
-            val insta = instagram.replace("/", "")
+            val instagram = company.socialMedia1?.replace("https://www.instagram.com/", "")
+            val insta = instagram?.replace("/", "")
             binding.tvInstagramContact.text = insta
             binding.tvGmailContact.text = company.email1
             binding.tvCompanyAddress.text = company.address
