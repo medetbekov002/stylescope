@@ -6,7 +6,9 @@ data class ChangePasswordDto(
     @SerializedName("old_password")
     val oldPassword: String,
     @SerializedName("new_password")
-    val newPassword: String
+    val newPassword: String,
+    @SerializedName("new_password2")
+    val newPassword2: String
 )
 
 data class ResendResetCodeDto(
