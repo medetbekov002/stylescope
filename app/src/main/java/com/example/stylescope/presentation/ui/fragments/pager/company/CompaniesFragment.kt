@@ -1,6 +1,8 @@
 package com.example.stylescope.presentation.ui.fragments.pager.company
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.core.view.isGone
@@ -17,7 +19,7 @@ import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CompaniesFragment :
-        BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
+    BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
     override val binding: FragmentCompaniesBinding by viewBinding(FragmentCompaniesBinding::bind)
     override val viewModel: CompaniesViewModel by viewModel()
     private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
@@ -26,25 +28,39 @@ class CompaniesFragment :
     private var selectedService: String? = null
     override fun launchObservers() {
         binding.rvCompanies.adapter = adapter
-        viewModel.companyState.spectateUiState(success = { companies ->
-            adapter.submitList(companies)
-            list.addAll(companies)
+        viewModel.companyState.spectateUiState(
+            success = { companies ->
+                adapter.submitList(companies)
+                list.addAll(companies)
 
-            val packages = companies.flatMap { companyUI ->
-                companyUI.packages!!.mapNotNull { it as? CompanyPackageUI }
-            }
+                val packages = companies.flatMap { companyUI ->
+                    companyUI.packages!!.mapNotNull { it as? CompanyPackageUI }
+                }
 
-            val services = companies.flatMap { companyUI ->
-                companyUI.services!!.mapNotNull { it as? ServicesUI }
-            }
+                val services = companies.flatMap { companyUI ->
+                    companyUI.services!!.mapNotNull { it as? ServicesUI }
+                }
 
-            setupDropdownMenu(packages)
-            setupServiceDropdownMenu(services)
-        })
+                setupDropdownMenu(packages)
+                setupServiceDropdownMenu(services)
+            })
     }
 
     override fun constructListeners() {
-        binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        var filterState = false
+        binding.imgFilter.setOnClickListener {
+            if (!filterState) {
+                binding.imgFilter.setImageResource(R.drawable.ic_filter_click)
+                binding.layoutContainer.isVisible = true
+                filterState = true
+            } else {
+                binding.imgFilter.setImageResource(R.drawable.ic_filter)
+                binding.layoutContainer.isGone = true
+                filterState = false
+            }
+        }
+        binding.etSearch.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -57,7 +73,8 @@ class CompaniesFragment :
             }
         })
 
-        binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.etSearch.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -90,24 +107,61 @@ class CompaniesFragment :
     }
 
     private fun setupDropdownMenu(packages: List<CompanyPackageUI>) {
+        var filterState = false
         val packageNamesSet = mutableSetOf<String>()
         packages.forEach { packageUI ->
             packageNamesSet.add(packageUI.title!!)
         }
 
         val packageNames = packageNamesSet.toList()
-        val arrayAdapter = ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item, packageNames)
-        binding.etService.setAdapter(arrayAdapter)
+        val limitedPackageNames = packageNames.subList(
+            0,
+            minOf(3, packageNames.size)
+        ) // Получаем ограниченный подсписок с максимум тремя элементами
+        val arrayAdapter = ArrayAdapter(
+            requireActivity(),
+            R.layout.dropdown_filterservice_item,
+            limitedPackageNames
+        )
+        binding.etClasses.setAdapter(arrayAdapter)
 
-        binding.etService.setOnClickListener {
-            binding.etService.showDropDown()
+        binding.etClasses.setOnClickListener {
+            binding.etClasses.showDropDown()
         }
 
-        binding.etService.setOnItemClickListener { _, _, position, _ ->
-            val selectedPackageName = packageNames[position]
+        binding.etClasses.setOnItemClickListener { _, _, position, _ ->
+            val selectedPackageName = limitedPackageNames[position]
             filterByPackageTitle(selectedPackageName)
             selectedPackage = selectedPackageName
             applyFilters()
+        }
+        binding.etClasses.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Не используется, оставляем пустым
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Не используется, оставляем пустым
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length ?: 0 > 0) {
+                    binding.inputClass.hint = null // Установка пустого значения подсказки
+                    binding.inputClass.setEndIconDrawable(R.drawable.ic_done)
+                } else {
+                    binding.inputClass.hint = "Выбрать класс"
+                }
+            }
+        })
+        binding.etClasses.setOnClickListener {
+            if (!filterState) {
+                binding.etClasses.showDropDown()
+                binding.inputClass.setEndIconDrawable(R.drawable.ic_done_up)
+                filterState = true
+            } else {
+                binding.inputClass.setEndIconDrawable(R.drawable.ic_done)
+                filterState = false
+            }
         }
     }
 
@@ -118,19 +172,35 @@ class CompaniesFragment :
         }
 
         val serviceName = serviceNameSet.toList()
-        val arrayAdapter = ArrayAdapter(requireActivity(),R.layout.dropdown_filterservice_item2,serviceName)
-        binding.filledExposed.setAdapter(arrayAdapter)
-
-        binding.filledExposed.setOnClickListener {
-            binding.filledExposed.showDropDown()
+        val arrayAdapter =
+            ArrayAdapter(requireActivity(), R.layout.dropdown_filterservice_item2, serviceName)
+        binding.etService.setAdapter(arrayAdapter)
+        binding.etService.setOnClickListener {
+            binding.etService.showDropDown()
         }
-
-        binding.filledExposed.setOnItemClickListener { _, _, position, _ ->
+        binding.etService.setOnItemClickListener { _, _, position, _ ->
             val selectedServiceName = serviceName[position]
             filterByServiceTitle(selectedServiceName)
             selectedService = selectedServiceName
             applyFilters()
         }
+        binding.etService.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Не используется, оставляем пустым
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Не используется, оставляем пустым
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length ?: 0 > 0) {
+                    binding.inputService.hint = null // Установка пустого значения подсказки
+                } else {
+                    binding.inputService.hint = "Добавить услугу" // Восстановление подсказки
+                }
+            }
+        })
     }
 
     private fun filterByPackageTitle(title: String) {
@@ -142,14 +212,15 @@ class CompaniesFragment :
         adapter.submitList(filteredPackages)
     }
 
-    private fun filterByServiceTitle(title:String) {
+    private fun filterByServiceTitle(title: String) {
         val filterServices = list.filter { companyUI ->
-            companyUI.packages!!.any{ serviceUI ->
-                serviceUI.title.equals(title,true)
+            companyUI.packages!!.any { serviceUI ->
+                serviceUI.title.equals(title, true)
             }
         }
         adapter.submitList(filterServices)
     }
+
     private fun applyFilters() {
         val filteredList = list.filter { companyUI ->
             val packageMatches = selectedPackage?.let { packageName ->

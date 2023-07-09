@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:orientation="vertical"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@id/img_filter"
                     app:layout_constraintStart_toStartOf="@id/et_search"
                     app:layout_constraintTop_toBottomOf="@id/et_search">
@@ -65,9 +65,10 @@
                         android:textSize="18sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/input_service"
                         android:layout_marginVertical="8dp"
                         app:endIconDrawable="@drawable/ic_plus"
                         app:endIconMode="custom"
@@ -77,15 +78,19 @@
                             android:id="@+id/et_service"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:background="@drawable/bg_edit_txt"
+                            android:clickable="false"
                             android:completionThreshold="0"
+                            android:autofillHints=""
                             android:dropDownWidth="wrap_content"
                             android:dropDownHeight="wrap_content"
                             android:dropDownVerticalOffset="0dp"
                             android:editable="false"
+                            android:focusable="false"
                             android:hint="Добавить услугу"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:textColor="@color/urmat_light_blue"
+                            android:textColorHint="@color/white" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,23 +107,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
+                        android:id="@+id/input_class"
                         app:endIconDrawable="@drawable/ic_done"
                         app:endIconMode="custom"
                         app:endIconTint="#0085FF">
 
                         <AutoCompleteTextView
-                            android:id="@+id/filled_exposed"
+                            android:id="@+id/et_classes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_edit_txt"
                             android:hint="Выбрать класс"
-                            android:layout_weight="1"
                             android:completionThreshold="0"
+                            android:textColorHint="@color/white"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:textColor="@color/urmat_light_blue"
                             android:dropDownWidth="wrap_content"
-                            android:editable="false"
                             android:dropDownHeight="wrap_content"
                             android:dropDownVerticalOffset="0dp"
+                            android:editable="false"
                             android:inputType="none" />
+
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -147,6 +157,5 @@
             layout="@layout/item_bad_request"
             android:visibility="gone" />
     </FrameLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
