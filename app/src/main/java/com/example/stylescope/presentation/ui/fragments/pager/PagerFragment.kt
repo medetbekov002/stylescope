@@ -17,12 +17,10 @@ class PagerFragment : BaseFragmentWithoutViewModel<FragmentPagerBinding>(R.layou
 
     private fun initPagerTabs() {
         binding.pager.adapter = PagerAdapter(this)
-
         val fragmentsTabs = listOf(
             "Компании",
             "Дизайнеры"
         )
-
         TabLayoutMediator(binding.pagerTab, binding.pager) { tab, position ->
             tab.text = fragmentsTabs[position]
         }.attach()
