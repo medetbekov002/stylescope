@@ -69,7 +69,7 @@ class DetailCompanyFragment :
     }
 
     private fun sendReview(companyID: Int) {
-        val rank = binding.rank.rating.toString()
+        val rank = binding.rank.rating.toInt()
         val text = binding.etUserReviews.text.toString()
         val model = ReviewSendUI(rank = rank, text = text)
         viewModel.sendReview(model, companyID.toString())

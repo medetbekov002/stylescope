@@ -6,7 +6,7 @@ import com.example.stylescope.domain.model.review.ReviewSendModel
 import com.google.gson.annotations.SerializedName
 
 data class ReviewSendDto(
-    val rank: String,
+    val rank: Int,
     val text: String
 ): DataMapper<ReviewSendModel> {
     override fun toDomain() = ReviewSendModel(
@@ -23,7 +23,7 @@ fun ReviewSendModel.toDto() = ReviewSendDto(
 
 data class ReviewAnswerDto(
     val id: Int,
-    val rank: String,
+    val rank: Int,
     val company: String,
     val text: String,
     @SerializedName("user_photo")

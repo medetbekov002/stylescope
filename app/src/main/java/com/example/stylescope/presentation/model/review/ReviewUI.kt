@@ -5,7 +5,7 @@ import com.example.stylescope.domain.model.review.ReviewAnswerModel
 import com.example.stylescope.domain.model.review.ReviewSendModel
 
 data class ReviewSendUI(
-    val rank: String,
+    val rank: Int,
     val text: String
 ): DataMapper<ReviewSendModel> {
     override fun toDomain() = ReviewSendModel(
@@ -22,7 +22,7 @@ fun ReviewSendModel.toUI() = ReviewSendUI(
 
 data class ReviewAnswerUI(
     val id: Int,
-    val rank: String,
+    val rank: Int,
     val company: String,
     val text: String,
     val userPhoto: String
