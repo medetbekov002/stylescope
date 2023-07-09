@@ -12,6 +12,7 @@ import com.example.stylescope.data.remote.repository.token.TokenRepositoryImpl
 import com.example.stylescope.domain.repository.changepassword.ChangePasswordRepository
 import com.example.stylescope.data.remote.repository.user.profile.UpdateUserImageRepositoryImpl
 import com.example.stylescope.data.remote.repository.user.profile.UpdateUserProfileRepositoryImpl
+import com.example.stylescope.data.remote.repository.user.profile.UserChangePasswordRepositoryImpl
 import com.example.stylescope.data.remote.repository.user.profile.UserProfileRepositoryImpl
 import com.example.stylescope.domain.repository.company.CompanyRepository
 import com.example.stylescope.domain.repository.confirm.ConfirmRepository
@@ -23,6 +24,7 @@ import com.example.stylescope.domain.repository.register.RegisterRepository
 import com.example.stylescope.domain.repository.token.TokenRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserImageRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserProfileRepository
+import com.example.stylescope.domain.repository.user.profile.UserChangePasswordRepository
 import com.example.stylescope.domain.repository.user.profile.UserProfileRepository
 import org.koin.dsl.module
 
@@ -39,4 +41,5 @@ val repoModule = module {
     single<UserProfileRepository> { UserProfileRepositoryImpl(get()) }
     single<UpdateUserProfileRepository> { UpdateUserProfileRepositoryImpl(get()) }
     single<UpdateUserImageRepository> { UpdateUserImageRepositoryImpl(get()) }
+    single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
 }

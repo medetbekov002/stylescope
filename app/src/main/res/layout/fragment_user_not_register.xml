@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.profile.UserNotRegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="У вас нет профиля"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:id="@+id/tv_not_profile"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"/>
 
-</FrameLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_not_profile"
+        android:text="Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт, чтобы открыть профиль"
+        android:textSize="@dimen/_16sp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="14dp"
+        android:textColor="@color/black"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Зарегистрироваться"
+        android:layout_marginHorizontal="14dp"
+        android:backgroundTint="#0E53B4"
+        android:paddingVertical="15dp"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="@dimen/_8dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_in_user"
+        android:layout_gravity="bottom"
+        android:id="@+id/btn_register_user"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:layout_marginHorizontal="14dp"
+        android:textColor="@color/black"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="20dp"
+        android:paddingVertical="15dp"
+        app:cornerRadius="@dimen/_8dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/btn_sign_in_user"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

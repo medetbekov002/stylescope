@@ -17,12 +17,7 @@ private val updateUserProfileUseCase: UpdateUserProfileUseCase) : BaseViewModel(
 
     private val _updateUserProfileState = mutableUIStateFlow<List<String>>()
     val updateUserProfileState get() = _updateUserProfileState.asStateFlow()
-
-    init {
-        getUserProfile()
-    }
-
-   private fun getUserProfile() {
+    fun getUserProfile() {
         userProfileUseCase().gatherRequest(_userProfileState) { it.toUI() }
     }
 

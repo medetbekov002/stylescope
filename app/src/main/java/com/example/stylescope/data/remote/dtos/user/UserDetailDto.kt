@@ -19,16 +19,16 @@ data class UserDetailDto(
 )
 
 data class UserValidateDto(
+    val id: Int,
+    val image: String,
     @SerializedName("first_name")
     val firstName: String,
     @SerializedName("last_name")
     val lastName: String,
     @SerializedName("about_me")
     val aboutMe: String,
-    val image: String? = null,
-    val id: Int,
     val username: String,
-    val email: String,
+    val email: String
 ) : DataMapper<UserValidateModel> {
     override fun toDomain() = UserValidateModel(
         firstName = firstName,

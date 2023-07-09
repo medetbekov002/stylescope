@@ -1,7 +1,11 @@
 package com.example.stylescope.presentation.ui.fragments.profile.dialog
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.MediaStore.Audio.Media
@@ -21,7 +25,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 import java.lang.Error
 
 class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
@@ -41,6 +50,7 @@ class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
+        launchObserver()
     }
 
     private fun launchObserver() {
@@ -49,7 +59,7 @@ class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
                 viewModel.updateUserImageState.collect {
                     when(it) {
                         is UIState.Idle -> Unit
-                        is UIState.Loading -> Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                        is UIState.Loading -> Unit
                         is UIState.Success -> dismiss()
                         is UIState.Error -> Log.e("ololo", it.error)
                     }
@@ -58,6 +68,7 @@ class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
         }
     }
 
+    @SuppressLint("Recycle")
     private fun initListeners() {
         binding.btnClose.setOnClickListener {
             dismiss()
@@ -66,8 +77,10 @@ class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
         val galleryLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    val data: Intent? = result.data
-                    viewModel.updateUserImage(UpdateUserImageUI(image = data.toString()))
+                    val selectedImage = result.data?.data
+                    val imageFile = File(getRealPathFromURI(selectedImage!!))
+                    val imagePart = createImagePart(imageFile.toString())
+                    viewModel.updateUserImage(imagePart)
                 }
             }
 
@@ -76,5 +89,21 @@ class UpdateUserImageDialogFragment : BottomSheetDialogFragment() {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             galleryLauncher.launch(intent)
         }
+    }
+
+    private fun createImagePart(filePath: String): MultipartBody.Part {
+        val file = File(filePath)
+        val requestFile = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+        return MultipartBody.Part.createFormData("image", file.name, requestFile)
+    }
+
+    private fun getRealPathFromURI(uri: Uri): String {
+        val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = requireActivity().contentResolver.query(uri, filePathColumn, null, null, null)
+        cursor?.moveToFirst()
+        val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
+        val filePath = columnIndex?.let { cursor.getString(it) }
+        cursor?.close()
+        return filePath!!
     }
 }
