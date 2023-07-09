@@ -1,33 +1,30 @@
-package com.example.stylescope.presentation.ui.fragments.favorite
+package com.example.stylescope.presentation.ui.fragments.myreviews
 
+import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.common.UIState
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.data.local.Pref
-import com.example.stylescope.databinding.FragmentFavoriteBinding
-import com.example.stylescope.presentation.ui.adapters.company.CompanyAdapter
-import com.example.stylescope.presentation.ui.adapters.designer.DesignerAdapter
+import com.example.stylescope.databinding.FragmentMyReviewsBinding
+import com.example.stylescope.presentation.ui.fragments.myreviews.adapter.MyReviewCompanyAdapter
+import com.example.stylescope.presentation.ui.fragments.myreviews.adapter.MyReviewDesignerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class FavoriteFragment :
-    BaseFragment<FragmentFavoriteBinding, FavoriteViewModel>(R.layout.fragment_favorite) {
-
-    override val binding: FragmentFavoriteBinding by viewBinding(FragmentFavoriteBinding::bind)
-    override val viewModel: FavoriteViewModel by viewModel()
-    private val adapterCompany: CompanyAdapter by lazy { CompanyAdapter(this::clickCompany) }
-    private val adapterDesigner: DesignerAdapter by lazy { DesignerAdapter(this::clickDesigner) }
-    private val pref: Pref by lazy { Pref(requireContext()) }
-
-    companion object{
-        const val KEY_FAVORITE = "favorite"
-    }
+class MyReviewsFragment : BaseFragment<FragmentMyReviewsBinding,MyReviewsViewModel>(R.layout.fragment_my_reviews){
+    override val binding: FragmentMyReviewsBinding by viewBinding(FragmentMyReviewsBinding::bind)
+    override val viewModel: MyReviewsViewModel by viewModel()
+    private val adapterCompany: MyReviewCompanyAdapter by lazy {MyReviewCompanyAdapter(this::clickCompany) }
+    private val adapterDesigner: MyReviewDesignerAdapter by lazy { MyReviewDesignerAdapter(this::clickDesigner) }
+    private val pref:Pref by lazy { Pref(requireContext()) }
 
     override fun initialize() {
         super.initialize()
@@ -40,10 +37,14 @@ class FavoriteFragment :
             viewModel.getFavorites()
             viewModel.state.spectateUiState(
                 success = {
-                    adapterCompany.submitList(it.companies)
-                    adapterDesigner.submitList(it.designers)
+                    Log.e("ololo","MRF.lO.success.token:${pref.showToken()}")
+                    Log.e("ololo","MRF.lO.success:$it")
+                    adapterCompany.submitList(it.company_reviews)
+                    adapterDesigner.submitList(it.designer_reviews)
                 },
                 error = {
+                    Log.e("ololo","MRF.lO.error.token:${pref.showToken()}")
+                    Log.e("ololo","MRF.lO.error:$it")
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 },
                 gatherIfSucceed = {
@@ -52,6 +53,7 @@ class FavoriteFragment :
             )
         }
     }
+
 
 
     private fun initAdapters() {

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.favorite.detail.FavoriteDetailFragment">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/loading"
@@ -14,9 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -75,6 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
+
             <View
                 android:id="@+id/viewCompanies"
                 android:layout_width="match_parent"
@@ -84,32 +86,72 @@
                 android:background="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/favoriteCount" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCompanies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/viewCompanies"
+                tools:listitem="@layout/item_companies" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDesigners"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Дизайнеры"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCompanies" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/favoriteCountDesigners"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="6dp"
+                android:text="3 избранных"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDesigners" />
+
+            <Button
+                android:id="@+id/btnDesigners"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="14dp"
+                android:drawableRight="@drawable/ic_filter"
+                android:drawablePadding="4dp"
+                android:text="Смотреть все"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCompanies" />
+
+
+            <View
+                android:id="@+id/viewDesigners"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/favoriteCountDesigners" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDesigners"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="18dp"
-                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewCompanies">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCompanies"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_companies" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvDesigners"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_designers" />
-
-            </LinearLayout>
-
+                app:layout_constraintTop_toBottomOf="@id/viewDesigners"
+                tools:listitem="@layout/item_designers" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
