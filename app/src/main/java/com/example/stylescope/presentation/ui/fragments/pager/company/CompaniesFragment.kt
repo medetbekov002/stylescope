@@ -37,8 +37,9 @@ class CompaniesFragment :
 
         viewModel.saveCompanyState.spectateUiState(success = {
             Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+            Log.e("favorite", "Успешно сохранено")
         }, error = {
-            Log.e("ololo", it)
+            Log.e("favorite", it)
         })
 
         viewModel.companyState.spectateUiState(
