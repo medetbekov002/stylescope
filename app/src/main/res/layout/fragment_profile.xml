@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
@@ -240,6 +240,7 @@
         android:id="@+id/refactor_user_profile_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginHorizontal="14dp"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
@@ -250,6 +251,5 @@
             layout="@layout/refactor_profile"/>
 </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

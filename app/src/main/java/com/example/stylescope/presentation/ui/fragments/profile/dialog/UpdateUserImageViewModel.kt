@@ -5,6 +5,7 @@ import com.example.stylescope.domain.use_cases.user.profile.UpdateUserImageUseCa
 import com.example.stylescope.presentation.model.user.UpdateUserImageUI
 import com.example.stylescope.presentation.model.user.toUI
 import kotlinx.coroutines.flow.asStateFlow
+import okhttp3.MultipartBody
 
 class UpdateUserImageViewModel(private val updateUserImageUseCase: UpdateUserImageUseCase) :
     BaseViewModel() {
@@ -12,7 +13,7 @@ class UpdateUserImageViewModel(private val updateUserImageUseCase: UpdateUserIma
     private val _updateUserImageState = mutableUIStateFlow<UpdateUserImageUI>()
     val updateUserImageState get() = _updateUserImageState.asStateFlow()
 
-    fun updateUserImage(model: UpdateUserImageUI) {
-        updateUserImageUseCase(model = model.toDomain()).gatherRequest(_updateUserImageState) { it.toUI() }
+    fun updateUserImage(image: MultipartBody.Part) {
+        updateUserImageUseCase(image).gatherRequest(_updateUserImageState) { it.toUI() }
     }
 }

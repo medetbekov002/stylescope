@@ -158,5 +158,15 @@
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.detail.FavoriteDetailFragment"
         android:label="fragment_favorite_detail"
         tools:layout="@layout/fragment_favorite_detail" />
+    <fragment
+        android:id="@+id/userNotRegisterFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.UserNotRegisterFragment"
+        android:label="fragment_user_not_register"
+        tools:layout="@layout/fragment_user_not_register" />
+    <fragment
+        android:id="@+id/changeUserPasswordFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.user_change_password.ChangeUserPasswordFragment"
+        android:label="fragment_change_user_password"
+        tools:layout="@layout/fragment_change_user_password" />
 
 </navigation>

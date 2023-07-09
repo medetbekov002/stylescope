@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.example.stylescope.MainActivity
 import com.example.stylescope.R
 
 @SuppressLint("CustomSplashScreen")
