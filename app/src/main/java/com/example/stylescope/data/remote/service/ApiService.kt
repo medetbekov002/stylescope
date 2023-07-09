@@ -14,6 +14,7 @@ import com.example.stylescope.data.remote.dtos.designer.DesignerDto
 import com.example.stylescope.data.remote.dtos.favorite.FavoriteItemDto
 import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
+import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
 import com.example.stylescope.data.remote.dtos.review.ReviewAnswerDto
 import com.example.stylescope.data.remote.dtos.review.ReviewSendDto
@@ -75,7 +76,7 @@ interface ApiService {
 
     @POST("users/register/")
     suspend fun register(
-        @Body body: RegisterDto
+        @Body body:RegisterDto
     ):List<String>
 
     @POST("users/confirm/")
@@ -98,6 +99,8 @@ interface ApiService {
         @Body body:ChangePasswordDto
     ):ChangePasswordAnswerDto
 
+    @GET("users/myreviews/")
+    suspend fun getReviews():MyReviewsDto
     @GET("users/profile/")
     suspend fun getUserProfile(
     ): UserValidateDto

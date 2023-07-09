@@ -58,7 +58,7 @@
         android:label="fragment_companies"
         tools:layout="@layout/fragment_companies">
         <action
-            android:id="@+id/action_companiesFragment_to_detailCompanyFragment"
+            android:id="@+id/action_companiesFragment_to_detailCompanyFragment2"
             app:destination="@id/detailCompanyFragment">
             <argument
                 android:name="companyID"
@@ -81,7 +81,6 @@
                 app:argType="integer" />
         </action>
     </fragment>
-
     <fragment
         android:id="@+id/confirmCodeFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeFragment"
@@ -150,13 +149,13 @@
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
-        android:id="@+id/favoriteDetailFragment"
-        android:name="com.example.stylescope.presentation.ui.fragments.favorite.detail.FavoriteDetailFragment"
-        android:label="fragment_favorite_detail"
-        tools:layout="@layout/fragment_favorite_detail" />
-    <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" />
+    <fragment
+        android:id="@+id/myReviewsFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.myreviews.MyReviewsFragment"
+        android:label="fragment_my_reviews"
+        tools:layout="@layout/fragment_my_reviews" />
 </navigation>

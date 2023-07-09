@@ -61,6 +61,8 @@ data class CompanyReviewModel(
     val text: String,
     val user_photo: String,
     val username: String,
+    val first_name:String?=null,
+    val last_name:String?=null,
     val time_since_published: String
 )
 data class CompanyReviewTitleModel(
