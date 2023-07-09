@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -163,4 +163,14 @@
         android:name="com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" />
+    <fragment
+        android:id="@+id/userNotRegisterFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.UserNotRegisterFragment"
+        android:label="fragment_user_not_register"
+        tools:layout="@layout/fragment_user_not_register" />
+    <fragment
+        android:id="@+id/changeUserPasswordFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.user_change_password.ChangeUserPasswordFragment"
+        android:label="fragment_change_user_password"
+        tools:layout="@layout/fragment_change_user_password" />
 </navigation>
