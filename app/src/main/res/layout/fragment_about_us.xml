@@ -291,11 +291,16 @@
 <!--            app:layout_constraintTop_toBottomOf="@id/img_location"-->
 <!--            tools:ignore="ContentDescription" />-->
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <fragment
+            android:layout_marginHorizontal="@dimen/_12dp"
+            android:id="@+id/img_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop"
             android:importantForAccessibility="no"
             android:src="@drawable/location"
             app:layout_constraintBottom_toBottomOf="parent"
