@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.pager.company.CompaniesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -50,8 +50,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:visibility="gone"
                     android:orientation="vertical"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="@id/img_filter"
                     app:layout_constraintStart_toStartOf="@id/et_search"
                     app:layout_constraintTop_toBottomOf="@id/et_search">
@@ -65,8 +65,8 @@
                         android:textSize="18sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
                         app:endIconDrawable="@drawable/ic_plus"
@@ -74,11 +74,19 @@
                         app:endIconTint="#0085FF">
 
                         <AutoCompleteTextView
-                            android:background="@drawable/bg_edit_txt"
+                            android:id="@+id/et_service"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_edit_txt"
+                            android:completionThreshold="0"
+                            android:dropDownWidth="wrap_content"
+                            android:dropDownHeight="wrap_content"
+                            android:dropDownVerticalOffset="0dp"
+                            android:editable="false"
                             android:hint="Добавить услугу"
                             android:inputType="none" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textview.MaterialTextView
@@ -99,37 +107,19 @@
                         app:endIconTint="#0085FF">
 
                         <AutoCompleteTextView
-                            android:background="@drawable/bg_edit_txt"
                             android:id="@+id/filled_exposed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_txt"
                             android:hint="Выбрать класс"
+                            android:layout_weight="1"
+                            android:completionThreshold="0"
+                            android:dropDownWidth="wrap_content"
+                            android:editable="false"
+                            android:dropDownHeight="wrap_content"
+                            android:dropDownVerticalOffset="0dp"
                             android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_class_filter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/item_class_filter" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_apply"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:textSize="20sp"
-                        android:layout_margin="16dp"
-                        android:backgroundTint="#4945FF"
-                        android:textColor="@color/white"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="8dp"
-                        android:text="Применить"
-                        android:textAllCaps="false"
-                        app:cornerRadius="8dp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -140,8 +130,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="14dp"
-        android:paddingHorizontal="14dp"
         android:layout_marginBottom="8dp"
+        android:paddingHorizontal="14dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:spanCount="2"
@@ -157,8 +147,6 @@
             layout="@layout/item_bad_request"
             android:visibility="gone" />
     </FrameLayout>
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

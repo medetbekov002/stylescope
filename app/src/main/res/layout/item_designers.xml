@@ -87,6 +87,8 @@
             app:layout_constraintBottom_toBottomOf="@id/item_tv_rating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_tv_rating"
+            android:isIndicator="true"
+            app:mrb_progressTint="@color/yellow"
             android:id="@+id/item_rating_bar"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

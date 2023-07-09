@@ -48,7 +48,7 @@ class DesignerFragment :
     }
 
     private fun searchInDataList(name: String) {
-        val searchData = list.filter { it.name.contains(name, ignoreCase = true) }
+        val searchData = list.filter { it.name!!.contains(name, ignoreCase = true) }
         if (searchData.isNotEmpty()) {
             adapter.submitList(searchData)
             binding.badRequest.root.isGone = true
