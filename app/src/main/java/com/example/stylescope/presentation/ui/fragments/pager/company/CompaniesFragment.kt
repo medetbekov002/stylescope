@@ -2,6 +2,7 @@ package com.example.stylescope.presentation.ui.fragments.pager.company
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -56,6 +57,16 @@ class CompaniesFragment :
                 return true
             }
         })
+
+        binding.imgFilter.setOnClickListener {
+            if (binding.layoutContainer.isVisible) {
+                binding.layoutContainer.visibility = View.GONE
+                binding.imgFilter.setBackgroundResource(R.drawable.ic_filter)
+            } else {
+                binding.layoutContainer.visibility = View.VISIBLE
+                binding.imgFilter.setBackgroundResource(R.drawable.filter_is_true)
+            }
+        }
 
         binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -157,16 +168,13 @@ class CompaniesFragment :
                     packageUI.title.equals(packageName, ignoreCase = true)
                 }
             } ?: true
-
             val serviceMatches = selectedService?.let { serviceName ->
                 companyUI.services?.any { serviceUI ->
                     serviceUI.title.equals(serviceName, ignoreCase = true)
                 }
             } ?: true
-
             packageMatches && serviceMatches
         }
-
         adapter.submitList(filteredList)
     }
 }
