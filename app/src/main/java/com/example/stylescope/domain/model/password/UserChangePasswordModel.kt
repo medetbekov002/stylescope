@@ -1,6 +1,4 @@
 package com.example.stylescope.domain.model.password
-
-//jascjabсыоиф
 data class UserChangePasswordModel(
     val oldPassword: String,
     val newPassword: String,

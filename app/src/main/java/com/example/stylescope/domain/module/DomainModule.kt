@@ -35,6 +35,4 @@ val useCasesModule = module {
     factory { UpdateUserProfileUseCase(get()) }
     factory { UpdateUserImageUseCase(get()) }
     factory { UserChangePasswordUseCase(get()) }
-
-    //ырвислфивслжоф
 }

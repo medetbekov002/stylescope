@@ -36,5 +36,4 @@ val uiModule = module {
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { UpdateUserImageViewModel(get()) }
     viewModel { ChangeUserPasswordViewModel(get()) }
-    //skdbcjksancdj;and;oscn
 }

@@ -12,7 +12,6 @@ data class UserChangePasswordDto(
     val newPassword2: String
 )
 
-//втысдфтыc;lkas
 fun UserChangePasswordModel.toData() = UserChangePasswordDto(
     oldPassword = oldPassword,
     newPassword = newPassword,

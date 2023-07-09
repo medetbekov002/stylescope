@@ -38,9 +38,8 @@ val repoModule = module {
     single<ChangePasswordRepository> { ChangePasswordRepositoryImpl(get()) }
     single<TokenRepository> { TokenRepositoryImpl(get()) }
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
-    single<UserProfileRepository> { UserProfileRepositoryImpl(get(), get()) }
+    single<UserProfileRepository> { UserProfileRepositoryImpl(get()) }
     single<UpdateUserProfileRepository> { UpdateUserProfileRepositoryImpl(get()) }
     single<UpdateUserImageRepository> { UpdateUserImageRepositoryImpl(get()) }
     single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
-    //офывтсжолытвжстц
 }
