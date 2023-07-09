@@ -8,14 +8,14 @@ import com.example.stylescope.domain.model.designer.DesignerModel
 import com.google.gson.annotations.SerializedName
 
 data class DesignerDto(
-    val id: Int,
-    val name: String,
-    val photo: String,
+    val id: Int? = null,
+    val name: String? = null,
+    val photo: String? = null,
     @SerializedName("company_title")
-    val occupation: String,
-    val rating: String,
+    val occupation: String? = null,
+    val rating: String? = null,
     @SerializedName("count_reviews")
-    val countReviews: String
+    val countReviews: String? = null
 ) : DataMapper<DesignerModel> {
     override fun toDomain() = DesignerModel(
         id = id,
@@ -28,22 +28,22 @@ data class DesignerDto(
 }
 
 data class DesignerDetailDto(
-    val name: String,
-    val surname: String,
-    val photo: String,
+    val name: String? = null,
+    val surname: String? = null,
+    val photo: String? = null,
     @SerializedName("work_EXP")
-    val workEXP: String,
-    val occupation: String,
-    val description: String,
+    val workEXP: String? = null,
+    val occupation: String? = null,
+    val description: String? = null,
     @SerializedName("phone_number")
-    val phoneNumber: String,
-    val email: String,
-    val instagram: String,
-    val gallery: List<DesignerGalleryDto>,
-    val rating: String,
+    val phoneNumber: String? = null,
+    val email: String? = null,
+    val instagram: String? = null,
+    val gallery: List<DesignerGalleryDto>? = null,
+    val rating: String? = null,
     @SerializedName("count_reviews")
-    val countReviews: String,
-    val reviews: List<DesignReviewDtp>
+    val countReviews: String? = null,
+    val reviews: List<DesignReviewDtp>? = null
 ) : DataMapper<DesignerDetailModel> {
     override fun toDomain() = DesignerDetailModel(
         name = name,
@@ -55,16 +55,16 @@ data class DesignerDetailDto(
         phoneNumber = phoneNumber,
         email = email,
         instagram = instagram,
-        gallery = gallery.map { it.toDomain() },
+        gallery = gallery?.map { it.toDomain() },
         rating = rating,
         countReviews = countReviews,
-        reviews = reviews.map { it.toDomain() }
+        reviews = reviews?.map { it.toDomain() }
     )
 }
 
 data class DesignerGalleryDto(
-    val about: String,
-    val image: String
+    val about: String? = null,
+    val image: String? = null
 ) : DataMapper<DesignerGalleryModel> {
     override fun toDomain() = DesignerGalleryModel(
         about = about,
@@ -73,28 +73,28 @@ data class DesignerGalleryDto(
 }
 
 data class DesignReviewDtp(
-    val id: Int,
-    val rank: Int,
-    val text: String,
-    val user_photo: String,
-    val designer: RVDesignerDto,
-    val username: String,
-    val time_since_published: String
+    val id: Int? = null,
+    val rank: Int? = null,
+    val text: String? = null,
+    val user_photo: String? = null,
+    val designer: RVDesignerDto? = null,
+    val username: String? = null,
+    val time_since_published: String? = null
 ) : DataMapper<DesignReviewModel> {
     override fun toDomain() = DesignReviewModel(
         id = id,
         rank = rank,
         text = text,
         user_photo = user_photo,
-        designer = designer.toDomain(),
+        designer = designer?.toDomain(),
         username = username,
         time_since_published = time_since_published
     )
 }
 
 data class RVDesignerDto(
-    val name: String,
-    val photo_url: String
+    val name: String? = null,
+    val photo_url: String? = null
 ) : DataMapper<DesignReviewModel.RVDesignerModel> {
     override fun toDomain() = DesignReviewModel.RVDesignerModel (
         name = name,

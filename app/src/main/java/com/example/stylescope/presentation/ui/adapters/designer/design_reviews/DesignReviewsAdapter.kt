@@ -27,9 +27,9 @@ class DesignReviewsAdapter :
     class DesignReviewsViewHolder(private val binding: ItemReviewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: DesignReviewUI) {
-            binding.itemImgReviews.loadImage(model.user_photo)
+            binding.itemImgReviews.loadImage(model.user_photo!!)
             val rating = model.rank
-            binding.itemRatingReviews.rating = rating.toFloat()
+            binding.itemRatingReviews.rating = rating!!.toFloat()
             binding.itemTvReviewsName.text = model.username
             binding.itemTextReviews.text = model.text
             binding.itemTvReviewsHoursAgo.text = model.time_since_published

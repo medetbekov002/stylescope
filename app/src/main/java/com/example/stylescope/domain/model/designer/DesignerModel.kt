@@ -1,47 +1,46 @@
 package com.example.stylescope.domain.model.designer
 
-
 data class DesignerModel(
-    val id: Int,
-    val name: String,
-    val photo: String,
-    val occupation: String,
-    val rating: String,
-    val countReviews: String
+    val id: Int? = null,
+    val name: String? = null,
+    val photo: String? = null,
+    val occupation: String? = null,
+    val rating: String? = null,
+    val countReviews: String? = null
 )
 
 data class DesignerDetailModel(
-    val name:String,
-    val surname:String,
-    val photo:String,
-    val workEXP:String,
-    val occupation:String,
-    val description:String,
-    val phoneNumber:String,
-    val email:String,
-    val instagram:String,
-    val gallery:List<DesignerGalleryModel>,
-    val rating:String,
-    val countReviews:String,
-    val reviews: List<DesignReviewModel>
+    val name: String? = null,
+    val surname: String? = null,
+    val photo: String? = null,
+    val workEXP: String? = null,
+    val occupation: String? = null,
+    val description: String? = null,
+    val phoneNumber: String? = null,
+    val email: String? = null,
+    val instagram: String? = null,
+    val gallery: List<DesignerGalleryModel>? = null,
+    val rating: String? = null,
+    val countReviews: String? = null,
+    val reviews: List<DesignReviewModel>? = null
 )
 
 data class DesignerGalleryModel(
-    val about:String,
-    val image:String
+    val about: String? = null,
+    val image: String? = null
 )
 
 data class DesignReviewModel(
-    val id: Int,
-    val rank: Int,
-    val text: String,
-    val user_photo: String,
-    val designer: RVDesignerModel,
-    val username: String,
-    val time_since_published: String
+    val id: Int? = null,
+    val rank: Int? = null,
+    val text: String? = null,
+    val user_photo: String? = null,
+    val designer: RVDesignerModel? = null,
+    val username: String? = null,
+    val time_since_published: String? = null
 ) {
     data class RVDesignerModel(
-        val name: String,
-        val photo_url: String
+        val name: String? = null,
+        val photo_url: String? = null
     )
 }

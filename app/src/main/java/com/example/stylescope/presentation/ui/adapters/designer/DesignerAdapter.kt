@@ -27,15 +27,15 @@ class DesignerAdapter(private val click: (id: Int) -> Unit) :
         ViewHolder(binding.root) {
         fun onBind(model: DesignerUI?) {
             if (model != null) {
-                model.photo.let { binding.itemImgEmployee.loadImage(it) }
+                model.photo.let { binding.itemImgEmployee.loadImage(it!!) }
                 binding.itemTvEmployeeName.text = model.name
                 binding.itemTvEmployeeProfession.text = model.occupation
                 binding.itemTvRating.text = model.rating
-                val rating = model.rating.toFloat()
+                val rating = model.rating!!.toFloat()
                 binding.itemRatingBar.rating = rating
 
                 itemView.setOnClickListener {
-                    click(model.id)
+                    click(model.id!!)
                     Log.w("ololo", "click: $model.id", )
                 }
             }

@@ -28,7 +28,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
         binding.rvReviews.adapter = designReviewsAdapter
         binding.companyWorksPager.adapter = designWorksAdapter
         viewModel.state.spectateUiState( success = {design ->
-            binding.ilProfileDesign.loadImage(design.photo)
+            binding.ilProfileDesign.loadImage(design.photo!!)
             binding.username.text = "${design.name}" + " " + "${design.surname}"
             binding.profesion.text = design.occupation
             binding.experinse.text = design.workEXP
