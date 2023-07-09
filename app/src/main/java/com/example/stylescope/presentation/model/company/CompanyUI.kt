@@ -33,7 +33,6 @@ data class CompanyDetailUI(
     val packages: List<CompanyPackageUI>,
     val designers: List<CompanyDesignerUI>,
     val countReviews: String,
-    val reviews: List<CompanyReviewUI>,
     val phoneNumber1: String,
     val email1: String,
     val socialMedia1: String,
@@ -51,7 +50,6 @@ fun CompanyDetailModel.toUI() = CompanyDetailUI(
     packages = packages.map { it.toUI() },
     designers = designers.map { it.toUI() },
     countReviews = countReviews,
-    reviews = reviews.map { it.toUI() },
     phoneNumber1 = phoneNumber1,
     email1 = email1,
     socialMedia1 = socialMedia1,
@@ -123,18 +121,18 @@ fun CompanyPackageModel.toUI() = CompanyPackageUI(
 )
 
 data class CompanyDesignerUI(
+    val id: Int,
     val photo: String,
     val name: String,
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     val countReviews: String
 )
 
 fun CompanyDesignerModel.toUI() = CompanyDesignerUI(
+    id = id,
     photo = photo,
     name = name,
-    companyTitle = companyTitle,
     occupation = occupation,
     rating = rating,
     countReviews = countReviews

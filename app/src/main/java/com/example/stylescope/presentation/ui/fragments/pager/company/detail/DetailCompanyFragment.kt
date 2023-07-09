@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
+import com.example.stylescope.presentation.model.review.ReviewSendUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
@@ -36,10 +37,18 @@ class DetailCompanyFragment :
         binding.companyWorksPager.adapter = companyWorksAdapter
         binding.rvReviews.adapter = companyReviewsAdapter
 
+        viewState(args.companyID)
+
+
+        binding.btnLeaveFeedback.setOnClickListener {
+            sendReview(args.companyID)
+        }
+    }
+
+    private fun viewState(companyID: Int) {
         viewModel.state.spectateUiState(success = { company ->
             binding.imgDetailCompany.loadImage(company.image)
             binding.tvDetailCompanyDes.text = company.about
-            Log.w("ololo", "launchObservers: ${company.about}")
             binding.tvWhatsappContact.text = company.phoneNumber1
             val instagram = company.socialMedia1.replace("https://www.instagram.com/", "")
             val insta = instagram.replace("/", "")
@@ -49,9 +58,8 @@ class DetailCompanyFragment :
             packageAdapter.submitList(company.packages)
             teamAdapter.submitList(company.designers)
             companyWorksAdapter.submitList(company.gallery)
-            companyReviewsAdapter.submitList(company.reviews)
             binding.tvSeeAllWorks.setOnClickListener {
-                findNavController().navigate(DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(args.companyID))
+                findNavController().navigate(DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(companyID))
             }
         }, error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
@@ -59,4 +67,21 @@ class DetailCompanyFragment :
             Log.e("ololo", errorMsg)
         })
     }
+
+    private fun sendReview(companyID: Int) {
+        val rank = binding.rank.rating.toString()
+        val text = binding.etUserReviews.text.toString()
+        val model = ReviewSendUI(rank = rank, text = text)
+        viewModel.sendReview(model, companyID.toString())
+
+
+        viewModel.review.spectateUiState(success = {
+            binding.tvDetailCompanyDes.text = it.text
+            viewState(companyID)
+        }, error = { errorMsg ->
+            Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_SHORT).show()
+            Log.e("ololo", errorMsg)
+        })
+    }
+
 }

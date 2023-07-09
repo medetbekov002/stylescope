@@ -24,13 +24,11 @@ class CompanyTeamAdapter : ListAdapter<CompanyDesignerUI, CompanyTeamAdapter.Com
     class CompanyTeamViewHolder(private val binding: ItemDesignersBinding) : ViewHolder(binding.root) {
         fun onBind(model: CompanyDesignerUI?) {
             model?.photo?.let { binding.itemImgEmployee.loadImage(it) }
-            binding.itemDesignTitle.text = model?.companyTitle?.get(0)
             binding.itemTvEmployeeName.text = model?.name
             binding.itemTvEmployeeProfession.text = model?.occupation
             binding.itemTvRating.text = model?.rating
             val rating = model?.rating?.toFloat()
             binding.itemRatingBar.rating = rating!!
-
         }
     }
 

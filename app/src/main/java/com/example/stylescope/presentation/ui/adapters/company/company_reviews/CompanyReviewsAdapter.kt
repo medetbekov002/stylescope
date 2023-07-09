@@ -10,30 +10,23 @@ import com.example.stylescope.presentation.utils.loadImage
 
 
 class CompanyReviewsAdapter :
-        androidx.recyclerview.widget.ListAdapter<CompanyReviewUI, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
+        androidx.recyclerview.widget.ListAdapter<Int, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
                 CompanyReviewDiffCallback()
         ) {
-    class CompanyReviewDiffCallback : DiffUtil.ItemCallback<CompanyReviewUI>() {
-        override fun areItemsTheSame(oldItem: CompanyReviewUI, newItem: CompanyReviewUI): Boolean =
+    class CompanyReviewDiffCallback : DiffUtil.ItemCallback<Int>() {
+        override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean =
                 oldItem == newItem
 
         override fun areContentsTheSame(
-                oldItem: CompanyReviewUI,
-                newItem: CompanyReviewUI
+                oldItem: Int,
+                newItem: Int
         ): Boolean =
                 oldItem == newItem
-
     }
 
     class CompanyReviewsViewHolder(private val binding: ItemReviewsBinding) :
             RecyclerView.ViewHolder(binding.root) {
-        fun onBind(model: CompanyReviewUI) {
-            binding.itemImgReviews.loadImage(model.user_photo)
-            val rating = model.rank
-            binding.itemRatingReviews.rating = rating.toFloat()
-            binding.itemTvReviewsName.text = model.username
-            binding.itemTextReviews.text = model.text
-            binding.itemTvReviewsHoursAgo.text = model.time_since_published
+        fun onBind(model: Int) {
         }
     }
 

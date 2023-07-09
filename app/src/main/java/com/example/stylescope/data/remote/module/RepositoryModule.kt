@@ -8,6 +8,7 @@ import com.example.stylescope.data.remote.repository.favorite.FavoriteRepository
 import com.example.stylescope.data.remote.repository.login.LogInRepositoryImpl
 import com.example.stylescope.data.remote.repository.recover.RecoverRepositoryImpl
 import com.example.stylescope.data.remote.repository.register.RegisterRepositoryImpl
+import com.example.stylescope.data.remote.repository.review.ReviewRepositoryImpl
 import com.example.stylescope.data.remote.repository.token.TokenRepositoryImpl
 import com.example.stylescope.domain.repository.changepassword.ChangePasswordRepository
 import com.example.stylescope.data.remote.repository.user.profile.UpdateUserImageRepositoryImpl
@@ -20,6 +21,7 @@ import com.example.stylescope.domain.repository.favorite.FavoriteRepository
 import com.example.stylescope.domain.repository.login.LogInRepository
 import com.example.stylescope.domain.repository.recover.RecoverRepository
 import com.example.stylescope.domain.repository.register.RegisterRepository
+import com.example.stylescope.domain.repository.review.ReviewRepository
 import com.example.stylescope.domain.repository.token.TokenRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserImageRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserProfileRepository
@@ -36,7 +38,8 @@ val repoModule = module {
     single<ChangePasswordRepository> { ChangePasswordRepositoryImpl(get()) }
     single<TokenRepository> { TokenRepositoryImpl(get()) }
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
-    single<UserProfileRepository> { UserProfileRepositoryImpl(get()) }
+    single<UserProfileRepository> { UserProfileRepositoryImpl(get(), get()) }
     single<UpdateUserProfileRepository> { UpdateUserProfileRepositoryImpl(get()) }
     single<UpdateUserImageRepository> { UpdateUserImageRepositoryImpl(get()) }
+    single<ReviewRepository> { ReviewRepositoryImpl(get()) }
 }

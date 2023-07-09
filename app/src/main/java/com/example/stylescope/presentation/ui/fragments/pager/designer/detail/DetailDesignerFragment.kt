@@ -36,11 +36,9 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
             binding.tvCountReviews.text = design.countReviews
             designWorksAdapter.submitList(design.gallery)
             designReviewsAdapter.submitList(design.reviews)
-
         },error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
             Log.e("ololo", errorMsg)
         })
-
     }
 }

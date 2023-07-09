@@ -38,13 +38,26 @@ data class CompanyDetailDto(
     val designers: List<CompanyDesignerDto>,
     @SerializedName("count_reviews")
     val countReviews: String,
-    val reviews: List<CompanyReviewDto>,
     @SerializedName("phone_number_1")
     val phoneNumber1: String,
+    @SerializedName("phone_number_2")
+    val phoneNumber2: String,
+    @SerializedName("phone_number_3")
+    val phoneNumber3: String,
     @SerializedName("email_1")
     val email1: String,
+    @SerializedName("email_2")
+    val email2: String,
+    @SerializedName("email_3")
+    val email3: String,
     @SerializedName("social_media_1")
     val socialMedia1: String,
+    @SerializedName("social_media_2")
+    val socialMedia2: String,
+    @SerializedName("social_media_3")
+    val socialMedia3: String,
+    @SerializedName("social_media_4")
+    val socialMedia4: String,
     val address: String
 ) : DataMapper<CompanyDetailModel> {
     override fun toDomain() = CompanyDetailModel(
@@ -58,7 +71,6 @@ data class CompanyDetailDto(
         packages = packages.map { it.toDomain() },
         designers = designers.map { it.toDomain() },
         countReviews = countReviews,
-        reviews = reviews.map { it.toDomain() },
         phoneNumber1 = phoneNumber1,
         email1 = email1,
         socialMedia1 = socialMedia1,
@@ -69,6 +81,7 @@ data class CompanyDetailDto(
 
 data class ServicesDto(
     val id: Int,
+    val image: String,
     val title: String,
     val description: String
 ) : DataMapper<ServicesModel> {
@@ -122,10 +135,12 @@ data class GalleryDto(
 }
 
 data class CompanyPackageDto(
+    val id: Int,
     val image: String,
     val title: String,
     val description: String,
-    val price: Int
+    val price: Int,
+    val tag: String
 ) : DataMapper<CompanyPackageModel> {
     override fun toDomain() = CompanyPackageModel(
         title = title,
@@ -135,22 +150,20 @@ data class CompanyPackageDto(
 }
 
 data class CompanyDesignerDto(
+    val id: Int,
     val photo: String,
     val name: String,
-    @SerializedName("company_title")
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     @SerializedName("count_reviews")
     val countReviews: String
 ) : DataMapper<CompanyDesignerModel> {
     override fun toDomain() = CompanyDesignerModel(
+        id = id,
         photo = photo,
         name = name,
-        companyTitle = companyTitle,
         occupation = occupation,
         rating = rating,
         countReviews = countReviews
     )
 }
-

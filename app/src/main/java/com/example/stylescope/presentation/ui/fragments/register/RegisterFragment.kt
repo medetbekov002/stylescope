@@ -49,7 +49,7 @@ class RegisterFragment :
                     etEmail.setEditTextBackground(R.drawable.bg_error_et)
                     etName.setEditTextBackground(R.drawable.bg_error_et)
                     tilConfirmPassword.helperText = ""
-                    tilEmail.helperText = "Имя пользователя занято или почта неверна"
+                    tilEmail.helperText = "Имя пользователя занято или почта неверна $it"
                 },
                 gatherIfSucceed = {
                     loading.progressBar.isVisible = it is UIState.Loading

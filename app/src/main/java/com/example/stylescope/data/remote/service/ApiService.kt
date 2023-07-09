@@ -15,6 +15,8 @@ import com.example.stylescope.data.remote.dtos.favorite.FavoriteItemDto
 import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
+import com.example.stylescope.data.remote.dtos.review.ReviewAnswerDto
+import com.example.stylescope.data.remote.dtos.review.ReviewSendDto
 import com.example.stylescope.data.remote.dtos.token.*
 import retrofit2.http.*
 import com.example.stylescope.data.remote.dtos.user.UpdateUserImageDto
@@ -98,19 +100,20 @@ interface ApiService {
 
     @GET("users/profile/")
     suspend fun getUserProfile(
-        @Header("Authorization")
-        token: String = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4NjI3NTI3LCJpYXQiOjE2ODg2MjM5MjcsImp0aSI6IjBiMDU1NjU5ZmNlYzQwNjRiN2Q5N2MzNDEzMjE5NDJmIiwidXNlcl9pZCI6MTc3fQ.6hJF6x_dur1l0tFMp7gNXbMssXt2FS5ywE0t7slw-F4"
     ): UserValidateDto
 
     @PUT("users/profile/")
     suspend fun updateUserProfile(
-        @Body model: UpdateUserProfileDto,
-        @Header("Authorization") token: String = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4NjI3NTI3LCJpYXQiOjE2ODg2MjM5MjcsImp0aSI6IjBiMDU1NjU5ZmNlYzQwNjRiN2Q5N2MzNDEzMjE5NDJmIiwidXNlcl9pZCI6MTc3fQ.6hJF6x_dur1l0tFMp7gNXbMssXt2FS5ywE0t7slw-F4"
-    ): List<String>
-
+        @Body model: UpdateUserProfileDto): List<String>
     @PATCH("users/update_image/")
     suspend fun updateUserImage(
         @Body model: UpdateUserImageDto,
         @Header("Authorization") token: String = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg4NjI3NTI3LCJpYXQiOjE2ODg2MjM5MjcsImp0aSI6IjBiMDU1NjU5ZmNlYzQwNjRiN2Q5N2MzNDEzMjE5NDJmIiwidXNlcl9pZCI6MTc3fQ.6hJF6x_dur1l0tFMp7gNXbMssXt2FS5ywE0t7slw-F4"
     ) : UpdateUserImageDto
+
+    @POST("companies/{company_id}/reviews")
+    suspend fun sendReview(
+        @Body model: ReviewSendDto,
+        @Path("company_id") id: String
+    ): ReviewAnswerDto
 }

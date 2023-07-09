@@ -22,7 +22,6 @@ data class CompanyDetailModel(
     val packages: List<CompanyPackageModel>,
     val designers: List<CompanyDesignerModel>,
     val countReviews: String,
-    val reviews: List<CompanyReviewModel>,
     val phoneNumber1: String,
     val email1: String,
     val socialMedia1: String,
@@ -48,9 +47,9 @@ data class CompanyPackageModel(
 )
 
 data class CompanyDesignerModel(
+    val id: Int,
     val photo: String,
     val name: String,
-    val companyTitle: List<String>,
     val occupation: String,
     val rating: String,
     val countReviews: String

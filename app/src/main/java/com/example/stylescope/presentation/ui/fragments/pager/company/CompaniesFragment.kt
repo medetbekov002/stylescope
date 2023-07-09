@@ -73,6 +73,5 @@ class CompaniesFragment :
         val bundle = Bundle()
         bundle.putInt("companyID", id)
         findNavController().navigate(R.id.detailCompanyFragment,bundle)
-        Log.w("ololo", "click: $id", )
     }
 }
