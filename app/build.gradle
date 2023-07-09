@@ -98,4 +98,7 @@ dependencies {
 
     //smsConfirmView
     implementation "com.github.fraggjkee:sms-confirmation-view:1.7.1"
+
+    //circleIndicator
+    implementation 'me.relex:circleindicator:2.1.6'
 }
