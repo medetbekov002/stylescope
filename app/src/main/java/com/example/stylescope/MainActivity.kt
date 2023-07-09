@@ -20,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
-//        if (pref.showToken()==null){
-//            navController.navigate(R.id.interFragment)
-//        }
         initNavController()
     }
 
@@ -34,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             val list = ArrayList<Int>()
             list.add(R.id.mainFragment)
             list.add(R.id.pagerFragment)
+            list.add(R.id.favoriteFragment)
             list.add(R.id.profileFragment2)
 
             if (list.contains(destination.id)) {

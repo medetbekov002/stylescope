@@ -84,14 +84,16 @@
         app:layout_constraintStart_toEndOf="@id/view_works"
         app:layout_constraintTop_toTopOf="@id/view_works" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/company_works_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_company_works"
-        app:layout_constraintTop_toBottomOf="@id/view_works" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/company_works_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_works"
+            tools:listitem="@layout/item_company_works" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
