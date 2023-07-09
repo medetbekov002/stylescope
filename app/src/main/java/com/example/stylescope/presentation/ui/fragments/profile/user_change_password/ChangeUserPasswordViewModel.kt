@@ -9,6 +9,8 @@ class ChangeUserPasswordViewModel(
     private val userChangePasswordUseCase: UserChangePasswordUseCase
 ) : BaseViewModel() {
 
+    //А это viewmodel
+
     private val _changeUserPasswordState = mutableUIStateFlow<List<String>>()
     val changeUserPasswordState get() = _changeUserPasswordState.asStateFlow()
 

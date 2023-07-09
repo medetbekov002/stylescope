@@ -3,6 +3,7 @@ package com.example.stylescope.presentation.model.password
 import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.password.UserChangePasswordModel
 
+//sdjkbk;jsdn;wdjncl'
 data class UserChangePasswordUI(
     val oldPassword: String,
     val newPassword: String,

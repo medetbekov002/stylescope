@@ -29,6 +29,8 @@ class ChangeUserPasswordFragment
             Log.e("ololo", it)
         })
 
+        //Тут изменение пароля
+
         binding.btnSaveNewPassword.setOnClickListener {
             val oldPassword = binding.etOldPassword.text.toString()
             val newPassword = binding.etNewPassword.text.toString()

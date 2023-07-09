@@ -42,4 +42,5 @@ val repoModule = module {
     single<UpdateUserProfileRepository> { UpdateUserProfileRepositoryImpl(get()) }
     single<UpdateUserImageRepository> { UpdateUserImageRepositoryImpl(get()) }
     single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
+    //офывтсжолытвжстц
 }
