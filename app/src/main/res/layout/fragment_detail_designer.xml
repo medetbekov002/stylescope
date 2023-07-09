@@ -19,7 +19,6 @@
                 android:id="@+id/design_profile_lt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/urmat_blue"
                 android:padding="20dp"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -27,7 +26,7 @@
                     android:id="@+id/il_btn_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_favorite_design"
+                    android:src="@drawable/favorite_design"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -220,22 +219,13 @@
                 app:strokeWidth="1dp" />
 
             <View
-                android:id="@+id/view_see_all_works"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="#4945FF"
-                app:layout_constraintEnd_toEndOf="@id/tv_see_all_works"
-                app:layout_constraintStart_toStartOf="@id/tv_see_all_works"
-                app:layout_constraintTop_toBottomOf="@id/tv_see_all_works" />
-
-            <View
                 android:id="@+id/view_reviews"
                 android:layout_width="2dp"
                 android:layout_height="44dp"
                 android:layout_marginTop="34dp"
                 android:background="@color/black"
                 app:layout_constraintStart_toStartOf="@id/view_works"
-                app:layout_constraintTop_toBottomOf="@id/view_see_all_works" />
+                app:layout_constraintTop_toBottomOf="@id/tv_see_all_works" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_reviews"

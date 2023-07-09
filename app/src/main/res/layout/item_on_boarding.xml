@@ -42,12 +42,10 @@
         app:layout_constraintTop_toBottomOf="@id/imgLogo" />
 
     <ImageView
-        android:layout_marginTop="70dp"
         android:id="@+id/imgMain"
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
+        android:layout_marginTop="70dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/bottomContainer"
         app:layout_constraintTop_toBottomOf="@id/tvLogo" />
@@ -60,62 +58,61 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:id="@+id/tvTitle"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
             android:layout_marginTop="24dp"
             android:text="Удобство"
-            android:layout_marginHorizontal="14dp"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
             android:id="@+id/tvDesc"
-            android:layout_marginTop="@dimen/_8dp"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
-            app:layout_constraintBottom_toTopOf="@id/btnBack"
+            android:layout_marginTop="@dimen/_8dp"
             android:layout_marginBottom="50dp"
             android:text="Мы предоставляем удобный и быстрый способ найти лучшие дизайнерские услуги в Кыргызстане и получить профессиональную помощь в создании уникального пространства."
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/btnBack"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:backgroundTint="#0E53B4"
-            android:text="Далее"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="20dp"
-            android:textSize="16sp"
+            android:backgroundTint="#0E53B4"
             android:paddingHorizontal="24dp"
             android:paddingVertical="16dp"
-            android:layout_height="wrap_content" />
+            android:text="Далее"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            app:cornerRadius="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:backgroundTint="@color/nothing"
-            android:text="Назад"
-            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:textSize="16sp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/white"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/nothing"
             android:paddingHorizontal="24dp"
             android:paddingVertical="16dp"
-            android:layout_height="wrap_content" />
-
+            android:text="Назад"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

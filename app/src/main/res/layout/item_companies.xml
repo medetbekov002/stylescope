@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="4dp"
     android:layout_marginTop="12dp"
@@ -25,7 +25,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toStartOf="@id/item_img_save"
         android:layout_marginStart="4dp"
         tools:text="company_name"
         android:textColor="@color/black"
@@ -33,14 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_img_company" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/item_img_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:src="@drawable/ic_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/item_tv_company_name" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_tv_company_des"
@@ -49,43 +40,42 @@
         android:layout_marginStart="4dp"
         android:textSize="12sp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="@id/item_img_save"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_img_save"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_company_name"
         tools:text="company_description" />
 
-
-    <me.zhanghai.android.materialratingbar.MaterialRatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="14dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="false"
-        android:isIndicator="true"
-        app:mrb_progressTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_tv_company_des"
-        app:layout_constraintStart_toStartOf="@id/item_tv_company_name"
-        android:id="@+id/item_rating_img"/>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_views"
-        app:layout_constraintBottom_toBottomOf="@id/item_rating_img"
-        app:layout_constraintEnd_toStartOf="@id/item_tv_views"
-        app:layout_constraintTop_toTopOf="@id/item_rating_img" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_company_des"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_tv_views"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginStart="3dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/item_img_save"
         app:layout_constraintBottom_toBottomOf="@id/img_views"
         app:layout_constraintTop_toTopOf="@id/img_views"
+        app:layout_constraintStart_toEndOf="@id/img_views"
         tools:text="3222" />
 
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toEndOf="@+id/item_tv_views"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_company_des"
+        app:mrb_progressTint="@color/yellow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

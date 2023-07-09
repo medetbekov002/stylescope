@@ -8,6 +8,7 @@
 
     <include
         android:id="@+id/loading"
+        android:visibility="gone"
         layout="@layout/item_loading" />
 
     <androidx.appcompat.widget.Toolbar
@@ -73,6 +74,15 @@
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Добро пожаловать! Пожалуйста, введите требуемые данные."
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -229,7 +239,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/urmat_tv_have_acc" />
+                    android:text="Уже есть аккаунт?" />
 
                 <TextView
                     android:layout_marginStart="@dimen/_8dp"
@@ -248,8 +258,9 @@
                 android:paddingVertical="@dimen/_12dp"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_16sp"
+                app:cornerRadius="10dp"
                 android:backgroundTint="@color/urmat_blue"
-                android:text="@string/urmat_tv_register"
+                android:text="Зарегистрироваться"
                 android:id="@+id/btn_register"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"

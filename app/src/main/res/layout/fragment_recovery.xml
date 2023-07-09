@@ -9,7 +9,8 @@
 
     <include
         android:id="@+id/loading"
-        layout="@layout/item_loading" />
+        layout="@layout/item_loading"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,7 +117,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Регистрация"
+                android:text=" Создать аккаунт"
                 android:textColor="#0029FF"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -137,7 +138,7 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             app:backgroundTint="@color/urmat_blue"
-            app:cornerRadius="5dp"
+            app:cornerRadius="10dp"
             app:elevation="12dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

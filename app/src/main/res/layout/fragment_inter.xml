@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Регистрация"
+            android:text="Создать аккаунт"
             android:textColor="@color/urmat_light_blue"
             android:textSize="@dimen/_16sp" />
     </LinearLayout>
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/urmat_bg_edit"
-                android:paddingVertical="8dp" />
+                android:paddingVertical="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -181,5 +181,6 @@
 
     <include
         android:id="@+id/loading"
+        android:visibility="gone"
         layout="@layout/item_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>
