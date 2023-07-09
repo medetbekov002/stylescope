@@ -7,6 +7,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailDesignerBinding
+import com.example.stylescope.presentation.model.designer.DesignerFavoriteUI
 import com.example.stylescope.presentation.ui.adapters.designer.design_reviews.DesignReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.design_works.DesignWorksAdapter
 import com.example.stylescope.presentation.utils.loadImage
@@ -25,9 +26,24 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
         val args by navArgs<DetailDesignerFragmentArgs>()
         viewModel.getDetailCompanies(args.designerID)
 
+
+        binding.ilBtnFavorite.setOnClickListener {
+            viewModel.saveFavoriteDesigner(
+                DesignerFavoriteUI(
+                    designerId = args.designerID
+                ), id = args.designerID.toString()
+            )
+        }
+
+        viewModel.saveDesignerState.spectateUiState(success = {
+            Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+        }, error = {
+            Log.e("ololo", it)
+        })
+
         binding.rvReviews.adapter = designReviewsAdapter
         binding.companyWorksPager.adapter = designWorksAdapter
-        viewModel.state.spectateUiState( success = {design ->
+        viewModel.state.spectateUiState(success = { design ->
             binding.ilProfileDesign.loadImage(design.photo!!)
             binding.username.text = "${design.name}" + " " + "${design.surname}"
             binding.profesion.text = design.occupation
@@ -37,7 +53,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
             designWorksAdapter.submitList(design.gallery)
             designReviewsAdapter.submitList(design.reviews)
 
-        },error = { errorMsg ->
+        }, error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
             Log.e("ololo", errorMsg)
         })

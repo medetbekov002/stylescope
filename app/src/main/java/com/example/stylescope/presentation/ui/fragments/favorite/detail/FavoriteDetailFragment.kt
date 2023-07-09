@@ -19,9 +19,12 @@ class FavoriteDetailFragment :
     override val binding: FragmentFavoriteDetailBinding by viewBinding(FragmentFavoriteDetailBinding::bind)
     override val viewModel: FavoriteDetailViewModel by viewModel()
     private var isItCompany = false
-    private val adapterCompany: CompanyAdapter by lazy { CompanyAdapter(this::clickCompany) }
+    private val adapterCompany: CompanyAdapter by lazy { CompanyAdapter(this::clickCompany, this::saveCompany) }
     private val adapterDesigner: DesignerAdapter by lazy { DesignerAdapter(this::clickDesigner) }
 
+    private fun saveCompany(id: Int) {
+
+    }
 
     override fun initialize() {
         super.initialize()

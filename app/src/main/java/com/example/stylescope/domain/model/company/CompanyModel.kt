@@ -1,6 +1,5 @@
 package com.example.stylescope.domain.model.company
 
-
 data class CompanyModel(
     val id: Int?=null,
     val image: String?=null,
@@ -70,6 +69,10 @@ data class CompanyReviewModel(
 data class CompanyReviewTitleModel(
     val title: String?=null,
     val image_url: String?=null
+)
+
+data class CompanyFavoriteModel(
+    val companyId: Int
 )
 
 

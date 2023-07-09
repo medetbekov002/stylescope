@@ -3,6 +3,7 @@ package com.example.stylescope.data.remote.dtos.designer
 import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.designer.DesignReviewModel
 import com.example.stylescope.domain.model.designer.DesignerDetailModel
+import com.example.stylescope.domain.model.designer.DesignerFavoriteModel
 import com.example.stylescope.domain.model.designer.DesignerGalleryModel
 import com.example.stylescope.domain.model.designer.DesignerModel
 import com.google.gson.annotations.SerializedName
@@ -101,3 +102,12 @@ data class RVDesignerDto(
         photo_url = photo_url
     )
 }
+
+data class DesignerFavoriteDto(
+    @SerializedName("designer_id")
+    val designerId: Int
+)
+
+fun DesignerFavoriteModel.toData() = DesignerFavoriteDto(
+    designerId = designerId
+)

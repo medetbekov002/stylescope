@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.model.company
 
+import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.company.*
 
 data class CompanyUI(
@@ -145,3 +146,12 @@ fun CompanyDesignerModel.toUI() = CompanyDesignerUI(
     rating = rating,
     countReviews = countReviews
 )
+
+data class CompanyFavoriteUI(
+    val companyId: Int
+): DataMapper<CompanyFavoriteModel> {
+    override fun toDomain() = CompanyFavoriteModel(
+        companyId = companyId
+    )
+}
+

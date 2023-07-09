@@ -1,7 +1,9 @@
 package com.example.stylescope.presentation.model.designer
 
+import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.designer.DesignReviewModel
 import com.example.stylescope.domain.model.designer.DesignerDetailModel
+import com.example.stylescope.domain.model.designer.DesignerFavoriteModel
 import com.example.stylescope.domain.model.designer.DesignerGalleryModel
 import com.example.stylescope.domain.model.designer.DesignerModel
 
@@ -94,3 +96,11 @@ fun DesignReviewModel.RVDesignerModel.toUI() = RVDesignerUI(
     name = name,
     photo_url = photo_url
 )
+
+data class DesignerFavoriteUI(
+    val designerId: Int
+): DataMapper<DesignerFavoriteModel> {
+    override fun toDomain() = DesignerFavoriteModel(
+        designerId = designerId
+    )
+}
