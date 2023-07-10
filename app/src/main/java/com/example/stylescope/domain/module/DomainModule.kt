@@ -11,6 +11,7 @@ import com.example.stylescope.domain.use_cases.favorite.FavoriteUseCase
 import com.example.stylescope.domain.use_cases.favorite.SaveFavoriteCompanyUseCase
 import com.example.stylescope.domain.use_cases.favorite.SaveFavoriteDesignerUseCase
 import com.example.stylescope.domain.use_cases.login.LogInUseCase
+import com.example.stylescope.domain.use_cases.myreviews.MyReviewsUseCase
 import com.example.stylescope.domain.use_cases.recover.RecoverUseCase
 import com.example.stylescope.domain.use_cases.register.RegisterUseCase
 import com.example.stylescope.domain.use_cases.token.TokenUseCase
@@ -39,4 +40,5 @@ val useCasesModule = module {
     factory { UserChangePasswordUseCase(get()) }
     factory { SaveFavoriteCompanyUseCase(get()) }
     factory { SaveFavoriteDesignerUseCase(get()) }
+    factory { MyReviewsUseCase(get()) }
 }

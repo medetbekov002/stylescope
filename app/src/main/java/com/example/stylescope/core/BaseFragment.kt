@@ -94,6 +94,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
         tokenViewModel.verifyToken(VerifyTokenUI(pref.showToken().toString()))
         tokenViewModel.verifyTokenState.spectateUiState(
             error = {
+                Log.e("ololo","BF.iTE.error:$it")
                 tokenViewModel.refreshToken(RefreshTokenUI(pref.showRefreshToken().toString()))
             }
         )

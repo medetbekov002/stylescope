@@ -17,6 +17,7 @@ import com.example.stylescope.data.remote.dtos.favorite.FavoriteItemDto
 import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.password.UserChangePasswordDto
+import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
 import com.example.stylescope.data.remote.dtos.token.*
 import retrofit2.http.*
@@ -128,4 +129,6 @@ interface ApiService {
         @Body model: DesignerFavoriteDto,
         @Path("id") id: String
     ): List<String>
+    @GET("users/myreviews/")
+    suspend fun getReviews():MyReviewsDto
 }

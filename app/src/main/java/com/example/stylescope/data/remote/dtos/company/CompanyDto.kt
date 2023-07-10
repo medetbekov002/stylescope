@@ -89,7 +89,8 @@ data class CompanyReviewDto(
     val company: CompanyReviewTitleDto,
     val text: String?=null,
     val user_photo: String?=null,
-    val username: String?=null,
+    val first_name: String? = null,
+    val last_name: String? = null,
     val time_since_published: String?=null
 ) : DataMapper<CompanyReviewModel> {
     override fun toDomain() = CompanyReviewModel(
@@ -99,6 +100,8 @@ data class CompanyReviewDto(
         text = text,
         user_photo = user_photo,
         username = username,
+        first_name = first_name,
+        last_name = last_name,
         time_since_published = time_since_published
     )
 }

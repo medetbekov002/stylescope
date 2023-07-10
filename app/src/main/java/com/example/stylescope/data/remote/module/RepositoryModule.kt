@@ -8,6 +8,7 @@ import com.example.stylescope.data.remote.repository.favorite.FavoriteRepository
 import com.example.stylescope.data.remote.repository.favorite.SaveFavoriteCompanyRepositoryImpl
 import com.example.stylescope.data.remote.repository.favorite.SaveFavoriteDesignerRepositoryImpl
 import com.example.stylescope.data.remote.repository.login.LogInRepositoryImpl
+import com.example.stylescope.data.remote.repository.myreviews.MyReviewsRepositoryImpl
 import com.example.stylescope.data.remote.repository.recover.RecoverRepositoryImpl
 import com.example.stylescope.data.remote.repository.register.RegisterRepositoryImpl
 import com.example.stylescope.data.remote.repository.token.TokenRepositoryImpl
@@ -23,6 +24,7 @@ import com.example.stylescope.domain.repository.favorite.FavoriteRepository
 import com.example.stylescope.domain.repository.favorite.SaveFavoriteCompanyRepository
 import com.example.stylescope.domain.repository.favorite.SaveFavoriteDesignerRepository
 import com.example.stylescope.domain.repository.login.LogInRepository
+import com.example.stylescope.domain.repository.myreviews.MyReviewsRepository
 import com.example.stylescope.domain.repository.recover.RecoverRepository
 import com.example.stylescope.domain.repository.register.RegisterRepository
 import com.example.stylescope.domain.repository.token.TokenRepository
@@ -48,4 +50,5 @@ val repoModule = module {
     single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
     single<SaveFavoriteCompanyRepository> { SaveFavoriteCompanyRepositoryImpl(get()) }
     single<SaveFavoriteDesignerRepository> { SaveFavoriteDesignerRepositoryImpl(get()) }
+    single<MyReviewsRepository> { MyReviewsRepositoryImpl(get()) }
 }

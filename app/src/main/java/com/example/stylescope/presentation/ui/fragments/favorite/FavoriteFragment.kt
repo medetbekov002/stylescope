@@ -35,19 +35,6 @@ class FavoriteFragment :
         initAdapters()
     }
 
-
-    override fun constructListeners() {
-        super.constructListeners()
-        with(binding) {
-            btnCompanies.setOnClickListener {
-                findNavController().navigate(R.id.favoriteDetailFragment, bundleOf(KEY_FAVORITE to true))
-            }
-            btnDesigners.setOnClickListener {
-                findNavController().navigate(R.id.favoriteDetailFragment, bundleOf(KEY_FAVORITE to false))
-            }
-        }
-    }
-
     override fun launchObservers() {
         Log.e("profile", pref.showToken().toString())
         if (pref.showToken() == null) {
