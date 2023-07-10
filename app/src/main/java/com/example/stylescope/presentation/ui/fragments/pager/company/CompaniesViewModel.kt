@@ -9,9 +9,7 @@ import com.example.stylescope.presentation.model.company.toUI
 import kotlinx.coroutines.flow.asStateFlow
 
 class CompaniesViewModel(
-    private val getCompanyUseCase: GetCompanyUseCase,
-    private val saveFavoriteCompanyUseCase: SaveFavoriteCompanyUseCase
-) : BaseViewModel() {
+    private val getCompanyUseCase: GetCompanyUseCase) : BaseViewModel() {
 
     private val _companyState = mutableUIStateFlow<List<CompanyUI>>()
     val companyState get() = _companyState.asStateFlow()
@@ -26,9 +24,4 @@ class CompaniesViewModel(
     private fun getCompanies() {
         getCompanyUseCase().gatherRequest(_companyState) { companyModels -> companyModels.map { it.toUI() } }
     }
-
-    fun saveFavoriteCompany(model: CompanyFavoriteUI, id: String) =
-        saveFavoriteCompanyUseCase(model = model.toDomain(), id = id).gatherRequest(
-            _saveCompanyState
-        ) { it }
 }

@@ -11,6 +11,7 @@ import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentProfileBinding
 import com.example.stylescope.presentation.model.user.UpdateUserProfileUI
+import com.example.stylescope.presentation.ui.fragments.profile.log_out.LogOutDialogFragment
 import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,9 +22,9 @@ class ProfileFragment :
     private val prefs: Pref by lazy { Pref(requireContext()) }
     override fun launchObservers() {
         Log.e("profile", prefs.showToken().toString())
-        if(prefs.showToken() == null) {
+        if (prefs.showToken() == null) {
             findNavController().navigate(R.id.userNotRegisterFragment)
-        }else {
+        } else {
             val userToken = "Bearer ${prefs.showToken()}"
             Log.e("profile", userToken)
             viewModel.getUserProfile()
@@ -40,6 +41,10 @@ class ProfileFragment :
     }
 
     override fun constructListeners() {
+        binding.btnLogout.setOnClickListener {
+            LogOutDialogFragment(this::check).show(requireActivity().supportFragmentManager, "")
+        }
+
         binding.btnEditProfile.setOnClickListener {
             binding.refactorUserProfile.root.isVisible = true
             binding.profileContainer.isGone = true
@@ -86,6 +91,14 @@ class ProfileFragment :
 
         binding.refactorUserProfile.imgRefactorPassword.setOnClickListener {
             findNavController().navigate(R.id.changeUserPasswordFragment)
+        }
+    }
+
+    private fun check(checkText: String) {
+        if (checkText == "log out") {
+            if (prefs.showToken() == null) {
+                findNavController().navigate(R.id.userNotRegisterFragment)
+            }
         }
     }
 }

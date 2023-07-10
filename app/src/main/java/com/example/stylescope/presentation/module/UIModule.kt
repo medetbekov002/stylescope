@@ -21,8 +21,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val uiModule = module {
-    viewModel { CompaniesViewModel(get(), get()) }
-    viewModel { DetailCompanyVIewModel(get()) }
+    viewModel { CompaniesViewModel(get()) }
+    viewModel { DetailCompanyVIewModel(get(), get()) }
     viewModel { DetailDesignerViewModel(get(), get()) }
     viewModel { DesignerViewModel(get()) }
     viewModel { MainViewModel(get(), get()) }

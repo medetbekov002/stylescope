@@ -11,8 +11,8 @@ class FavoriteDetailViewModel(private val favoriteUseCase: FavoriteUseCase):Base
     private val _state = mutableUIStateFlow<FavoriteItemUI>()
     val state = _state.asStateFlow()
 
-    fun getFavorites(){
+/*    fun getFavorites(){
         favoriteUseCase().gatherRequest(_state){it.toFavoriteItemUI()}
-    }
+    }*/
 
 }

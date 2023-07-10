@@ -26,9 +26,6 @@ class FavoriteFragment :
     private val adapterDesigner: DesignerAdapter by lazy { DesignerAdapter(this::clickDesigner) }
     private val pref: Pref by lazy { Pref(requireContext()) }
 
-    private fun saveCompany(id: Int) {
-
-    }
     companion object{
         const val KEY_FAVORITE = "favorite"
     }
@@ -52,27 +49,21 @@ class FavoriteFragment :
     }
 
     override fun launchObservers() {
-        Log.e("profile", pref.showToken().toString())
-        if (pref.showToken() == null) {
-            findNavController().navigate(R.id.userNotFavoriteFragment)
-        } else {
-            with(binding) {
-                val userToken = "Bearer ${pref.showToken()}"
-                Log.e("profile", userToken)
-                viewModel.getFavorites()
-                viewModel.state.spectateUiState(
-                    success = {
-                        adapterCompany.submitList(it.companies)
-                        adapterDesigner.submitList(it.designers)
-                    },
-                    error = {
-                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                    },
-                    gatherIfSucceed = {
-                        loading.progressBar.isVisible = it is UIState.Loading
-                    }
-                )
-            }
+        super.launchObservers()
+        with(binding) {
+            viewModel.getFavorites()
+            viewModel.state.spectateUiState(
+                success = {
+
+                },
+                error = {
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    Log.e("favorite", it)
+                },
+                gatherIfSucceed = {
+                    loading.progressBar.isVisible = it is UIState.Loading
+                }
+            )
         }
     }
 

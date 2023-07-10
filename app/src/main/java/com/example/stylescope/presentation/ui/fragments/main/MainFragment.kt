@@ -23,10 +23,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
 
     }
 
-    private fun saveCompany(id: Int) {
-
-    }
-
     override fun launchObservers() {
         binding.viewPagerCompany.adapter = comAdapter
         binding.viewPagerDesign.adapter = desAdapter

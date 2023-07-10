@@ -7,9 +7,9 @@ import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.model.designer.toUI
 
 data class FavoriteItemUI(
-    val companies: List<CompanyUI>?=null,
-    val designers:List<DesignerUI>?=null
+    val companies: CompanyUI?=null,
+    val designers: DesignerUI?=null
 )
 
-fun FavoriteItemModel.toFavoriteItemUI() = FavoriteItemUI(companies?.map { it.toUI() },designers?.map { it.toUI() })
+fun FavoriteItemModel.toFavoriteItemUI() = FavoriteItemUI(companies?.toUI(), designers?.toUI())
 

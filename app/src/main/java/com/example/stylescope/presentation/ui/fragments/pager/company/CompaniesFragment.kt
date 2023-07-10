@@ -30,9 +30,6 @@ class CompaniesFragment :
     private var selectedPackage: String? = null
     private var selectedService: String? = null
 
-    private fun saveCompany(id: Int) {
-        viewModel.saveFavoriteCompany(model = CompanyFavoriteUI(companyId = id), id.toString())
-    }
     override fun launchObservers() {
         binding.rvCompanies.adapter = adapter
 

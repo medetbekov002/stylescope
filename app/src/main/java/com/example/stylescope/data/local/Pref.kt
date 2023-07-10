@@ -46,6 +46,10 @@ class Pref(context: Context) {
         return pref.getString(TOKEN,null)
     }
 
+    fun deleteToken() {
+        pref.edit().remove(TOKEN).apply()
+    }
+
     fun savePassword(password:String){
         pref.edit().putString(USER_PASSWORD,password).apply()
     }

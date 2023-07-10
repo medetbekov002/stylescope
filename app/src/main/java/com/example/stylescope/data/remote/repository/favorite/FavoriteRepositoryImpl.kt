@@ -8,7 +8,7 @@ import com.example.stylescope.domain.repository.favorite.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
 
 class FavoriteRepositoryImpl(private val apiService: ApiService):FavoriteRepository {
-    override fun getFavorites(): Flow<Either<String, FavoriteItemModel>> = makeNetworkRequest {
-        apiService.getFavorite().toDomain()
+    override fun getFavorites(): Flow<Either<String, List<FavoriteItemModel>>> = makeNetworkRequest {
+        apiService.getFavorite().map { it.toDomain() }
     }
 }

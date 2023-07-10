@@ -12,8 +12,7 @@ import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.utils.loadImage
 
 class CompanyAdapter(
-    private val click: (id: Int) -> Unit
-) : ListAdapter<CompanyUI, CompanyAdapter.CompanyViewHolder>(
+    private val click: (id: Int) -> Unit) : ListAdapter<CompanyUI, CompanyAdapter.CompanyViewHolder>(
     CompanyDiffCallback()
 ) {
     class CompanyDiffCallback : DiffUtil.ItemCallback<CompanyUI>() {
