@@ -92,6 +92,9 @@ class ProfileFragment :
         binding.refactorUserProfile.imgRefactorPassword.setOnClickListener {
             findNavController().navigate(R.id.changeUserPasswordFragment)
         }
+        binding.tvProfileReviews.setOnClickListener {
+            findNavController().navigate(R.id.myReviewFragment)
+        }
     }
 
     private fun check(checkText: String) {

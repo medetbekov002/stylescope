@@ -49,21 +49,25 @@ class FavoriteFragment :
     }
 
     override fun launchObservers() {
-        super.launchObservers()
-        with(binding) {
-            viewModel.getFavorites()
-            viewModel.state.spectateUiState(
-                success = {
+        Log.e("profile", pref.showToken().toString())
+        if (pref.showToken() == null) {
+            findNavController().navigate(R.id.userNotFavoriteFragment)
+        } else {
+            with(binding) {
+                viewModel.getFavorites()
+                viewModel.state.spectateUiState(
+                    success = {
 
-                },
-                error = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                    Log.e("favorite", it)
-                },
-                gatherIfSucceed = {
-                    loading.progressBar.isVisible = it is UIState.Loading
-                }
-            )
+                    },
+                    error = {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                        Log.e("favorite", it)
+                    },
+                    gatherIfSucceed = {
+                        loading.progressBar.isVisible = it is UIState.Loading
+                    }
+                )
+            }
         }
     }
 
