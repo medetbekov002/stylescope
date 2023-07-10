@@ -24,14 +24,11 @@ class CompaniesFragment :
     BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
     override val binding: FragmentCompaniesBinding by viewBinding(FragmentCompaniesBinding::bind)
     override val viewModel: CompaniesViewModel by viewModel()
-    private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click, this::saveCompany) }
+    private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
     private var list = mutableListOf<CompanyUI>()
     private var selectedPackage: String? = null
     private var selectedService: String? = null
 
-    private fun saveCompany(id: Int) {
-        viewModel.saveFavoriteCompany(model = CompanyFavoriteUI(companyId = id), id.toString())
-    }
     override fun launchObservers() {
         binding.rvCompanies.adapter = adapter
 

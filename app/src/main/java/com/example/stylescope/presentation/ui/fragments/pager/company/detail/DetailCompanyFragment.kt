@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
+import com.example.stylescope.presentation.model.company.CompanyFavoriteUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
@@ -16,7 +17,7 @@ import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailCompanyFragment :
-        BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
+    BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
     override val binding: FragmentDetailCompanyBinding by viewBinding(FragmentDetailCompanyBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
     private val packageAdapter by lazy {
@@ -30,6 +31,19 @@ class DetailCompanyFragment :
     override fun launchObservers() {
         val args by navArgs<DetailCompanyFragmentArgs>()
         viewModel.getDetailCompanies(args.companyID)
+
+        binding.imgDetailSave.setOnClickListener {
+            viewModel.saveFavoriteCompany(
+                model = CompanyFavoriteUI(companyId = args.companyID),
+                args.companyID.toString()
+            )
+        }
+
+        viewModel.saveCompanyState.spectateUiState(success =  {
+            Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+        }, error = {
+            Log.e("ololo", it)
+        })
 
         binding.rvPrices.adapter = packageAdapter
         binding.rvTeam.adapter = teamAdapter
@@ -51,7 +65,11 @@ class DetailCompanyFragment :
             companyWorksAdapter.submitList(company.gallery)
             companyReviewsAdapter.submitList(company.reviews)
             binding.tvSeeAllWorks.setOnClickListener {
-                findNavController().navigate(DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(args.companyID))
+                findNavController().navigate(
+                    DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(
+                        args.companyID
+                    )
+                )
             }
         }, error = { errorMsg ->
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()

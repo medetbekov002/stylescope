@@ -15,15 +15,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
     override val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     override val viewModel: MainViewModel by viewModel()
-    private val comAdapter: CompanyAdapter by lazy { CompanyAdapter(this::click, this::saveCompany) }
+    private val comAdapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
     private val comList = mutableListOf<CompanyUI>()
     private val desList = mutableListOf<DesignerUI>()
     private val desAdapter : DesignerAdapter by lazy { DesignerAdapter(this::clicks) }
     private fun clicks(id: Int) {
-
-    }
-
-    private fun saveCompany(id: Int) {
 
     }
 
