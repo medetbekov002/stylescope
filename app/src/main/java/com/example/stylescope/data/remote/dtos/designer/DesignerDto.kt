@@ -12,11 +12,11 @@ data class DesignerDto(
     val id: Int? = null,
     val name: String? = null,
     val photo: String? = null,
-    @SerializedName("company_title")
     val occupation: String? = null,
-    val rating: String? = null,
+    val rating: Double? = null,
+    val surname: String? = null,
     @SerializedName("count_reviews")
-    val countReviews: String? = null
+    val countReviews: Int? = null
 ) : DataMapper<DesignerModel> {
     override fun toDomain() = DesignerModel(
         id = id,
@@ -24,7 +24,8 @@ data class DesignerDto(
         photo = photo,
         occupation = occupation,
         rating = rating,
-        countReviews = countReviews
+        countReviews = countReviews,
+        surname = surname
     )
 }
 

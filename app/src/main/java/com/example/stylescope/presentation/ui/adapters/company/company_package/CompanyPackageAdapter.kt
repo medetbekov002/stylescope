@@ -1,9 +1,9 @@
 package com.example.stylescope.presentation.ui.adapters.company.company_package
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stylescope.databinding.ItemPackageBinding
@@ -24,16 +24,19 @@ class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<CompanyPa
     class CompanyPackageViewHolder(private val binding: ItemPackageBinding) : ViewHolder(binding.root) {
         fun onBind(model: CompanyPackageUI) {
             binding.itemTvPackageTitle.text = model.title
-            binding.itemTvPackageDesc.text = model.description
 
             var serviceDescState = false
             val serviceDesc = model.description
+
             binding.itemTvPackageTitle.setOnClickListener {
-                if (!serviceDescState && serviceDesc.isNullOrEmpty()) {
-                    binding.itemTvPackageDesc.isVisible = true
+                Log.w("ololo", "onBind: ${model.description}", )
+
+                if (!serviceDescState && !serviceDesc.isNullOrEmpty()) {
+                    binding.itemTvPackageDesc.visibility = View.VISIBLE
+                    binding.itemTvPackageDesc.text = model.description
                     serviceDescState = true
                 } else {
-                    binding.itemTvPackageDesc.isGone = true
+                    binding.itemTvPackageDesc.visibility = View.GONE
                     serviceDescState = false
                 }
             }

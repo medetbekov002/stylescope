@@ -9,7 +9,9 @@ import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentDetailCompanyBinding
 import com.example.stylescope.presentation.model.company.CompanyFavoriteUI
+import com.example.stylescope.presentation.model.company.CompanyPackageUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
+import com.example.stylescope.presentation.ui.adapters.company.company_service.CompanyServiceAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
@@ -20,6 +22,9 @@ class DetailCompanyFragment :
     BaseFragment<FragmentDetailCompanyBinding, DetailCompanyVIewModel>(R.layout.fragment_detail_company) {
     override val binding: FragmentDetailCompanyBinding by viewBinding(FragmentDetailCompanyBinding::bind)
     override val viewModel: DetailCompanyVIewModel by viewModel()
+    private val serviceAdapter by lazy {
+        CompanyServiceAdapter()
+    }
     private val packageAdapter by lazy {
         CompanyPackageAdapter()
     }
@@ -45,6 +50,7 @@ class DetailCompanyFragment :
             Log.e("ololo", it)
         })
 
+        binding.rvService.adapter = serviceAdapter
         binding.rvPrices.adapter = packageAdapter
         binding.rvTeam.adapter = teamAdapter
         binding.companyWorksPager.adapter = companyWorksAdapter
@@ -64,6 +70,8 @@ class DetailCompanyFragment :
             teamAdapter.submitList(company.designers)
             companyWorksAdapter.submitList(company.gallery)
             companyReviewsAdapter.submitList(company.reviews)
+            serviceAdapter.submitList(company.services)
+            binding.midleCompny.text = company.title
             binding.tvSeeAllWorks.setOnClickListener {
                 findNavController().navigate(
                     DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(

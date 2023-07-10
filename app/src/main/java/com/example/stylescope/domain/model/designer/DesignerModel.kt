@@ -5,8 +5,9 @@ data class DesignerModel(
     val name: String? = null,
     val photo: String? = null,
     val occupation: String? = null,
-    val rating: String? = null,
-    val countReviews: String? = null
+    val rating: Double? = null,
+    val surname: String? = null,
+    val countReviews: Int? = null
 )
 
 data class DesignerDetailModel(

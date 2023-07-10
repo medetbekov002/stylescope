@@ -6,10 +6,10 @@ data class CompanyModel(
     val title: String?=null,
     val summary: String?=null,
     val views: Int?=null,
-    val rating: String?=null,
-    val countReviews: String?=null,
+    val rating: Double?=null,
+    val countReviews: Int?=null,
     val packages: List<CompanyPackageModel>?=null,
-    val services: List<ServicesModel>?=null
+    val services: List<ServicesModel>?=null,
     )
 
 data class CompanyDetailModel(
@@ -52,7 +52,7 @@ data class CompanyPackageModel(
 data class CompanyDesignerModel(
     val photo: String?=null,
     val name: String?=null,
-    val companyTitle: List<String>?=null,
+    val surname:String?=null,
     val occupation: String?=null,
     val rating: String?=null,
     val countReviews: String?=null

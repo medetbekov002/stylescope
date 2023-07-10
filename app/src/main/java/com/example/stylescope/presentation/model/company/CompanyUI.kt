@@ -9,8 +9,8 @@ data class CompanyUI(
     val title: String?=null,
     val summary: String?=null,
     val views: Int?=null,
-    val rating: String?=null,
-    val countReviews: String?=null,
+    val rating: Double?=null,
+    val countReviews: Int?=null,
     val services: List<ServicesUI>?=null,
     val packages: List<CompanyPackageUI>?=null
 )
@@ -136,7 +136,7 @@ fun CompanyPackageModel.toUI() = CompanyPackageUI(
 data class CompanyDesignerUI(
     val photo: String?=null,
     val name: String?=null,
-    val companyTitle: List<String>?=null,
+    val surname:String?=null,
     val occupation: String?=null,
     val rating: String?=null,
     val countReviews: String?=null
@@ -145,10 +145,10 @@ data class CompanyDesignerUI(
 fun CompanyDesignerModel.toUI() = CompanyDesignerUI(
     photo = photo,
     name = name,
-    companyTitle = companyTitle,
     occupation = occupation,
     rating = rating,
-    countReviews = countReviews
+    countReviews = countReviews,
+    surname = surname
 )
 
 data class CompanyFavoriteUI(

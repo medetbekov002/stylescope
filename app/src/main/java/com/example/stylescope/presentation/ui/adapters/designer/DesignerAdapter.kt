@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.adapters.designer
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,12 +27,13 @@ class DesignerAdapter(
 
     inner class DesignerViewHolder(private val binding: ItemDesignersBinding) :
         ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun onBind(model: DesignerUI?) {
             if (model != null) {
                 model.photo.let { binding.itemImgEmployee.loadImage(it!!) }
-                binding.itemTvEmployeeName.text = model.name
+                binding.itemTvEmployeeName.text = "${model.name}" + " " + "${model.surname}"
                 binding.itemTvEmployeeProfession.text = model.occupation
-                binding.itemTvRating.text = model.rating
+                binding.itemTvRating.text = model.rating.toString()
                 val rating = model.rating!!.toFloat()
                 binding.itemRatingBar.rating = rating
 

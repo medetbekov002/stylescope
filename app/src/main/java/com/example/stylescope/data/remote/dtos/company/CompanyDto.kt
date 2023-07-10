@@ -10,9 +10,9 @@ data class CompanyDto(
     val title: String?=null,
     val summary: String?=null,
     val views: Int?=null,
-    val rating: String?=null,
+    val rating: Double?=null,
     @SerializedName("count_reviews")
-    val countReviews: String?=null,
+    val countReviews: Int?=null,
     val services: List<ServicesDto>?=null,
     val packages: List<CompanyPackageDto>?=null
 ) : DataMapper<CompanyModel> {
@@ -146,9 +146,8 @@ data class CompanyPackageDto(
 data class CompanyDesignerDto(
     val photo: String?=null,
     val name: String?=null,
-    @SerializedName("company_title")
-    val companyTitle: List<String>?=null,
     val occupation: String?=null,
+    val surname:String?=null,
     val rating: String?=null,
     @SerializedName("count_reviews")
     val countReviews: String?=null
@@ -156,10 +155,10 @@ data class CompanyDesignerDto(
     override fun toDomain() = CompanyDesignerModel(
         photo = photo,
         name = name,
-        companyTitle = companyTitle,
         occupation = occupation,
         rating = rating,
-        countReviews = countReviews
+        countReviews = countReviews,
+        surname = surname
     )
 }
     data class CompanyFavoriteDto(
