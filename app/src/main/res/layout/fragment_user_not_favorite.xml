@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.fragments.profile.UserNotRegisterFragment">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,10 +21,11 @@
             android:layout_height="match_parent"
             android:scaleType="centerInside"
             android:src="@drawable/urmat_toolbar_logo"/>
+
         <TextView
             android:textSize="18sp"
             android:layout_marginVertical="10dp"
-            android:text="Поиск"
+            android:text="Избранные"
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -33,55 +33,55 @@
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_not_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
         android:text="У вас нет профиля"
-        android:textSize="28sp"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:id="@+id/tv_not_profile"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_not_profile"
-        android:text="Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт, чтобы открыть профиль"
-        android:textSize="@dimen/_16sp"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="14dp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="20dp"
+        android:text="Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт, чтобы воспользоваться функцией Избранные"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_not_profile" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_register_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
+        android:layout_gravity="bottom"
         android:layout_marginHorizontal="14dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#0E53B4"
         android:paddingVertical="15dp"
-        android:layout_marginBottom="16dp"
+        android:text="Зарегистрироваться"
         app:cornerRadius="@dimen/_8dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_sign_in_user"
-        android:layout_gravity="bottom"
-        android:id="@+id/btn_register_user"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_in_user" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_sign_in_user"
         android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="wrap_content"
-        android:text="Войти"
+        android:layout_gravity="bottom"
         android:layout_marginHorizontal="14dp"
-        android:textColor="@color/black"
-        app:strokeWidth="1dp"
         android:layout_marginBottom="20dp"
         android:paddingVertical="15dp"
+        android:text="Войти"
+        android:textColor="@color/black"
         app:cornerRadius="@dimen/_8dp"
-        android:layout_gravity="bottom"
-        android:id="@+id/btn_sign_in_user"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:strokeWidth="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

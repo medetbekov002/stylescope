@@ -173,4 +173,8 @@
         android:name="com.example.stylescope.presentation.ui.fragments.profile.user_change_password.ChangeUserPasswordFragment"
         android:label="fragment_change_user_password"
         tools:layout="@layout/fragment_change_user_password" />
+    <fragment
+        android:id="@+id/userNotFavoriteFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.favorite.UserNotFavoriteFragment"
+        android:label="UserNotFavoriteFragment" />
 </navigation>

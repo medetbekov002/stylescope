@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.favorite
 
+import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -51,21 +52,27 @@ class FavoriteFragment :
     }
 
     override fun launchObservers() {
-        super.launchObservers()
-        with(binding) {
-            viewModel.getFavorites()
-            viewModel.state.spectateUiState(
-                success = {
-                    adapterCompany.submitList(it.companies)
-                    adapterDesigner.submitList(it.designers)
-                },
-                error = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                },
-                gatherIfSucceed = {
-                    loading.progressBar.isVisible = it is UIState.Loading
-                }
-            )
+        Log.e("profile", pref.showToken().toString())
+        if (pref.showToken() == null) {
+            findNavController().navigate(R.id.userNotFavoriteFragment)
+        } else {
+            with(binding) {
+                val userToken = "Bearer ${pref.showToken()}"
+                Log.e("profile", userToken)
+                viewModel.getFavorites()
+                viewModel.state.spectateUiState(
+                    success = {
+                        adapterCompany.submitList(it.companies)
+                        adapterDesigner.submitList(it.designers)
+                    },
+                    error = {
+                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    },
+                    gatherIfSucceed = {
+                        loading.progressBar.isVisible = it is UIState.Loading
+                    }
+                )
+            }
         }
     }
 
