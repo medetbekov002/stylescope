@@ -11,7 +11,7 @@
         android:title="" />
     <item
         android:id="@+id/favoriteFragment"
-        android:icon="@drawable/urmat_ic_favorite"
+        android:icon="@drawable/favourite_urmat_icon"
         android:title="" />
 
     <item

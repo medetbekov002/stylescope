@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -73,8 +74,7 @@ class CompaniesFragment :
             }
         })
 
-        binding.etSearch.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.etSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -228,16 +228,13 @@ class CompaniesFragment :
                     packageUI.title.equals(packageName, ignoreCase = true)
                 }
             } ?: true
-
             val serviceMatches = selectedService?.let { serviceName ->
                 companyUI.services?.any { serviceUI ->
                     serviceUI.title.equals(serviceName, ignoreCase = true)
                 }
             } ?: true
-
             packageMatches && serviceMatches
         }
-
         adapter.submitList(filteredList)
     }
 }
