@@ -90,6 +90,7 @@ data class CompanyReviewDto(
     val text: String?=null,
     val user_photo: String?=null,
     val first_name: String? = null,
+    val username: String?=null,
     val last_name: String? = null,
     val time_since_published: String?=null
 ) : DataMapper<CompanyReviewModel> {

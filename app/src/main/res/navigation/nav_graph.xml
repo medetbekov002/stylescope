@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/myReviewsFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -153,11 +153,6 @@
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
 
-    <fragment
-        android:id="@+id/favoriteDetailFragment"
-        android:name="com.example.stylescope.presentation.ui.fragments.favorite.detail.FavoriteDetailFragment"
-        android:label="fragment_favorite_detail"
-        tools:layout="@layout/fragment_favorite_detail" />
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingFragment"

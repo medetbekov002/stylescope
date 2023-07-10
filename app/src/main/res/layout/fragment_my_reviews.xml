@@ -76,7 +76,6 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
-
             <View
                 android:id="@+id/viewCompanies"
                 android:layout_width="match_parent"
@@ -86,23 +85,14 @@
                 android:background="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/favoriteCount" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCompanies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="18dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewCompanies">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCompanies"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_companies" />
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/btnCompanies"
+                tools:listitem="@layout/item_companies" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvDesigners"
@@ -156,6 +146,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="18dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/viewDesigners"
                 tools:listitem="@layout/item_designers" />
