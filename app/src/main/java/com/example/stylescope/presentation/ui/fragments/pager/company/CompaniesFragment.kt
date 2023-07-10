@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.databinding.FragmentCompaniesBinding
+import com.example.stylescope.presentation.model.company.CompanyFavoriteUI
 import com.example.stylescope.presentation.model.company.CompanyPackageUI
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.model.company.ServicesUI
@@ -23,12 +25,24 @@ class CompaniesFragment :
     BaseFragment<FragmentCompaniesBinding, CompaniesViewModel>(R.layout.fragment_companies) {
     override val binding: FragmentCompaniesBinding by viewBinding(FragmentCompaniesBinding::bind)
     override val viewModel: CompaniesViewModel by viewModel()
-    private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click) }
+    private val adapter: CompanyAdapter by lazy { CompanyAdapter(this::click, this::saveCompany) }
     private var list = mutableListOf<CompanyUI>()
     private var selectedPackage: String? = null
     private var selectedService: String? = null
+
+    private fun saveCompany(id: Int) {
+        viewModel.saveFavoriteCompany(model = CompanyFavoriteUI(companyId = id), id.toString())
+    }
     override fun launchObservers() {
         binding.rvCompanies.adapter = adapter
+
+        viewModel.saveCompanyState.spectateUiState(success = {
+            Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+            Log.e("favorite", "Успешно сохранено")
+        }, error = {
+            Log.e("favorite", it)
+        })
+
         viewModel.companyState.spectateUiState(
             success = { companies ->
                 adapter.submitList(companies)

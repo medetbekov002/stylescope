@@ -44,3 +44,8 @@ data class DesignReviewModel(
         val photo_url: String? = null
     )
 }
+
+
+data class DesignerFavoriteModel(
+    val designerId: Int
+)

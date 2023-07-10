@@ -6,11 +6,13 @@ import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordAnsw
 import com.example.stylescope.data.remote.dtos.changepassword.ChangePasswordDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDetailDto
 import com.example.stylescope.data.remote.dtos.company.CompanyDto
+import com.example.stylescope.data.remote.dtos.company.CompanyFavoriteDto
 import com.example.stylescope.data.remote.dtos.confirm.ConfirmAnswerDto
 import com.example.stylescope.data.remote.dtos.confirm.ConfirmDto
 import com.example.stylescope.data.remote.dtos.confirm.ResendConfirmDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDetailDto
 import com.example.stylescope.data.remote.dtos.designer.DesignerDto
+import com.example.stylescope.data.remote.dtos.designer.DesignerFavoriteDto
 import com.example.stylescope.data.remote.dtos.favorite.FavoriteItemDto
 import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
@@ -113,5 +115,17 @@ interface ApiService {
     @PATCH("users/change_password/")
     suspend fun changeUserPassword(
         @Body model: UserChangePasswordDto
+    ): List<String>
+
+    @POST("companies/{id}/favorite/")
+    suspend fun addFavoriteCompany(
+        @Body model: CompanyFavoriteDto,
+        @Path("id") id: String
+    ): List<String>
+
+    @POST("designers/{id}/favorite/")
+    suspend fun addFavoriteDesigner(
+        @Body model: DesignerFavoriteDto,
+        @Path("id") id: String
     ): List<String>
 }

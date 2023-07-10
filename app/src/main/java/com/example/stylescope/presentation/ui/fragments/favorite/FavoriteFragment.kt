@@ -21,10 +21,13 @@ class FavoriteFragment :
 
     override val binding: FragmentFavoriteBinding by viewBinding(FragmentFavoriteBinding::bind)
     override val viewModel: FavoriteViewModel by viewModel()
-    private val adapterCompany: CompanyAdapter by lazy { CompanyAdapter(this::clickCompany) }
+    private val adapterCompany: CompanyAdapter by lazy { CompanyAdapter(this::clickCompany, this::saveCompany) }
     private val adapterDesigner: DesignerAdapter by lazy { DesignerAdapter(this::clickDesigner) }
     private val pref: Pref by lazy { Pref(requireContext()) }
 
+    private fun saveCompany(id: Int) {
+
+    }
     companion object{
         const val KEY_FAVORITE = "favorite"
     }

@@ -158,4 +158,12 @@ data class CompanyDesignerDto(
         countReviews = countReviews
     )
 }
+    data class CompanyFavoriteDto(
+        @SerializedName("company_id")
+        val companyId: Int
+    )
+
+    fun CompanyFavoriteModel.toData() = CompanyFavoriteDto(
+        companyId = companyId
+    )
 

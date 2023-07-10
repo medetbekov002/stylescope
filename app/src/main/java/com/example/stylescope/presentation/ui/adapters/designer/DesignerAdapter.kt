@@ -10,7 +10,8 @@ import com.example.stylescope.databinding.ItemDesignersBinding
 import com.example.stylescope.presentation.model.designer.DesignerUI
 import com.example.stylescope.presentation.utils.loadImage
 
-class DesignerAdapter(private val click: (id: Int) -> Unit) :
+class DesignerAdapter(
+    private val click: (id: Int) -> Unit) :
     ListAdapter<DesignerUI, DesignerAdapter.DesignerViewHolder>(
         DesignerDiffCallback()
     ) {
@@ -36,7 +37,7 @@ class DesignerAdapter(private val click: (id: Int) -> Unit) :
 
                 itemView.setOnClickListener {
                     click(model.id!!)
-                    Log.w("ololo", "click: $model.id", )
+                    Log.w("ololo", "click: $model.id")
                 }
             }
         }
