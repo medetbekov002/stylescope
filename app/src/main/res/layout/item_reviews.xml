@@ -13,6 +13,7 @@
         android:id="@+id/item_img_reviews"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:src="@drawable/profile_photo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,14 +27,6 @@
         app:layout_constraintStart_toEndOf="@id/item_img_reviews"
         app:layout_constraintTop_toTopOf="@id/item_img_reviews"
         tools:text="Ирина Ким" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/item_btn_burger_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_burger_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/item_img_reviews" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_text_reviews"
