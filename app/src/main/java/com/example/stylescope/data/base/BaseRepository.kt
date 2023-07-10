@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
+
 fun <T> makeNetworkRequest(
     gatherIsSucceed: ((T) -> Unit)? = null,
     request: suspend() -> T

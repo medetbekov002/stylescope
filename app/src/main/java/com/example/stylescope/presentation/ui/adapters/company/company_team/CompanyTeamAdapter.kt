@@ -29,6 +29,7 @@ class CompanyTeamAdapter : ListAdapter<CompanyDesignerUI, CompanyTeamAdapter.Com
             binding.itemTvRating.text = model?.rating
             val rating = model?.rating?.toFloat()
             binding.itemRatingBar.rating = rating!!
+
         }
     }
 

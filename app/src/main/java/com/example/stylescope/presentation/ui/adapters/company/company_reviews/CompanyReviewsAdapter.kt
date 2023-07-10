@@ -10,28 +10,37 @@ import com.example.stylescope.presentation.utils.loadImage
 
 
 class CompanyReviewsAdapter :
-        androidx.recyclerview.widget.ListAdapter<Int, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
-                CompanyReviewDiffCallback()
-        ) {
-    class CompanyReviewDiffCallback : DiffUtil.ItemCallback<Int>() {
-        override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean =
-                oldItem == newItem
+    androidx.recyclerview.widget.ListAdapter<CompanyReviewUI, CompanyReviewsAdapter.CompanyReviewsViewHolder>(
+        CompanyReviewDiffCallback()
+    ) {
+    class CompanyReviewDiffCallback : DiffUtil.ItemCallback<CompanyReviewUI>() {
+        override fun areItemsTheSame(oldItem: CompanyReviewUI, newItem: CompanyReviewUI): Boolean =
+            oldItem == newItem
 
         override fun areContentsTheSame(
-                oldItem: Int,
-                newItem: Int
+            oldItem: CompanyReviewUI,
+            newItem: CompanyReviewUI
         ): Boolean =
-                oldItem == newItem
+            oldItem == newItem
+
     }
 
     class CompanyReviewsViewHolder(private val binding: ItemReviewsBinding) :
-            RecyclerView.ViewHolder(binding.root) {
-        fun onBind(model: Int) {
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(model: CompanyReviewUI) {
+            model.user_photo?.let { binding.itemImgReviews.loadImage(it) }
+            val rating = model.rank
+            if (rating != null) {
+                binding.itemRatingReviews.rating = rating.toFloat()
+            }
+            binding.itemTvReviewsName.text = model.username
+            binding.itemTextReviews.text = model.text
+            binding.itemTvReviewsHoursAgo.text = model.time_since_published
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CompanyReviewsViewHolder(
-            ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: CompanyReviewsViewHolder, position: Int) {
@@ -39,3 +48,5 @@ class CompanyReviewsAdapter :
         holder.onBind(model)
     }
 }
+
+

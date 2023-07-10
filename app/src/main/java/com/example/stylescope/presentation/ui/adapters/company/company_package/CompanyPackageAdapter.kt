@@ -29,7 +29,7 @@ class CompanyPackageAdapter : androidx.recyclerview.widget.ListAdapter<CompanyPa
             var serviceDescState = false
             val serviceDesc = model.description
             binding.itemTvPackageTitle.setOnClickListener {
-                if (!serviceDescState && serviceDesc.isNotEmpty()) {
+                if (!serviceDescState && serviceDesc?.isNotEmpty() == true) {
                     binding.itemTvPackageDesc.isVisible = true
                     serviceDescState = true
                 } else {

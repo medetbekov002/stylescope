@@ -45,7 +45,6 @@ class Pref(private val context: Context) {
     fun showToken():String?{
         return pref.getString(TOKEN,null)
     }
-
     fun savePassword(password:String){
         pref.edit().putString(USER_PASSWORD,password).apply()
     }

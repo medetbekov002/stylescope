@@ -34,7 +34,7 @@ class CompanyAdapter(private val click: (id: Int) -> Unit) : ListAdapter<Company
             binding.itemRatingImg.rating = rating!!
 
             itemView.setOnClickListener {
-                click(model.id)
+                model.id?.let { it1 -> click(it1) }
                 Log.e("ololo", "onBind: ${model.id}", )
             }
         }

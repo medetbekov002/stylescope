@@ -94,13 +94,14 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
         tokenViewModel.verifyToken(VerifyTokenUI(pref.showToken().toString()))
         tokenViewModel.verifyTokenState.spectateUiState(
             error = {
-                Log.e("ololo","BF.iTE.error:$it")
+                Log.e("ololo","BF.vTS.error:$it")
                 tokenViewModel.refreshToken(RefreshTokenUI(pref.showRefreshToken().toString()))
             }
         )
         tokenViewModel.refreshTokenState.spectateUiState(
             success = {
                 pref.saveToken(it.access)
+                Log.e("ololo","BF.rTS.success:$it")
             },
             error = {
                 tokenViewModel.getToken(
@@ -109,6 +110,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
                         pref.showPassword().toString()
                     )
                 )
+                Log.e("ololo","BF.rTSs:$it")
             }
         )
         tokenViewModel.getTokenState.spectateUiState(

@@ -58,7 +58,7 @@ class CompaniesFragment :
 
 
     private fun searchInDataList(name: String) {
-        val searchData = list.filter { it.title.contains(name, ignoreCase = true) }
+        val searchData = list.filter { it.title?.contains(name, ignoreCase = true) == true }
         if (searchData.isNotEmpty()) {
             adapter.submitList(searchData)
             binding.badRequest.root.isGone = true

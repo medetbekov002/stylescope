@@ -20,9 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
-        if (pref.showToken()==null){
-            navController.navigate(R.id.interFragment)
-        }
         initNavController()
     }
 
