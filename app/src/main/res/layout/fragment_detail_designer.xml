@@ -15,18 +15,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:elevation="8dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageView
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:id="@+id/img_logo"
+                    android:layout_gravity="end"
+                    android:layout_width="112dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/urmat_toolbar_logo"/>
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back"/>
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginVertical="10dp"
+                    android:text="Дизайнер"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+            </androidx.appcompat.widget.Toolbar>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/design_profile_lt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                 <ImageView
                     android:id="@+id/il_btn_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/favorite_design"
+                    android:src="@drawable/ic_favorite_ram"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -177,8 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="@dimen/_24dp"
-                app:layout_constraintTop_toBottomOf="@id/scroll_aboutus"
-                app:layout_constraintBottom_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/scroll_aboutus">
 
                 <TextView
                     android:id="@+id/midle_raiting"
@@ -216,6 +246,7 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="40dp"
                     android:isIndicator="true"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/midle_intdes"
                     app:layout_constraintTop_toTopOf="parent"
                     app:mrb_progressTint="@color/yellow" />
@@ -226,7 +257,6 @@
                     android:layout_height="wrap_content"
                     android:text="10 отзыва"
                     app:layout_constraintEnd_toEndOf="@id/midle_rating_bar"
-                    app:layout_constraintStart_toEndOf="@id/midle_intdes"
                     app:layout_constraintTop_toBottomOf="@id/midle_rating_bar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <View

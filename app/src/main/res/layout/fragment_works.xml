@@ -5,13 +5,44 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.pager.WorksFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:elevation="8dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
 
+    <ImageView
+        android:layout_marginEnd="@dimen/_12dp"
+        android:id="@+id/img_logo"
+        android:layout_gravity="end"
+        android:layout_width="112dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:src="@drawable/urmat_toolbar_logo"/>
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"/>
+    <TextView
+        android:textSize="18sp"
+        android:layout_marginVertical="10dp"
+        android:text="Портфолио"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+    </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/company_works_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         tools:listitem="@layout/item_company_works" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

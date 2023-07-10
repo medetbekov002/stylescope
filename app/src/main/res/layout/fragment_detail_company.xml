@@ -35,7 +35,7 @@
             <TextView
                 android:textSize="18sp"
                 android:layout_marginVertical="10dp"
-                android:text="О компании"
+                android:text="Компании"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:layout_width="wrap_content"
