@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.favorite
 
+import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -56,11 +57,11 @@ class FavoriteFragment :
             viewModel.getFavorites()
             viewModel.state.spectateUiState(
                 success = {
-                    adapterCompany.submitList(it.companies)
-                    adapterDesigner.submitList(it.designers)
+
                 },
                 error = {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    Log.e("favorite", it)
                 },
                 gatherIfSucceed = {
                     loading.progressBar.isVisible = it is UIState.Loading

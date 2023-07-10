@@ -6,14 +6,12 @@ import com.example.stylescope.presentation.model.favorite.FavoriteItemUI
 import com.example.stylescope.presentation.model.favorite.toFavoriteItemUI
 import kotlinx.coroutines.flow.asStateFlow
 
-class FavoriteViewModel(private val favoriteUseCase: FavoriteUseCase):BaseViewModel() {
+class FavoriteViewModel(private val favoriteUseCase: FavoriteUseCase) : BaseViewModel() {
 
-    private val _state = mutableUIStateFlow<FavoriteItemUI>()
+    private val _state = mutableUIStateFlow<List<FavoriteItemUI>>()
     val state = _state.asStateFlow()
 
-    fun getFavorites(){
-        favoriteUseCase().gatherRequest(_state){it.toFavoriteItemUI()}
+    fun getFavorites() {
+        favoriteUseCase().gatherRequest(_state) { favoriteItemModels -> favoriteItemModels.map { it.toFavoriteItemUI() } }
     }
-
-
 }

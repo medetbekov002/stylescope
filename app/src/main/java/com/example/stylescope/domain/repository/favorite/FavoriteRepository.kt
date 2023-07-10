@@ -5,5 +5,5 @@ import com.example.stylescope.domain.model.favorite.FavoriteItemModel
 import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {
-    fun getFavorites(): Flow<Either<String,FavoriteItemModel>>
+    fun getFavorites(): Flow<Either<String, List<FavoriteItemModel>>>
 }

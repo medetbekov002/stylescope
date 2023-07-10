@@ -35,7 +35,7 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("users/favorite/")
-    suspend fun getFavorite():FavoriteItemDto
+    suspend fun getFavorite(): BaseMainResponse<FavoriteItemDto>
 
     @POST("token/")
     suspend fun getToken(

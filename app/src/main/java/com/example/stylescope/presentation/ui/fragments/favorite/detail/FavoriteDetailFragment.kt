@@ -35,18 +35,16 @@ class FavoriteDetailFragment :
     @SuppressLint("SetTextI18n")
     override fun launchObservers() {
         super.launchObservers()
-        with(binding) {
-            viewModel.getFavorites()
+        with(binding) {/*
+            viewModel.getFavorites()*/
             viewModel.state.spectateUiState(
                 success = {
                     if (isItCompany) {
                         tvCompanies.text = "Компании"
-                        favoriteCount.text = "${it.companies?.size} избранных"
-                        adapterCompany.submitList(it.companies)
+                        favoriteCount.text = "${it.companies} избранных"
                     } else {
                         tvCompanies.text = "Дизайнеры"
-                        favoriteCount.text = "${it.designers?.size} избранных"
-                        adapterDesigner.submitList(it.designers)
+                        favoriteCount.text = "${it.designers} избранных"
                     }
                 },
                 error = {
