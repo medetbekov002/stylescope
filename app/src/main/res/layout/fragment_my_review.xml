@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.review.MyReviewFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:src="@drawable/back_icon_urmat" />
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/_12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/urmat_toolbar_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:text="Мои отзывы"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_companies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Отзывы на компании"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_count_companies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 отзыва"
+                app:layout_constraintStart_toStartOf="@id/tv_companies"
+                app:layout_constraintTop_toBottomOf="@id/tv_companies" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/urmat_gray"
+                app:layout_constraintTop_toBottomOf="@id/tv_count_companies" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_companies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/view"
+                tools:listitem="@layout/item_my_reviews_company" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_designers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Отзывы на дизайнеров"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_companies" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_count_designers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 отзыва"
+                app:layout_constraintStart_toStartOf="@id/tv_companies"
+                app:layout_constraintTop_toBottomOf="@id/tv_designers" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/urmat_gray"
+                app:layout_constraintTop_toBottomOf="@id/tv_count_designers" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_designers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/view2"
+                tools:listitem="@layout/item_my_reviews_designer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
