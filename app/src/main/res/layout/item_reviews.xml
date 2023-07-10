@@ -29,25 +29,35 @@
         tools:text="Ирина Ким" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_reviews_name"
+        app:layout_constraintStart_toEndOf="@id/item_img_reviews"
+        tools:text="irinakim" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_text_reviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_img_reviews"
+        app:layout_constraintTop_toBottomOf="@id/item_rating_reviews"
         tools:text="Я очень довольна дизайном этой компании, все сделано качественно.
 Хочу отметить про скорость работы, она на высшем уровне.
 Желаю успехов этой компании" />
 
     <me.zhanghai.android.materialratingbar.MaterialRatingBar
         android:id="@+id/item_rating_reviews"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_width="74dp"
+        android:layout_height="16dp"
         android:isIndicator="true"
-        app:mrb_progressTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_img_reviews"
+        app:mrb_progressTint="@color/yellow" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_tv_reviews_hours_ago"

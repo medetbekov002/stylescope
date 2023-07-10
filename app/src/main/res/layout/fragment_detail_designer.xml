@@ -177,8 +177,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="@dimen/_24dp"
-                app:layout_constraintBottom_toTopOf="materialTextView"
-                app:layout_constraintTop_toBottomOf="@id/scroll_aboutus">
+                app:layout_constraintTop_toBottomOf="@id/scroll_aboutus"
+                app:layout_constraintBottom_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/midle_raiting"
@@ -226,9 +226,8 @@
                     android:layout_height="wrap_content"
                     android:text="10 отзыва"
                     app:layout_constraintEnd_toEndOf="@id/midle_rating_bar"
-                    app:layout_constraintStart_toEndOf="+@id/midle_int"
+                    app:layout_constraintStart_toEndOf="@id/midle_intdes"
                     app:layout_constraintTop_toBottomOf="@id/midle_rating_bar" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
             <View
                 android:id="@+id/view_works"

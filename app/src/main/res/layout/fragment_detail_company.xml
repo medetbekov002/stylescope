@@ -9,17 +9,49 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:elevation="8dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageView
+                android:layout_marginEnd="@dimen/_12dp"
+                android:id="@+id/img_logo"
+                android:layout_gravity="end"
+                android:layout_width="112dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:src="@drawable/urmat_toolbar_logo"/>
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"/>
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginVertical="10dp"
+                android:text="О компании"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_detail_company"
             android:layout_width="match_parent"
             android:layout_height="164dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_detail_save"
@@ -27,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="30dp"
-            android:src="@drawable/urmat_ic_favorite"
+            android:src="@drawable/ic_favorite_ram"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/img_detail_company" />
 
@@ -69,7 +101,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="@dimen/_24dp"
-            app:layout_constraintBottom_toTopOf="materialTextView"
             app:layout_constraintTop_toBottomOf="@id/tv_detail_company_des">
 
             <TextView
@@ -106,7 +137,7 @@
                 android:id="@+id/midle_rating_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="80dp"
                 android:isIndicator="true"
                 app:layout_constraintStart_toEndOf="@id/midle_int"
                 app:layout_constraintTop_toTopOf="parent"
@@ -118,9 +149,8 @@
                 android:layout_height="wrap_content"
                 android:text="10 отзыва"
                 app:layout_constraintEnd_toEndOf="@id/midle_rating_bar"
-                app:layout_constraintStart_toEndOf="+@id/midle_int"
+                app:layout_constraintStart_toStartOf="@id/midle_rating_bar"
                 app:layout_constraintTop_toBottomOf="@id/midle_rating_bar" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
         <View
             android:id="@+id/view_service"
@@ -184,30 +214,22 @@
             app:layout_constraintTop_toBottomOf="@id/view_works"
             tools:listitem="@layout/item_company_works" />
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
             android:id="@+id/tv_see_all_works"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:drawableEnd="@drawable/ic_see_all_works"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="8dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/urmat_see_all_container"
+            android:fontFamily="@font/raleway_regular"
+            android:gravity="center"
+            android:paddingEnd="15dp"
             android:text="Смотреть все"
-            android:textColor="@color/black"
+            android:textColor="#072755"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="@id/img_detail_save"
             app:layout_constraintTop_toBottomOf="@id/company_works_pager"
-            app:strokeColor="#4945FF"
-            app:strokeWidth="1dp" />
-
-        <View
-            android:id="@+id/view_see_all_works"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#4945FF"
-            app:layout_constraintEnd_toEndOf="@id/tv_see_all_works"
-            app:layout_constraintStart_toStartOf="@id/tv_see_all_works"
-            app:layout_constraintTop_toBottomOf="@id/tv_see_all_works" />
-
+            app:drawableEndCompat="@drawable/urmat_ic_right" />
 
         <View
             android:id="@+id/view_prices"
@@ -216,7 +238,7 @@
             android:layout_marginTop="24dp"
             android:background="@color/black"
             app:layout_constraintStart_toStartOf="@id/view_works"
-            app:layout_constraintTop_toBottomOf="@id/view_see_all_works" />
+            app:layout_constraintTop_toBottomOf="@id/tv_see_all_works" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
