@@ -12,8 +12,7 @@ import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.utils.loadImage
 
 class CompanyAdapter(
-    private val click: (id: Int) -> Unit,
-    private val saveCompany: (id: Int) -> Unit
+    private val click: (id: Int) -> Unit
 ) : ListAdapter<CompanyUI, CompanyAdapter.CompanyViewHolder>(
     CompanyDiffCallback()
 ) {
@@ -35,15 +34,11 @@ class CompanyAdapter(
             binding.itemTvCompanyDes.text = model?.summary
             binding.itemTvViews.text = model?.views.toString()
             val rating = model?.rating?.toFloat()
-            binding.itemRatingImg.rating = rating!!
+            binding.ratingBar.rating = rating!!
 
             itemView.setOnClickListener {
                 model.id?.let { it1 -> click(it1) }
                 Log.e("ololo", "onBind: ${model.id}")
-            }
-
-            binding.itemImgSave.setOnClickListener {
-                model.id?.let { it1 -> saveCompany(it1) }
             }
         }
     }

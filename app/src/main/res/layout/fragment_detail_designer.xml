@@ -199,7 +199,7 @@
                     app:layout_constraintTop_toBottomOf="@id/midle_raiting" />
 
                 <TextView
-                    android:id="@+id/midle_int"
+                    android:id="@+id/midle_intdes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -216,7 +216,7 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="40dp"
                     android:isIndicator="true"
-                    app:layout_constraintStart_toEndOf="@id/midle_int"
+                    app:layout_constraintStart_toEndOf="@id/midle_intdes"
                     app:layout_constraintTop_toTopOf="parent"
                     app:mrb_progressTint="@color/yellow" />
 

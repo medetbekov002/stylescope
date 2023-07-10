@@ -67,6 +67,4 @@ class RecoveryFragment :
     private fun EditText.setEditTextBackground(color: Int) {
         background = ContextCompat.getDrawable(requireContext(), color)
     }
-
-
 }
