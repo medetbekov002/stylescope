@@ -18,7 +18,11 @@ import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.password.UserChangePasswordDto
 import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
+import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
+import com.example.stylescope.data.remote.dtos.review.ReviewAnswerDto
+import com.example.stylescope.data.remote.dtos.review.ReviewSendDto
+import com.example.stylescope.data.remote.dtos.review.UserReviewsDto
 import com.example.stylescope.data.remote.dtos.token.*
 import retrofit2.http.*
 import com.example.stylescope.data.remote.dtos.user.UpdateUserImageDto
@@ -58,7 +62,7 @@ interface ApiService {
     suspend fun getCompanies(): BaseMainResponse<CompanyDto>
 
     @GET("companies/{id}")
-    suspend fun getDetailCompany(@Path("id") id: Int): CompanyDetailDto
+    suspend fun getDetailCompany(@Path("id")id: Int): CompanyDetailDto
 
     @GET("designers/")
     suspend fun getDesigners(): BaseMainResponse<DesignerDto>
@@ -78,7 +82,7 @@ interface ApiService {
 
     @POST("users/register/")
     suspend fun register(
-        @Body body: RegisterDto
+        @Body body:RegisterDto
     ):List<String>
 
     @POST("users/confirm/")
@@ -109,6 +113,8 @@ interface ApiService {
         @Body model: UpdateUserProfileDto): List<String>
 
     @Multipart
+    suspend fun updateUserImage(
+        @Body model: UpdateUserProfileDto): List<String>
     @PATCH("users/update_image/")
     suspend fun updateUserImage(
         @Part image : MultipartBody.Part) : UpdateUserImageDto
@@ -131,4 +137,53 @@ interface ApiService {
     ): List<String>
     @GET("users/myreviews/")
     suspend fun getReviews():MyReviewsDto
+
+    @POST("companies/{company_id}/reviews/")
+    suspend fun sendCompanyReview(
+        @Body model: ReviewSendDto,
+        @Path("company_id") id: String
+    ): ReviewAnswerDto
+
+    @DELETE("companies/{company_id}/reviews/{id}/")
+    suspend fun deleteCompanyReview(
+        @Path("company_id")companyId:String,
+        @Path("id")id:String
+    ):List<String>
+
+    @PUT("companies/{company_id}/reviews/{id}/")
+    suspend fun editCompanyReview(
+        @Path("company_id")companyId:String,
+        @Path("id")id:String,
+        @Body edit:ReviewSendDto
+    ):ReviewAnswerDto
+
+    @GET("companies/{company_id}/reviews/user/")
+    suspend fun getCompaniesUserReview(
+        @Path("company_id")companyId:String
+    ):UserReviewsDto
+
+    @POST("designers/{designer_id}/reviews/")
+    suspend fun sendDesignerReview(
+        @Body model: ReviewSendDto,
+        @Path("designer_id") id: String
+    ): ReviewAnswerDto
+
+    @DELETE("designers/{designer_id}/reviews/{id}/")
+    suspend fun deleteDesignerReview(
+        @Path("designer_id")companyId:String,
+        @Path("id")id:String
+    ):List<String>
+
+    @PUT("designers/{designer_id}/reviews/{id}/")
+    suspend fun editDesignerReview(
+        @Path("designer_id")companyId:String,
+        @Path("id")id:String,
+        @Body edit:ReviewSendDto
+    ):ReviewAnswerDto
+
+    @GET("designers/{designer_id}/reviews/user/")
+    suspend fun getDesignerUserReview(
+        @Path("designer_id")designerId:String
+    ):UserReviewsDto
+
 }

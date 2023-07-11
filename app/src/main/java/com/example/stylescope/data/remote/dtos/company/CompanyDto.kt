@@ -170,4 +170,3 @@ data class CompanyDesignerDto(
     fun CompanyFavoriteModel.toData() = CompanyFavoriteDto(
         companyId = companyId
     )
-

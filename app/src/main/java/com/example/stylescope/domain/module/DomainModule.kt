@@ -14,6 +14,8 @@ import com.example.stylescope.domain.use_cases.login.LogInUseCase
 import com.example.stylescope.domain.use_cases.myreviews.MyReviewsUseCase
 import com.example.stylescope.domain.use_cases.recover.RecoverUseCase
 import com.example.stylescope.domain.use_cases.register.RegisterUseCase
+import com.example.stylescope.domain.use_cases.reviewcompany.ReviewCompanyUseCase
+import com.example.stylescope.domain.use_cases.reviewdesigner.ReviewDesignerUseCase
 import com.example.stylescope.domain.use_cases.token.TokenUseCase
 import com.example.stylescope.domain.use_cases.user.profile.GetUserProfileUseCase
 import com.example.stylescope.domain.use_cases.user.profile.UpdateUserImageUseCase
@@ -34,6 +36,7 @@ val useCasesModule = module {
     factory { ChangePasswordUseCase(get()) }
     factory { TokenUseCase(get()) }
     factory { FavoriteUseCase(get()) }
+    factory { MyReviewsUseCase(get()) }
     factory { GetUserProfileUseCase(get()) }
     factory { UpdateUserProfileUseCase(get()) }
     factory { UpdateUserImageUseCase(get()) }
