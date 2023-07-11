@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:elevation="8dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:layout_marginEnd="@dimen/_12dp"
+            android:id="@+id/img_logo"
+            android:layout_gravity="end"
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@drawable/urmat_toolbar_logo"/>
+
+        <TextView
+            android:textSize="18sp"
+            android:layout_marginVertical="10dp"
+            android:text="Error"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_not_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Приносим свои извинение"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="200dp"
+        android:text="Данный экран в разработке и в скором времени будет функционировать"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_not_profile"
+        tools:layout_editor_absoluteX="12dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
