@@ -32,6 +32,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_tv_company_name"
         android:layout_width="0dp"

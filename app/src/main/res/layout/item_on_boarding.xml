@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#072755">
@@ -42,10 +43,12 @@
         app:layout_constraintTop_toBottomOf="@id/imgLogo" />
 
     <ImageView
+        android:layout_marginTop="70dp"
         android:id="@+id/imgMain"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="70dp"
+
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/bottomContainer"
         app:layout_constraintTop_toBottomOf="@id/tvLogo" />
@@ -55,7 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#162431"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTitle"
@@ -79,7 +83,7 @@
             android:layout_marginBottom="50dp"
             android:text="Мы предоставляем удобный и быстрый способ найти лучшие дизайнерские услуги в Кыргызстане и получить профессиональную помощь в создании уникального пространства."
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/btnBack"
+            app:layout_constraintBottom_toTopOf="@id/btnNext"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <com.google.android.material.button.MaterialButton

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -40,7 +40,6 @@
                 app:argType="integer" />
         </action>
     </fragment>
-
     <fragment
         android:id="@+id/detailDesignerFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerFragment"
@@ -59,7 +58,7 @@
         android:label="fragment_companies"
         tools:layout="@layout/fragment_companies">
         <action
-            android:id="@+id/action_companiesFragment_to_detailCompanyFragment"
+            android:id="@+id/action_companiesFragment_to_detailCompanyFragment2"
             app:destination="@id/detailCompanyFragment">
             <argument
                 android:name="companyID"
@@ -69,7 +68,6 @@
             android:name="companyID"
             app:argType="integer" />
     </fragment>
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.main.MainFragment"
@@ -83,7 +81,6 @@
                 app:argType="integer" />
         </action>
     </fragment>
-
     <fragment
         android:id="@+id/confirmCodeFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeFragment"
@@ -146,13 +143,11 @@
         android:name="com.example.stylescope.presentation.ui.fragments.changepassword.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
-
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
-
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingFragment"

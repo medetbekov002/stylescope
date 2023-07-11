@@ -1,5 +1,7 @@
 package com.example.stylescope.presentation.module
 
+import com.example.stylescope.domain.use_cases.reviewcompany.ReviewCompanyUseCase
+import com.example.stylescope.domain.use_cases.reviewdesigner.ReviewDesignerUseCase
 import com.example.stylescope.presentation.ui.fragments.changepassword.ChangePasswordViewModel
 import com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeViewModel
 import com.example.stylescope.presentation.ui.fragments.favorite.FavoriteViewModel
@@ -8,9 +10,9 @@ import com.example.stylescope.presentation.ui.fragments.pager.company.CompaniesV
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyVIewModel
 import com.example.stylescope.presentation.ui.fragments.pager.designer.DesignerViewModel
 import com.example.stylescope.presentation.ui.fragments.main.MainViewModel
-import com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerViewModel
 import com.example.stylescope.presentation.ui.fragments.myreviews.MyReviewsViewModel
 import com.example.stylescope.presentation.ui.fragments.onboarding.OnBoardingViewModel
+import com.example.stylescope.presentation.ui.fragments.pager.designer.detail.DetailDesignerViewModel
 import com.example.stylescope.presentation.ui.fragments.recovery.RecoveryViewModel
 import com.example.stylescope.presentation.ui.token.TokenViewModel
 import com.example.stylescope.presentation.ui.fragments.profile.ProfileViewModel
@@ -22,8 +24,8 @@ import org.koin.dsl.module
 
 val uiModule = module {
     viewModel { CompaniesViewModel(get()) }
-    viewModel { DetailCompanyVIewModel(get(), get()) }
-    viewModel { DetailDesignerViewModel(get(), get()) }
+    viewModel { DetailCompanyVIewModel(get(),get(),get()) }
+    viewModel { DetailDesignerViewModel(get(),get(),get()) }
     viewModel { DesignerViewModel(get()) }
     viewModel { MainViewModel(get(), get()) }
     viewModel { InterViewModel(get()) }
@@ -35,7 +37,7 @@ val uiModule = module {
     viewModel { FavoriteViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { UpdateUserImageViewModel(get()) }
-    viewModel { OnBoardingViewModel() }
     viewModel { ChangeUserPasswordViewModel(get()) }
+    viewModel { OnBoardingViewModel() }
     viewModel { MyReviewsViewModel(get()) }
 }

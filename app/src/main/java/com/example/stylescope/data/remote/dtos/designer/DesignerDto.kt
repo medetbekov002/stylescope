@@ -1,5 +1,4 @@
 package com.example.stylescope.data.remote.dtos.designer
-
 import com.example.stylescope.data.mapper.DataMapper
 import com.example.stylescope.domain.model.designer.DesignReviewModel
 import com.example.stylescope.domain.model.designer.DesignerDetailModel

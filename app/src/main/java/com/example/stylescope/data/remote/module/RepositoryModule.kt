@@ -11,12 +11,14 @@ import com.example.stylescope.data.remote.repository.login.LogInRepositoryImpl
 import com.example.stylescope.data.remote.repository.myreviews.MyReviewsRepositoryImpl
 import com.example.stylescope.data.remote.repository.recover.RecoverRepositoryImpl
 import com.example.stylescope.data.remote.repository.register.RegisterRepositoryImpl
+import com.example.stylescope.data.remote.repository.reviewcompany.ReviewCompanyRepositoryImpl
+import com.example.stylescope.data.remote.repository.reviewdesigner.ReviewDesignerRepositoryImpl
 import com.example.stylescope.data.remote.repository.token.TokenRepositoryImpl
-import com.example.stylescope.domain.repository.changepassword.ChangePasswordRepository
 import com.example.stylescope.data.remote.repository.user.profile.UpdateUserImageRepositoryImpl
 import com.example.stylescope.data.remote.repository.user.profile.UpdateUserProfileRepositoryImpl
 import com.example.stylescope.data.remote.repository.user.profile.UserChangePasswordRepositoryImpl
 import com.example.stylescope.data.remote.repository.user.profile.UserProfileRepositoryImpl
+import com.example.stylescope.domain.repository.changepassword.ChangePasswordRepository
 import com.example.stylescope.domain.repository.company.CompanyRepository
 import com.example.stylescope.domain.repository.confirm.ConfirmRepository
 import com.example.stylescope.domain.repository.designer.DesignerRepository
@@ -27,6 +29,8 @@ import com.example.stylescope.domain.repository.login.LogInRepository
 import com.example.stylescope.domain.repository.myreviews.MyReviewsRepository
 import com.example.stylescope.domain.repository.recover.RecoverRepository
 import com.example.stylescope.domain.repository.register.RegisterRepository
+import com.example.stylescope.domain.repository.reviewcompany.ReviewCompanyRepository
+import com.example.stylescope.domain.repository.reviewdesigner.ReviewDesignerRepository
 import com.example.stylescope.domain.repository.token.TokenRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserImageRepository
 import com.example.stylescope.domain.repository.user.profile.UpdateUserProfileRepository
@@ -44,11 +48,13 @@ val repoModule = module {
     single<ChangePasswordRepository> { ChangePasswordRepositoryImpl(get()) }
     single<TokenRepository> { TokenRepositoryImpl(get()) }
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
-    single<UserProfileRepository> { UserProfileRepositoryImpl(get()) }
+    single<UserProfileRepository> { UserProfileRepositoryImpl(get(), get()) }
     single<UpdateUserProfileRepository> { UpdateUserProfileRepositoryImpl(get()) }
     single<UpdateUserImageRepository> { UpdateUserImageRepositoryImpl(get()) }
     single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
     single<SaveFavoriteCompanyRepository> { SaveFavoriteCompanyRepositoryImpl(get()) }
     single<SaveFavoriteDesignerRepository> { SaveFavoriteDesignerRepositoryImpl(get()) }
+    single<ReviewCompanyRepository> { ReviewCompanyRepositoryImpl(get()) }
     single<MyReviewsRepository> { MyReviewsRepositoryImpl(get()) }
+    single<ReviewDesignerRepository> { ReviewDesignerRepositoryImpl(get()) }
 }

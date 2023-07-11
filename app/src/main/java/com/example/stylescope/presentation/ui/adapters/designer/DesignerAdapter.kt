@@ -53,4 +53,5 @@ class DesignerAdapter(
         val model = getItem(position)
         holder.onBind(model)
     }
+
 }

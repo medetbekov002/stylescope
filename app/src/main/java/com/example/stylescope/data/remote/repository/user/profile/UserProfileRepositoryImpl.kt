@@ -8,7 +8,7 @@ import com.example.stylescope.domain.model.user.UserValidateModel
 import com.example.stylescope.domain.repository.user.profile.UserProfileRepository
 import kotlinx.coroutines.flow.Flow
 
-class UserProfileRepositoryImpl(private val api: ApiService) : UserProfileRepository {
+class UserProfileRepositoryImpl(private val api: ApiService, private val pref: Pref) : UserProfileRepository {
     override fun getUserProfile(): Flow<Either<String, UserValidateModel>> = makeNetworkRequest {
         api.getUserProfile().toDomain()
     }

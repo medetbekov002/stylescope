@@ -101,6 +101,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
         tokenViewModel.refreshTokenState.spectateUiState(
             success = {
                 pref.saveToken(it.access)
+                Log.e("ololo","BF.rTS.success:$it")
             },
             error = {
                 tokenViewModel.getToken(
@@ -109,6 +110,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>
                         pref.showPassword().toString()
                     )
                 )
+                Log.e("ololo","BF.rTSs:$it")
             }
         )
         tokenViewModel.getTokenState.spectateUiState(
