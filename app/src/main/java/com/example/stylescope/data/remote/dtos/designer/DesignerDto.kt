@@ -11,7 +11,6 @@ data class DesignerDto(
     val id: Int? = null,
     val name: String? = null,
     val photo: String? = null,
-    @SerializedName("company_title")
     val occupation: String? = null,
     val rating: String? = null,
     @SerializedName("count_reviews")

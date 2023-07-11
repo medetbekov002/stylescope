@@ -13,6 +13,7 @@ import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentDetailDesignerBinding
 import com.example.stylescope.presentation.model.designer.DesignerFavoriteUI
+import com.example.stylescope.presentation.model.review.ReviewSendUI
 import com.example.stylescope.presentation.ui.adapters.designer.design_reviews.DesignReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.design_works.DesignWorksAdapter
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyFragmentArgs
@@ -28,7 +29,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
     private val designReviewsAdapter by lazy { DesignReviewsAdapter() }
     private val pref: Pref by lazy { Pref(requireContext()) }
     private var isEdit = false
-    private val args by navArgs<DetailCompanyFragmentArgs>()
+    private val args by navArgs<DetailDesignerFragmentArgs>()
     private var reviewId = 1
     private var reviewEmpty = false
     override fun initialize() {
@@ -77,6 +78,8 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
             Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
             Log.e("ololo", errorMsg)
         })
+    }
+
     override fun constructListeners() {
         super.constructListeners()
         with(binding) {
@@ -95,6 +98,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
             }
         }
     }
+
 
     private fun detailDesignerState() {
         with(binding) {
@@ -118,25 +122,25 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
     }
 
 
-        private fun sendReviewState() {
-            with(binding) {
-                viewModel.reviewSend.spectateUiState(
-                    success = {
-                        viewModel.getUserReview("1")
-                        it.userPhoto?.let { it1 -> imgUserReviews.loadImage(it1) }
-                        etUserReviews.clearFocus()
-                        rank.rating = 0.0F
-                        etUserReviews.text?.clear()
-                    }, error = { errorMsg ->
-                        Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_SHORT)
-                            .show()
-                    },
-                    gatherIfSucceed = {
-                        loading.progressBar.isVisible = it is UIState.Loading
-                    })
-            }
+    private fun sendReviewState() {
+        with(binding) {
+            viewModel.reviewSend.spectateUiState(
+                success = {
+                    viewModel.getUserReview("1")
+                    it.userPhoto?.let { it1 -> imgUserReviews.loadImage(it1) }
+                    etUserReviews.clearFocus()
+                    rank.rating = 0.0F
+                    etUserReviews.text?.clear()
+                }, error = { errorMsg ->
+                    Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_SHORT)
+                        .show()
+                },
+                gatherIfSucceed = {
+                    loading.progressBar.isVisible = it is UIState.Loading
+                })
         }
     }
+
 
     private fun deleteReviewState() {
         viewModel.reviewDelete.spectateUiState(
@@ -225,11 +229,13 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
                         }
                         true
                     }
+
                     R.id.reduct -> {
                         etUserReviews.setText(tvUserReviews.text.toString())
                         isEdit = true
                         true
                     }
+
                     else -> true
                 }
             }

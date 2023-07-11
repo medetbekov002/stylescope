@@ -17,10 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class DetailDesignerViewModel(
     private val getDetailDesignerUseCase: GetDetailDesignerUseCase,
-    private val saveFavoriteDesignerUseCase: SaveFavoriteDesignerUseCase
-) : BaseViewModel() {
-class DetailDesignerViewModel(
-    private val getDetailDesignerUseCase: GetDetailDesignerUseCase,
+    private val saveFavoriteDesignerUseCase: SaveFavoriteDesignerUseCase,
     private val reviewDesignerUseCase: ReviewDesignerUseCase
 ) :
     BaseViewModel() {
@@ -68,7 +65,8 @@ class DetailDesignerViewModel(
     private val _reviewUser = mutableUIStateFlow<UserReviewsUI>()
     val reviewUser = _reviewUser.asStateFlow()
 
-    fun getUserReview(designerId: String){
-        reviewDesignerUseCase.getDesignerUserReview(designerId).gatherRequest(_reviewUser){it.toUI()}
+    fun getUserReview(designerId: String) {
+        reviewDesignerUseCase.getDesignerUserReview(designerId)
+            .gatherRequest(_reviewUser) { it.toUI() }
     }
 }

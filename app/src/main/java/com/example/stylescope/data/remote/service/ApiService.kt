@@ -18,7 +18,6 @@ import com.example.stylescope.data.remote.dtos.login.LoginDto
 import com.example.stylescope.data.remote.dtos.login.RegisterDto
 import com.example.stylescope.data.remote.dtos.password.UserChangePasswordDto
 import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
-import com.example.stylescope.data.remote.dtos.myreviews.MyReviewsDto
 import com.example.stylescope.data.remote.dtos.recover.RecoverDto
 import com.example.stylescope.data.remote.dtos.review.ReviewAnswerDto
 import com.example.stylescope.data.remote.dtos.review.ReviewSendDto

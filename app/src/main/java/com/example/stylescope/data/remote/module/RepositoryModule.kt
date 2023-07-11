@@ -54,7 +54,6 @@ val repoModule = module {
     single<UserChangePasswordRepository> { UserChangePasswordRepositoryImpl(get()) }
     single<SaveFavoriteCompanyRepository> { SaveFavoriteCompanyRepositoryImpl(get()) }
     single<SaveFavoriteDesignerRepository> { SaveFavoriteDesignerRepositoryImpl(get()) }
-    single<MyReviewsRepository> { MyReviewsRepositoryImpl(get()) }
     single<ReviewCompanyRepository> { ReviewCompanyRepositoryImpl(get()) }
     single<MyReviewsRepository> { MyReviewsRepositoryImpl(get()) }
     single<ReviewDesignerRepository> { ReviewDesignerRepositoryImpl(get()) }

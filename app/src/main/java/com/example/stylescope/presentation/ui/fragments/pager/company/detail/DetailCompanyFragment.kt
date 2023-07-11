@@ -58,7 +58,7 @@ class DetailCompanyFragment :
             )
         }
 
-        viewModel.saveCompanyState.spectateUiState(success =  {
+        viewModel.saveCompanyState.spectateUiState(success = {
             Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
         }, error = {
             Log.e("ololo", it)
@@ -97,7 +97,7 @@ class DetailCompanyFragment :
             Log.e("ololo", errorMsg)
         })
     }
-}
+
     override fun constructListeners() {
         super.constructListeners()
         with(binding) {
@@ -123,6 +123,7 @@ class DetailCompanyFragment :
             }
         }
     }
+
 
     private fun detailCompanyState() {
         with(binding) {
@@ -179,7 +180,7 @@ class DetailCompanyFragment :
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             },
             gatherIfSucceed = {
-               binding.loading.progressBar.isVisible = it is UIState.Loading
+                binding.loading.progressBar.isVisible = it is UIState.Loading
             }
         )
     }
@@ -255,11 +256,13 @@ class DetailCompanyFragment :
                         }
                         true
                     }
+
                     R.id.reduct -> {
                         etUserReviews.setText(tvUserReviews.text.toString())
                         isEdit = true
                         true
                     }
+
                     else -> true
                 }
             }

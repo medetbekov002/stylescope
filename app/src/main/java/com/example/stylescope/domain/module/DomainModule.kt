@@ -36,7 +36,6 @@ val useCasesModule = module {
     factory { ChangePasswordUseCase(get()) }
     factory { TokenUseCase(get()) }
     factory { FavoriteUseCase(get()) }
-    factory { MyReviewsUseCase(get()) }
     factory { GetUserProfileUseCase(get()) }
     factory { UpdateUserProfileUseCase(get()) }
     factory { UpdateUserImageUseCase(get()) }
@@ -44,4 +43,6 @@ val useCasesModule = module {
     factory { SaveFavoriteCompanyUseCase(get()) }
     factory { SaveFavoriteDesignerUseCase(get()) }
     factory { MyReviewsUseCase(get()) }
+    factory { ReviewDesignerUseCase(get()) }
+    factory { ReviewCompanyUseCase(get()) }
 }

@@ -4,9 +4,6 @@ import com.example.stylescope.core.BaseViewModel
 import com.example.stylescope.domain.use_cases.company.GetDetailCompanyUseCase
 import com.example.stylescope.domain.use_cases.favorite.SaveFavoriteCompanyUseCase
 import com.example.stylescope.domain.use_cases.reviewcompany.ReviewCompanyUseCase
-import com.example.stylescope.domain.use_cases.reviewcompany.ReviewCompanyUseCase
-import com.example.stylescope.presentation.model.answers.AnswerUI
-import com.example.stylescope.presentation.model.answers.toLogInAnswerUI
 import com.example.stylescope.presentation.model.company.CompanyDetailUI
 import com.example.stylescope.presentation.model.company.CompanyFavoriteUI
 import com.example.stylescope.presentation.model.company.toUI
@@ -18,7 +15,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class DetailCompanyVIewModel(
     private val getDetailCompanyUseCase: GetDetailCompanyUseCase,
-    private val saveFavoriteCompanyUseCase: SaveFavoriteCompanyUseCase
+    private val saveFavoriteCompanyUseCase: SaveFavoriteCompanyUseCase,
     private val reviewDesignerUseCase: ReviewCompanyUseCase
 
 ) : BaseViewModel() {
