@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.stylescope.R
 import com.example.stylescope.databinding.ItemOnBoardingBinding
 import com.example.stylescope.presentation.model.OnBoarding
+import com.google.android.material.button.MaterialButton
 
-class OnBoardingAdapter() : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+class OnBoardingAdapter(private val clicks: Result) : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     private val arrayList = arrayListOf(
         OnBoarding(
@@ -44,27 +45,40 @@ class OnBoardingAdapter() : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingVie
     override fun getItemCount() = arrayList.size
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-        holder.bind(arrayList[position])
+        holder.bind(arrayList[position], position)
     }
 
 
     inner class OnBoardingViewHolder(private val binding: ItemOnBoardingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(onBoarding: OnBoarding) {
+        fun bind(onBoarding: OnBoarding, pos: Int) {
             with(binding) {
                 btnBack.setOnClickListener {
-
+                    clicks.clickBack(btnBack)
                 }
                 btnNext.setOnClickListener {
+                    clicks.clickNext(btnNext, pos)
+                }
 
+                tvSkip.setOnClickListener {
+                    clicks.clickScip()
                 }
                 tvTitle.text = onBoarding.title
                 tvDesc.text = onBoarding.desc
                 imgMain.setImageResource(onBoarding.img)
                 btnBack.isVisible = onBoarding.isBack
+                btnNext.translationX = (-100).toFloat()
+                btnNext.animate().translationX(0F).setDuration(2000).start()
             }
 
         }
+    }
+
+
+    interface Result{
+        fun clickNext(btnNext: MaterialButton, pos: Int)
+        fun clickBack(btnBack: MaterialButton)
+        fun clickScip()
     }
 }

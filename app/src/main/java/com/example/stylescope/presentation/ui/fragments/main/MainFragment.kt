@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.stylescope.R
 import com.example.stylescope.core.BaseFragment
+import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentMainBinding
 import com.example.stylescope.presentation.model.company.CompanyUI
 import com.example.stylescope.presentation.model.designer.DesignerUI
@@ -19,11 +20,15 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
     private val comList = mutableListOf<CompanyUI>()
     private val desList = mutableListOf<DesignerUI>()
     private val desAdapter : DesignerAdapter by lazy { DesignerAdapter(this::clicks) }
+    private val prefs: Pref by lazy { Pref(requireContext()) }
     private fun clicks(id: Int) {
-
     }
 
     override fun launchObservers() {
+        if (!prefs.showOnBoardingShow()) {
+            findNavController().navigate(R.id.onBoardingFragment)
+            prefs.saveOnBoarding(true)
+        }
         binding.viewPagerCompany.adapter = comAdapter
         binding.viewPagerDesign.adapter = desAdapter
         viewModel.companyState.spectateUiState (success = { companies ->
@@ -49,7 +54,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.f
         }
 
         binding.imgLogo.setOnClickListener {
-            Log.e("ololo", "constructListeners: ", )
             findNavController().navigate(R.id.aboutUsFragment)
         }
     }
