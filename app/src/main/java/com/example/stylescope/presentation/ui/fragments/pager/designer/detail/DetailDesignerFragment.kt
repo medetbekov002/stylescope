@@ -34,7 +34,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
     private var reviewEmpty = false
     override fun initialize() {
         super.initialize()
-        viewModel.getDetailCompanies(1)
+        viewModel.getDetailCompanies(args.designerID)
         initAdapter()
         reviewEditDelete()
     }

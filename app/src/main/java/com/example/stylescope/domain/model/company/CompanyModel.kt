@@ -18,6 +18,7 @@ data class CompanyDetailModel(
     val title: String?=null,
     val summary: String?=null,
     val about: String?=null,
+    val rating: Double?=null,
     val services: List<ServicesModel>?=null,
     val gallery: List<GalleryModel>?=null,
     val packages: List<CompanyPackageModel>?=null,

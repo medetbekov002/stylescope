@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             list.add(R.id.favoriteFragment)
             list.add(R.id.profileFragment2)
             list.add(R.id.userNotRegisterFragment)
+            list.add(R.id.errorFragment2)
+            list.add(R.id.detailDesignerFragment)
+            list.add(R.id.detailCompanyFragment)
 
             if (list.contains(destination.id)) {
                 binding.bottomNavigation.visibility = View.VISIBLE

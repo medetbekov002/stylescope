@@ -22,7 +22,7 @@ class ProfileFragment :
     private val prefs: Pref by lazy { Pref(requireContext()) }
     override fun launchObservers() {
         Log.e("profile", prefs.showToken().toString())
-        if (prefs.showToken() == null) {
+        if (prefs.showToken() == null ) {
             findNavController().navigate(R.id.userNotRegisterFragment)
         } else {
             val userToken = "Bearer ${prefs.showToken()}"

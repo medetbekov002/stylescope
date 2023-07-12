@@ -32,6 +32,7 @@ data class CompanyDetailUI(
     val image: String?=null,
     val title: String?=null,
     val summary: String?=null,
+    val rating: Double?=null,
     val about: String?=null,
     val services: List<ServicesUI>?=null,
     val gallery: List<GalleryUI>?=null,
@@ -60,7 +61,8 @@ fun CompanyDetailModel.toUI() = CompanyDetailUI(
     phoneNumber1 = phoneNumber1,
     email1 = email1,
     socialMedia1 = socialMedia1,
-    address = address
+    address = address,
+    rating = rating
 )
 
 data class CompanyReviewUI(

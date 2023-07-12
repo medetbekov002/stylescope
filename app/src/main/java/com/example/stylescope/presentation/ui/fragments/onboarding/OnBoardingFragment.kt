@@ -54,6 +54,6 @@ class OnBoardingFragment :
     }
 
     override fun clickScip() {
-        findNavController().navigateUp()
+        findNavController().navigate(R.id.mainFragment)
     }
 }

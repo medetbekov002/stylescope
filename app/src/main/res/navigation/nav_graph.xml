@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -187,4 +187,8 @@
         android:name="com.example.stylescope.presentation.ui.fragments.myreviews.MyReviewsFragment"
         android:label="fragment_my_reviews"
         tools:layout="@layout/fragment_my_reviews" />
+    <fragment
+        android:id="@+id/errorFragment2"
+        android:name="com.example.stylescope.presentation.ui.fragments.favorite.ErrorFragment"
+        android:label="ErrorFragment" />
 </navigation>

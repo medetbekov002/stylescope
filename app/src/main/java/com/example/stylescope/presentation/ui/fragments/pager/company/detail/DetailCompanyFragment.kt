@@ -2,6 +2,7 @@ package com.example.stylescope.presentation.ui.fragments.pager.company.detail
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -44,7 +45,7 @@ class DetailCompanyFragment :
     private var reviewEmpty = false
     override fun initialize() {
         super.initialize()
-        viewModel.getDetailCompanies(1)
+        viewModel.getDetailCompanies(args.companyID)
         initAdapter()
         reviewEditDelete()
     }
@@ -55,55 +56,6 @@ class DetailCompanyFragment :
         deleteReviewState()
         editReviewState()
         getDesignerUserReview()
-
-        binding.imgDetailSave.setOnClickListener {
-            viewModel.saveFavoriteCompany(
-                model = CompanyFavoriteUI(companyId = args.companyID),
-                args.companyID.toString()
-            )
-        }
-
-        viewModel.saveCompanyState.spectateUiState(success = {
-            Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
-        }, error = {
-            Log.e("ololo", it)
-        })
-
-        binding.rvService.adapter = serviceAdapter
-        binding.rvPrices.adapter = packageAdapter
-        binding.rvTeam.adapter = teamAdapter
-        binding.companyWorksPager.adapter = companyWorksAdapter
-        binding.rvReviews.adapter = companyReviewsAdapter
-
-
-        viewModel.state.spectateUiState(success = { company ->
-            company.image?.let { binding.imgDetailCompany.loadImage(it) }
-            binding.tvDetailCompanyDes.text = company.about
-            Log.w("ololo", "launchObservers: ${company.about}")
-            binding.tvWhatsappContact.text = company.phoneNumber1
-            val instagram = company.socialMedia1?.replace("https://www.instagram.com/", "")
-            val insta = instagram?.replace("/", "")
-            binding.tvInstagramContact.text = insta
-            binding.tvGmailContact.text = company.email1
-            binding.tvCompanyAddress.text = company.address
-            packageAdapter.submitList(company.packages)
-            teamAdapter.submitList(company.designers)
-            companyWorksAdapter.submitList(company.gallery)
-            companyReviewsAdapter.submitList(company.reviews)
-            serviceAdapter.submitList(company.services)
-            binding.midleCompny.text = company.title
-            binding.tvSeeAllWorks.setOnClickListener {
-                findNavController().navigate(
-                    DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(
-                        args.companyID
-                    )
-                )
-            }
-        }, error = { errorMsg ->
-            Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
-            binding.tvDetailCompanyDes.text = errorMsg
-            Log.e("ololo", errorMsg)
-        })
     }
 
     override fun constructListeners() {
@@ -135,21 +87,64 @@ class DetailCompanyFragment :
 
     private fun detailCompanyState() {
         with(binding) {
+            if (pref.showToken() != null) {
+                sendReview.visibility = View.VISIBLE
+            }
             viewModel.state.spectateUiState(
                 success = { company ->
-                    viewModel.getUserReview("1")
-                    company.image?.let { imgDetailCompany.loadImage(it) }
-                    tvDetailCompanyDes.text = company.about
-                    tvWhatsappContact.text = company.phoneNumber1
-                    val instagram =
-                        company.socialMedia1?.replace("https://www.instagram.com/", "")
+                    company.image?.let { binding.imgDetailCompany.loadImage(it) }
+                    binding.tvDetailCompanyDes.text = company.about
+                    Log.w("ololo", "launchObservers: ${company.about}")
+                    binding.tvWhatsappContact.text = company.phoneNumber1
+                    val instagram = company.socialMedia1?.replace("https://www.instagram.com/", "")
                     val insta = instagram?.replace("/", "")
-                    tvInstagramContact.text = insta
-                    tvGmailContact.text = company.email1
-                    tvCompanyAddress.text = company.address
+                    binding.tvInstagramContact.text = insta
+                    binding.tvGmailContact.text = company.email1
+                    binding.tvCompanyAddress.text = company.address
                     packageAdapter.submitList(company.packages)
                     teamAdapter.submitList(company.designers)
                     companyWorksAdapter.submitList(company.gallery)
+                    companyReviewsAdapter.submitList(company.reviews)
+                    serviceAdapter.submitList(company.services)
+                    binding.midleCompny.text = company.title
+                    binding.midleInt.text = company.rating.toString()
+                    binding.midleRatingBar.rating = company.rating!!.toFloat()
+                    midleCountRaiting.text = company.countReviews
+                    binding.tvSeeAllWorks.setOnClickListener {
+                        findNavController().navigate(
+                            DetailCompanyFragmentDirections.actionDetailCompanyFragmentToWorksFragment(
+                                args.companyID
+                            )
+                        )
+                    }
+
+                    binding.imgDetailSave.setOnClickListener {
+                        viewModel.saveFavoriteCompany(
+                            model = CompanyFavoriteUI(companyId = args.companyID),
+                            args.companyID.toString()
+                        )
+                    }
+
+                    viewModel.saveCompanyState.spectateUiState(success = {
+                        Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+                    }, error = {
+                        Log.e("ololo", it)
+                    })
+
+                    binding.rvPrices.adapter = serviceAdapter
+                    binding.rvPrices.adapter = packageAdapter
+                    binding.rvTeam.adapter = teamAdapter
+                    binding.companyWorksPager.adapter = companyWorksAdapter
+                    binding.rvReviews.adapter = companyReviewsAdapter
+
+
+                    viewModel.state.spectateUiState(success = { company ->
+
+                    }, error = { errorMsg ->
+                        Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
+                        binding.tvDetailCompanyDes.text = errorMsg
+                        Log.e("ololo", errorMsg)
+                    })
                 }, error = { errorMsg ->
                     Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
                 },
