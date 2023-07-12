@@ -6,7 +6,6 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.ActivityMainBinding
 
