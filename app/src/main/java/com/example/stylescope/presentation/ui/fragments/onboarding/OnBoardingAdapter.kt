@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stylescope.R
+import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.ItemOnBoardingBinding
 import com.example.stylescope.presentation.model.OnBoarding
 import com.google.android.material.button.MaterialButton
 
 class OnBoardingAdapter(private val clicks: Result) : RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
-
     private val arrayList = arrayListOf(
         OnBoarding(
             isBack = false,
@@ -58,7 +58,7 @@ class OnBoardingAdapter(private val clicks: Result) : RecyclerView.Adapter<OnBoa
                     clicks.clickBack(btnBack)
                 }
                 btnNext.setOnClickListener {
-                    clicks.clickNext(btnNext, pos)
+                    clicks.clickNext(btnNext, adapterPosition)
                 }
 
                 tvSkip.setOnClickListener {
@@ -71,7 +71,6 @@ class OnBoardingAdapter(private val clicks: Result) : RecyclerView.Adapter<OnBoa
                 btnNext.translationX = (-100).toFloat()
                 btnNext.animate().translationX(0F).setDuration(2000).start()
             }
-
         }
     }
 

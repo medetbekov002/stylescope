@@ -1,5 +1,6 @@
 package com.example.stylescope.presentation.ui.fragments.register
 
+import android.util.Log
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -17,7 +18,26 @@ class RegisterFragment :
     BaseFragment<FragmentRegisterBinding, RegisterViewModel>(R.layout.fragment_register) {
     override val binding: FragmentRegisterBinding by viewBinding(FragmentRegisterBinding::bind)
     override val viewModel: RegisterViewModel by viewModel()
-    private val pref:Pref by lazy { Pref(requireContext()) }
+    private val pref: Pref by lazy { Pref(requireContext()) }
+
+    override fun initialize() {
+        checkOnBoarding()
+    }
+
+    private fun checkOnBoarding() {
+        val pref = Pref(requireContext())
+
+        if (!pref.showOnBoardingShow()) {
+            Log.w("ololo", "checkOnBoarding: ${pref.showOnBoardingShow()}", )
+            pref.saveOnBoarding(true)
+            findNavController().navigate(R.id.onBoardingFragment)
+        } else {
+            Log.e("profile", pref.showToken().toString())
+            if (pref.showToken() != null) {
+                findNavController().navigate(R.id.mainFragment)
+            }
+        }
+    }
 
     override fun constructListeners() {
         binding.btnRegister.setOnClickListener {

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,6 +18,7 @@ import com.example.stylescope.presentation.model.review.ReviewSendUI
 import com.example.stylescope.presentation.ui.adapters.designer.design_reviews.DesignReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.designer.design_works.DesignWorksAdapter
 import com.example.stylescope.presentation.ui.fragments.pager.company.detail.DetailCompanyFragmentArgs
+import com.example.stylescope.presentation.ui.fragments.pager.log_out.NotRegisterDialogFragment
 import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,19 +50,7 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
         getDesignerUserReview()
 
 
-        binding.ilBtnFavorite.setOnClickListener {
-            viewModel.saveFavoriteDesigner(
-                DesignerFavoriteUI(
-                    designerId = args.designerID
-                ), id = args.designerID.toString()
-            )
-        }
 
-        viewModel.saveDesignerState.spectateUiState(success = {
-            Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
-        }, error = {
-            Log.e("ololo", it)
-        })
 
         binding.rvReviews.adapter = designReviewsAdapter
         binding.companyWorksPager.adapter = designWorksAdapter
@@ -102,6 +92,41 @@ class DetailDesignerFragment : BaseFragment<FragmentDetailDesignerBinding, Detai
 
     private fun detailDesignerState() {
         with(binding) {
+            val favoriteDesignerId = pref.getFavoriteDesignerId()
+            if (favoriteDesignerId != null && favoriteDesignerId == args.designerID) {
+                ilBtnFavorite.setImageResource(R.drawable.ic_favorite_ram_select)
+            } else {
+                ilBtnFavorite.setImageResource(R.drawable.ic_favorite_ram)
+            }
+
+            ilBtnFavorite.setOnClickListener {
+                if (favoriteDesignerId != null && favoriteDesignerId == args.designerID) {
+                    // Already selected, remove from favorites
+                    ilBtnFavorite.setImageResource(R.drawable.ic_favorite_ram)
+                    pref.saveFavoriteDesignerId(0)
+                } else {
+                    // Not selected, mark as favorite
+                    ilBtnFavorite.setImageResource(R.drawable.ic_favorite_ram_select)
+                    pref.saveFavoriteDesignerId(args.designerID)
+                }
+                viewModel.saveFavoriteDesigner(
+                    DesignerFavoriteUI(
+                        designerId = args.designerID
+                    ), id = args.designerID.toString()
+                )
+            }
+
+            if (pref.showToken() != null) {
+                btnLeaveFeedback.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.urmat_blue)
+            } else {
+                btnLeaveFeedback.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.urmat_light_gray)
+                btnLeaveFeedback.setOnClickListener {
+                    NotRegisterDialogFragment().show(
+                        requireActivity().supportFragmentManager,
+                        ""
+                    )
+                }
+            }
             viewModel.state.spectateUiState(success = { design ->
                 viewModel.getUserReview("1")
                 design.photo?.let { ilProfileDesign.loadImage(it) }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/registerFragment">
 
     <fragment
         android:id="@+id/pagerFragment"
@@ -118,7 +118,7 @@
         tools:layout="@layout/fragment_profile" />
     <dialog
         android:id="@+id/updateUserImageDialogFragment"
-        android:name="com.example.stylescope.presentation.ui.fragments.profile.dialog.UpdateUserImageDialogFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.profile.dialog.NotRegisterDialogFragment"
         android:label="fragment_update_user_image_dialog"
         tools:layout="@layout/fragment_update_user_image_dialog" />
 
@@ -169,7 +169,7 @@
         android:label="UserNotFavoriteFragment" />
     <dialog
         android:id="@+id/logOutDialogFragment"
-        android:name="com.example.stylescope.presentation.ui.fragments.profile.log_out.LogOutDialogFragment"
+        android:name="com.example.stylescope.presentation.ui.fragments.pager.log_out.NotRegisterDialogFragment"
         android:label="fragment_log_out_dialog"
         tools:layout="@layout/fragment_log_out_dialog" />
     <fragment

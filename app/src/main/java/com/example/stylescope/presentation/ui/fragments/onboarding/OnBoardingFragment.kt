@@ -41,6 +41,8 @@ class OnBoardingFragment :
 
     override fun clickNext(btnNext: MaterialButton, pos: Int) {
         if (pos == 2) {
+            btnNext.text = "Перейти"
+            pref.saveOnBoarding(true)
             findNavController().navigateUp()
         } else {
             count++
@@ -54,6 +56,6 @@ class OnBoardingFragment :
     }
 
     override fun clickScip() {
-        findNavController().navigate(R.id.mainFragment)
+        findNavController().navigateUp()
     }
 }

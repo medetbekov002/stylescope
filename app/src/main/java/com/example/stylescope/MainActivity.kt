@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.stylescope.data.local.Pref
@@ -20,7 +21,18 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
+        checkOnBoarding()
         initNavController()
+    }
+
+    private fun checkOnBoarding() {
+        val pref = Pref(this)
+
+        if (pref.showOnBoardingShow()) {
+            pref.saveOnBoarding(true)
+        } else {
+           navController.navigate(R.id.mainFragment)
+        }
     }
 
     private fun initNavController() {

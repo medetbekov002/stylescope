@@ -23,7 +23,6 @@
                 android:id="@+id/design_profile_lt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/urmat_blue"
                 android:padding="20dp"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -31,7 +30,7 @@
                     android:id="@+id/il_btn_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_favorite_design"
+                    android:src="@drawable/ic_favorite_ram"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -296,6 +295,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_margin="14dp"
+                        android:src="@drawable/profile_photo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -314,6 +314,7 @@
                         android:id="@+id/img_user_reviews_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
+                        app:mrb_progressTint="@color/yellow"
                         app:layout_constraintBottom_toBottomOf="@id/img_user_reviews"
                         app:layout_constraintStart_toStartOf="@id/tv_name_reviews"
                         app:layout_constraintTop_toBottomOf="@id/tv_name_reviews" />
@@ -366,6 +367,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="14dp"
+                        android:src="@drawable/profile_photo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 

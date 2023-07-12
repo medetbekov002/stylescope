@@ -5,7 +5,7 @@
     android:background="@drawable/circle_corner_bg"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.fragments.profile.log_out.LogOutDialogFragment">
+    tools:context=".presentation.ui.fragments.pager.log_out.NotRegisterDialogFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="wrap_content"

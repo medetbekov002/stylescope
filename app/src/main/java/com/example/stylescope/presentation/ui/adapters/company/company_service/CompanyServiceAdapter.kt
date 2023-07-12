@@ -1,6 +1,7 @@
 package com.example.stylescope.presentation.ui.adapters.company.company_service
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -29,13 +30,14 @@ class CompanyServiceAdapter : androidx.recyclerview.widget.ListAdapter<ServicesU
 
             var serviceDescState = false
             val serviceDesc = model.description
+
             binding.itemTvPackageTitle.setOnClickListener {
                 if (!serviceDescState && !serviceDesc.isNullOrEmpty()) {
-                    binding.itemTvPackageDesc.isVisible = true
+                    binding.itemTvPackageDesc.visibility = View.VISIBLE
                     binding.itemTvPackageDesc.text = model.description
                     serviceDescState = true
                 } else {
-                    binding.itemTvPackageDesc.isGone = true
+                    binding.itemTvPackageDesc.visibility = View.GONE
                     serviceDescState = false
                 }
             }

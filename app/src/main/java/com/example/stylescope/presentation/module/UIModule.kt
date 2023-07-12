@@ -1,7 +1,5 @@
 package com.example.stylescope.presentation.module
 
-import com.example.stylescope.domain.use_cases.reviewcompany.ReviewCompanyUseCase
-import com.example.stylescope.domain.use_cases.reviewdesigner.ReviewDesignerUseCase
 import com.example.stylescope.presentation.ui.fragments.changepassword.ChangePasswordViewModel
 import com.example.stylescope.presentation.ui.fragments.confirm.ConfirmCodeViewModel
 import com.example.stylescope.presentation.ui.fragments.favorite.FavoriteViewModel
@@ -36,8 +34,8 @@ val uiModule = module {
     viewModel { TokenViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
-    viewModel { UpdateUserImageViewModel(get()) }
     viewModel { ChangeUserPasswordViewModel(get()) }
+    viewModel { UpdateUserImageViewModel(get()) }
     viewModel { OnBoardingViewModel() }
     viewModel { MyReviewsViewModel(get()) }
 }

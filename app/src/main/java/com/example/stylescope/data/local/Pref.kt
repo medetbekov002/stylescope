@@ -73,6 +73,21 @@ class Pref(context: Context) {
     fun saveOnBoarding(isShow: Boolean) {
         pref.edit().putBoolean(BOARDING_SHOW, isShow).apply()
     }
+    fun saveFavoriteDesignerId(designerId: Int) {
+        pref.edit().putInt(FAVORITE_DESIGNER_ID, designerId).apply()
+    }
+
+    fun getFavoriteDesignerId(): Int? {
+        return pref.getInt(FAVORITE_DESIGNER_ID, 0)
+    }
+
+    fun saveFavoriteCompanyId(companyId: Int) {
+        pref.edit().putInt(FAVORITE_COMPANY_ID, companyId).apply()
+    }
+
+    fun getFavoriteCompanyId(): Int? {
+        return pref.getInt(FAVORITE_COMPANY_ID, 0)
+    }
     companion object {
         private const val IS_RECOVER = "is_recover"
         private const val USERNAME = "username"
@@ -82,5 +97,7 @@ class Pref(context: Context) {
         private const val USER_PASSWORD = "user_password"
         private const val REFRESH_TOKEN = "refresh_token"
         private const val BOARDING_SHOW = "on_boarding_show"
+        private const val FAVORITE_DESIGNER_ID = "favorite_design"
+        private const val FAVORITE_COMPANY_ID = "favorite_company"
     }
 }

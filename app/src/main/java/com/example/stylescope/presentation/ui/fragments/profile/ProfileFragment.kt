@@ -11,6 +11,7 @@ import com.example.stylescope.core.BaseFragment
 import com.example.stylescope.data.local.Pref
 import com.example.stylescope.databinding.FragmentProfileBinding
 import com.example.stylescope.presentation.model.user.UpdateUserProfileUI
+import com.example.stylescope.presentation.ui.fragments.pager.log_out.NotRegisterDialogFragment
 import com.example.stylescope.presentation.ui.fragments.profile.log_out.LogOutDialogFragment
 import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel

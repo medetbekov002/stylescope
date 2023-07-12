@@ -1,10 +1,13 @@
 package com.example.stylescope.presentation.ui.fragments.pager.company.detail
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,11 +20,14 @@ import com.example.stylescope.databinding.FragmentDetailCompanyBinding
 import com.example.stylescope.presentation.model.review.ReviewSendUI
 import com.example.stylescope.presentation.model.company.CompanyFavoriteUI
 import com.example.stylescope.presentation.model.company.CompanyPackageUI
+import com.example.stylescope.presentation.model.designer.DesignerFavoriteUI
 import com.example.stylescope.presentation.ui.adapters.company.company_package.CompanyPackageAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_service.CompanyServiceAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_reviews.CompanyReviewsAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_team.CompanyTeamAdapter
 import com.example.stylescope.presentation.ui.adapters.company.company_works.CompanyWorksAdapter
+import com.example.stylescope.presentation.ui.fragments.pager.log_out.NotRegisterDialogFragment
+import com.example.stylescope.presentation.ui.fragments.profile.log_out.LogOutDialogFragment
 import com.example.stylescope.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -87,8 +93,39 @@ class DetailCompanyFragment :
 
     private fun detailCompanyState() {
         with(binding) {
+            val favoriteDesignerId = pref.getFavoriteCompanyId()
+            if (favoriteDesignerId != null && favoriteDesignerId == args.companyID) {
+                imgDetailSave.setImageResource(R.drawable.ic_favorite_ram_select)
+            } else {
+                imgDetailSave.setImageResource(R.drawable.ic_favorite_ram)
+            }
+
+            imgDetailSave.setOnClickListener {
+                if (favoriteDesignerId != null && favoriteDesignerId == args.companyID) {
+                    // Already selected, remove from favorites
+                    imgDetailSave.setImageResource(R.drawable.ic_favorite_ram)
+                    pref.saveFavoriteCompanyId(0)
+                } else {
+                    // Not selected, mark as favorite
+                    imgDetailSave.setImageResource(R.drawable.ic_favorite_ram_select)
+                    pref.saveFavoriteCompanyId(args.companyID)
+                }
+                viewModel.saveFavoriteCompany(
+                    CompanyFavoriteUI(
+                        companyId = args.companyID
+                    ), id = args.companyID.toString()
+                )
+            }
             if (pref.showToken() != null) {
-                sendReview.visibility = View.VISIBLE
+                btnLeaveFeedback.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.urmat_blue)
+            } else {
+                btnLeaveFeedback.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.urmat_light_gray)
+                btnLeaveFeedback.setOnClickListener {
+                    NotRegisterDialogFragment().show(
+                        requireActivity().supportFragmentManager,
+                        ""
+                    )
+                }
             }
             viewModel.state.spectateUiState(
                 success = { company ->
@@ -106,6 +143,13 @@ class DetailCompanyFragment :
                     companyWorksAdapter.submitList(company.gallery)
                     companyReviewsAdapter.submitList(company.reviews)
                     serviceAdapter.submitList(company.services)
+                    binding.tvGoSite.setOnClickListener {
+                        val websiteUrl = company.siteLink
+                        if (websiteUrl!!.isNotEmpty()) {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl))
+                            startActivity(intent)
+                        }
+                    }
                     binding.midleCompny.text = company.title
                     binding.midleInt.text = company.rating.toString()
                     binding.midleRatingBar.rating = company.rating!!.toFloat()
@@ -126,7 +170,8 @@ class DetailCompanyFragment :
                     }
 
                     viewModel.saveCompanyState.spectateUiState(success = {
-                        Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Успешно сохранено", Toast.LENGTH_SHORT)
+                            .show()
                     }, error = {
                         Log.e("ololo", it)
                     })
@@ -141,7 +186,8 @@ class DetailCompanyFragment :
                     viewModel.state.spectateUiState(success = { company ->
 
                     }, error = { errorMsg ->
-                        Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Error $errorMsg", Toast.LENGTH_LONG)
+                            .show()
                         binding.tvDetailCompanyDes.text = errorMsg
                         Log.e("ololo", errorMsg)
                     })
@@ -159,7 +205,7 @@ class DetailCompanyFragment :
             viewModel.reviewSend.spectateUiState(
                 success = {
                     viewModel.getUserReview("1")
-                    it.userPhoto?.let { it1 -> imgUserReviews.loadImage(it1) }
+                    it.userPhoto?.let { it1 -> imgUser.loadImage(it1) }
                     etUserReviews.clearFocus()
                     etUserReviews.text?.clear()
                     rank.rating = 0.0F
@@ -292,6 +338,7 @@ class DetailCompanyFragment :
             rvTeam.adapter = teamAdapter
             companyWorksPager.adapter = companyWorksAdapter
             rvReviews.adapter = companyReviewsAdapter
+            rvService.adapter = serviceAdapter
         }
     }
 

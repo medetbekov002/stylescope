@@ -512,7 +512,7 @@
                 android:id="@+id/doneReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:animateLayoutChanges="true">
 
                 <View
@@ -532,6 +532,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_margin="14dp"
+                    android:src="@drawable/profile_photo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -540,7 +541,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Алма Бекова"
+                    android:text="Ваше имя"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@id/img_user_reviews"
@@ -596,7 +597,7 @@
                 android:id="@+id/sendReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="30dp">
 
 
@@ -605,6 +606,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="14dp"
+                    android:src="@drawable/profile_photo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -629,7 +631,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="16dp"
-                    android:backgroundTint="#072755"
+                    android:backgroundTint="@color/urmat_blue"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="8dp"
                     android:text="Оставить отзыв"
